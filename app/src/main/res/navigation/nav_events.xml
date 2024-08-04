@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_events"
+    app:startDestination="@id/upcomingEventsFragment">
+    <fragment
+        android:id="@+id/upcomingEventsFragment"
+        android:name="rachman.forniandi.dicodingeventstracker.domain.UpcomingEventsFragment"
+        android:label="fragment_upcoming_events"
+        tools:layout="@layout/fragment_upcoming_events" />
+    <fragment
+        android:id="@+id/pastEventsFragment"
+        android:name="rachman.forniandi.dicodingeventstracker.domain.PastEventsFragment"
+        android:label="fragment_past_events"
+        tools:layout="@layout/fragment_past_events" />
+</navigation>
