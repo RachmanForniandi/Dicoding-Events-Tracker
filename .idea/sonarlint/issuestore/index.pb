@@ -39,3 +39,17 @@ Sapp/src/main/java/rachman/forniandi/dicodingeventstracker/adapters/EventsAdapte
 Uapp/src/main/java/rachman/forniandi/dicodingeventstracker/domain/home/MainActivity.kt,3\5\35056a0b307c537e08b0596401c8646e7c9c4444
 Ö
 Uapp/src/main/java/rachman/forniandi/dicodingeventstracker/domain/home/HomeFragment.kt,c\f\cf4f55bc2d2a6fd866b3eb5ee874ad9d6acf1e6a
+ï
+eapp/src/main/java/rachman/forniandi/dicodingeventstracker/data/remote/retrofit/EventRepositoryImpl.kt,e\f\efc40c60abdad8a1f6d2f1a0941b49c1d5c78bae
+à
+Xapp/src/main/java/rachman/forniandi/dicodingeventstracker/data/remoteUtils/DataMapper.kt,5\4\54dd13695b91a02d7b0dcb1e1f17c82b92694307
+â
+Yapp/src/main/java/rachman/forniandi/dicodingeventstracker/data/remoteUtils/DataMapper2.kt,d\1\d109025a9092ba47b5163c9d31f707e326e21086
+ñ
+fapp/src/main/java/rachman/forniandi/dicodingeventstracker/domain/viewmodels/UpcomingEventsViewmodel.kt,5\d\5d37ee73b36c5de3a3e4c210406274df9762e2f8
+í
+bapp/src/main/java/rachman/forniandi/dicodingeventstracker/domain/viewmodels/PastEventsViewmodel.kt,6\1\61f7791c107635177042101d76804d20fbe95cec
+Ä
+Papp/src/main/java/rachman/forniandi/dicodingeventstracker/utils/StoryDiffUtil.kt,9\e\9effa6bcc528c0a1494ad2709bccdff725d1b131
+è
+_app/src/main/java/rachman/forniandi/dicodingeventstracker/domain/detail/DetailEventsActivity.kt,9\2\925beee1845b9e4e5986678d3f0b240a0097b211

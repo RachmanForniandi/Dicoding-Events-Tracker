@@ -3,15 +3,17 @@ package rachman.forniandi.dicodingeventstracker.adapters
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import rachman.forniandi.dicodingeventstracker.R
-import rachman.forniandi.dicodingeventstracker.data.remote.response.EventsItem
 import rachman.forniandi.dicodingeventstracker.databinding.ItemEventBinding
+import rachman.forniandi.dicodingeventstracker.domain.entity.Events
+import rachman.forniandi.dicodingeventstracker.utils.EventDiffUtil
 
 class EventsAdapter(private val mContext: Context): RecyclerView.Adapter<EventsAdapter.EventsHolder>() {
 
-    private var events = arrayListOf<EventsItem>()
+    private var events = emptyList<Events>()
     private var onClickListener: OnStoryClickListener?= null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventsHolder {
@@ -40,7 +42,14 @@ class EventsAdapter(private val mContext: Context): RecyclerView.Adapter<EventsA
     }
 
     interface OnStoryClickListener {
-        fun onClick(position: Int, event: EventsItem)
+        fun onClick(position: Int, event: Events)
+    }
+
+    fun setData(eventData: List<Events>){
+        val dataDiffUtil = EventDiffUtil(events,eventData)
+        val diffUtilResult = DiffUtil.calculateDiff(dataDiffUtil)
+        events = eventData
+        diffUtilResult.dispatchUpdatesTo(this)
     }
 }
 

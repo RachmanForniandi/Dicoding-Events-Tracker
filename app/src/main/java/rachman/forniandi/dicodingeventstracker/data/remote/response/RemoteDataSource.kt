@@ -2,7 +2,9 @@ package rachman.forniandi.dicodingeventstracker.data.remote.response
 
 import rachman.forniandi.dicodingeventstracker.data.remote.retrofit.NetworkService
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class RemoteDataSource @Inject constructor(
     private val networkService: NetworkService
 ){

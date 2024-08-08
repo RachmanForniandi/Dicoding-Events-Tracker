@@ -77,7 +77,11 @@ dependencies {
 
     //dagger hilt
     implementation (libs.hilt.android)
+    implementation(libs.androidx.swiperefreshlayout)
     kapt (libs.hilt.compiler)
+
+    //facebook shimmer
+    implementation(libs.facebook.shimmer)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
