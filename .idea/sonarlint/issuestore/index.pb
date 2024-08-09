@@ -49,7 +49,11 @@ Yapp/src/main/java/rachman/forniandi/dicodingeventstracker/data/remoteUtils/Data
 fapp/src/main/java/rachman/forniandi/dicodingeventstracker/domain/viewmodels/UpcomingEventsViewmodel.kt,5\d\5d37ee73b36c5de3a3e4c210406274df9762e2f8
 í
 bapp/src/main/java/rachman/forniandi/dicodingeventstracker/domain/viewmodels/PastEventsViewmodel.kt,6\1\61f7791c107635177042101d76804d20fbe95cec
-Ä
-Papp/src/main/java/rachman/forniandi/dicodingeventstracker/utils/StoryDiffUtil.kt,9\e\9effa6bcc528c0a1494ad2709bccdff725d1b131
 è
 _app/src/main/java/rachman/forniandi/dicodingeventstracker/domain/detail/DetailEventsActivity.kt,9\2\925beee1845b9e4e5986678d3f0b240a0097b211
+Ä
+Papp/src/main/java/rachman/forniandi/dicodingeventstracker/utils/EventDiffUtil.kt,4\2\42d7359799cd6f7a69daaec585d1d42be6450dd9
+w
+G.idea/sonarlint/issuestore/4/2/42d7359799cd6f7a69daaec585d1d42be6450dd9,e\5\e5210891ca3263c81b57525cc846613b973d21f8
+Å
+Q.idea/sonarlint/securityhotspotstore/4/2/42d7359799cd6f7a69daaec585d1d42be6450dd9,d\0\d0c00f4d5b69a024dbc2149d3df7d983e8768c15

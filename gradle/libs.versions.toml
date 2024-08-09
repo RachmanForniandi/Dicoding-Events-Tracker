@@ -4,6 +4,8 @@ kotlin = "1.9.0"
 coreKtx = "1.13.1"
 fragmentKtx = "1.8.1"
 hiltAndroid = "2.48"
+kotlinKsp = "1.9.0-1.0.12"
+
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
@@ -39,9 +41,11 @@ androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fr
 androidx-navigation-safe-args-gradle-plugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationFragmentKtx" }
 facebook-shimmer={ module = "com.facebook.shimmer:shimmer", version.ref = "facebookShimmer" }
+
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
-hilt-android-gradle-plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hiltAndroid" }
+dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "hiltAndroid" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltAndroid" }
+
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converter-gson" }
 okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 picasso={ module = "com.squareup.picasso:picasso", version.ref = "picasso" }
@@ -55,4 +59,6 @@ androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "s
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
+ksp =  { id = "com.google.devtools.ksp", version.ref = "kotlinKsp" }
+daggerhilt ={id = "com.google.dagger.hilt.android", version.ref = "hiltAndroid"}
 

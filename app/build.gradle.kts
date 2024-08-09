@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("org.jetbrains.kotlin.kapt")
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.daggerhilt)
     //id("androidx.navigation.safeargs.kotlin")
     //id("com.google.dagger.hilt.android")
 }
@@ -77,8 +79,11 @@ dependencies {
 
     //dagger hilt
     implementation (libs.hilt.android)
+    ksp (libs.hilt.compiler)
+    ksp (libs.dagger.compiler)
+
+
     implementation(libs.androidx.swiperefreshlayout)
-    kapt (libs.hilt.compiler)
 
     //facebook shimmer
     implementation(libs.facebook.shimmer)
