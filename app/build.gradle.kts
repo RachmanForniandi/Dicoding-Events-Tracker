@@ -76,6 +76,7 @@ dependencies {
     //Navigation
     implementation (libs.androidx.navigation.fragment.ktx)
     implementation (libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.navigation.safe.args.gradle.plugin)
 
     //dagger hilt
     implementation (libs.hilt.android)

@@ -57,3 +57,15 @@ w
 G.idea/sonarlint/issuestore/4/2/42d7359799cd6f7a69daaec585d1d42be6450dd9,e\5\e5210891ca3263c81b57525cc846613b973d21f8
 Å
 Q.idea/sonarlint/securityhotspotstore/4/2/42d7359799cd6f7a69daaec585d1d42be6450dd9,d\0\d0c00f4d5b69a024dbc2149d3df7d983e8768c15
+ï
+eapp/src/main/java/rachman/forniandi/dicodingeventstracker/domain/Splashscreen/SplashScreenActivity.kt,f\5\f54825656ae120399c302fd6db66052508c9df93
+w
+G.idea/sonarlint/issuestore/e/5/e5210891ca3263c81b57525cc846613b973d21f8,4\d\4d3b9356612ecaa87a3af0d0c62467f21be7e703
+Å
+Q.idea/sonarlint/securityhotspotstore/f/5/f54825656ae120399c302fd6db66052508c9df93,3\1\310d101470b554553710565d186306bdc9132c11
+Å
+Q.idea/sonarlint/securityhotspotstore/e/5/e5210891ca3263c81b57525cc846613b973d21f8,0\0\004b82e5e5c015aa1aff69798d14e61c3682b750
+w
+G.idea/sonarlint/issuestore/d/0/d0c00f4d5b69a024dbc2149d3df7d983e8768c15,1\c\1cecb25fe836eef38b6c29db8a7eace46d029d15
+Å
+Q.idea/sonarlint/securityhotspotstore/d/0/d0c00f4d5b69a024dbc2149d3df7d983e8768c15,6\6\66c64bbcc9652d84528cb6b8ac812cb50ea3cc3f
