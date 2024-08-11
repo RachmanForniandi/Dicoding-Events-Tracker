@@ -69,3 +69,9 @@ w
 G.idea/sonarlint/issuestore/d/0/d0c00f4d5b69a024dbc2149d3df7d983e8768c15,1\c\1cecb25fe836eef38b6c29db8a7eace46d029d15
 Å
 Q.idea/sonarlint/securityhotspotstore/d/0/d0c00f4d5b69a024dbc2149d3df7d983e8768c15,6\6\66c64bbcc9652d84528cb6b8ac812cb50ea3cc3f
+A
+gradle.properties,2\a\2afbb999f001938c88fa43fc2ef52abf0f8213e4
+C
+settings.gradle.kts,7\4\749edfcc96398253e5b3416184e95c46621da850
+X
+(gradle/wrapper/gradle-wrapper.properties,f\b\fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
