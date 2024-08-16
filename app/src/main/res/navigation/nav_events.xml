@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/upcomingEventsFragment"
-        android:name="rachman.forniandi.dicodingeventstracker.domain.UpcomingEventsFragment"
+        android:name="rachman.forniandi.dicodingeventstracker.domain.upcoming.UpcomingEventsFragment"
         android:label="Upcoming"
         tools:layout="@layout/fragment_upcoming_events" />
     <fragment
         android:id="@+id/pastEventsFragment"
-        android:name="rachman.forniandi.dicodingeventstracker.domain.PastEventsFragment"
+        android:name="rachman.forniandi.dicodingeventstracker.domain.past.PastEventsFragment"
         android:label="Past"
         tools:layout="@layout/fragment_past_events" />
 </navigation>

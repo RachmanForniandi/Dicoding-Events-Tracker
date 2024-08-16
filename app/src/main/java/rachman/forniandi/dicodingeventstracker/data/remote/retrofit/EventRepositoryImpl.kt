@@ -12,8 +12,9 @@ import retrofit2.HttpException
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
-class EventRepositoryImpl @Inject constructor(private val remoteDataSource: RemoteDataSource
+
+class EventRepositoryImpl @Inject constructor(
+    private val remoteDataSource: RemoteDataSource
 ):EventsRepository {
 
     override fun getFutureEvents(active: Int)= liveData {

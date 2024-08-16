@@ -9,21 +9,13 @@ import retrofit2.http.Query
 
 interface NetworkService {
 
-    /*@GET("events/")
-    suspend fun getFutureEvent(
-        @Query("active")active:Int
-    ): Response<ResponseEvents>
 
-    @GET("events/")
-    suspend fun getPastEvent(
-        @Query("active")active:Int
-    ): Response<ResponseEvents>*/
-    @GET("events/")
+    @GET("events")
     suspend fun getEvents(
         @Query("active")active:Int
     ): Response<ResponseEvents>
 
-    @GET("events/")
+    @GET("events")
     suspend fun searchEvents(
         @Query("active")active:Int,
         @Query("q")keyword:String

@@ -4,7 +4,7 @@ import rachman.forniandi.dicodingeventstracker.data.remote.retrofit.NetworkServi
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@Singleton
+
 class RemoteDataSource @Inject constructor(
     private val networkService: NetworkService
 ){

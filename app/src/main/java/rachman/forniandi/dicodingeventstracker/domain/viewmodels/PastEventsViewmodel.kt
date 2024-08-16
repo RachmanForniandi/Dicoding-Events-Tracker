@@ -8,19 +8,18 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
+import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.scopes.ViewModelScoped
 import rachman.forniandi.dicodingeventstracker.data.remoteUtils.RemoteResponse
 import rachman.forniandi.dicodingeventstracker.domain.EventsRepository
 import rachman.forniandi.dicodingeventstracker.domain.entity.Events
 import javax.inject.Inject
 
-@ViewModelScoped
+@HiltViewModel
 class PastEventsViewmodel @Inject constructor(
-    private val repository: EventsRepository,
-    application: Application
-): AndroidViewModel(application) {
+    private val repository: EventsRepository
+): ViewModel() {
 
-    private val _pastEvent = MutableLiveData<RemoteResponse<List<Events>>>()
     private val _activeValue = MutableLiveData<Int>()
 
     fun setValueActive(active:Int){
@@ -33,7 +32,7 @@ class PastEventsViewmodel @Inject constructor(
         }
     }
 
-    private fun hasInternetConnection():Boolean{
+    /*private fun hasInternetConnection():Boolean{
         val connectivityManager = getApplication<Application>().getSystemService(
             Context.CONNECTIVITY_SERVICE
         )as ConnectivityManager
@@ -45,5 +44,5 @@ class PastEventsViewmodel @Inject constructor(
             capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)->true
             else -> false
         }
-    }
+    }*/
 }

@@ -1,4 +1,4 @@
-package rachman.forniandi.dicodingeventstracker.domain
+package rachman.forniandi.dicodingeventstracker.domain.past
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,8 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import dagger.hilt.android.AndroidEntryPoint
 import rachman.forniandi.dicodingeventstracker.adapters.EventsAdapter
 import rachman.forniandi.dicodingeventstracker.data.remoteUtils.RemoteResponse
 import rachman.forniandi.dicodingeventstracker.databinding.FragmentPastEventsBinding
@@ -15,21 +16,22 @@ import rachman.forniandi.dicodingeventstracker.domain.entity.Events
 import rachman.forniandi.dicodingeventstracker.domain.viewmodels.PastEventsViewmodel
 
 
-
+@AndroidEntryPoint
 class PastEventsFragment : Fragment() {
     private var _binding: FragmentPastEventsBinding?= null
-    private val binding get() = _binding
+    private val binding get() = _binding!!
     private val eventAdapter by lazy { EventsAdapter(requireActivity()) }
     private val activeValue:Int=0
-    private val pastEventsViewmodel:PastEventsViewmodel by viewModels()
+    private lateinit var pastEventsViewmodel:PastEventsViewmodel
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding =FragmentPastEventsBinding.inflate(inflater, container, false)
-        return _binding?.root
+        pastEventsViewmodel = ViewModelProvider(this)[PastEventsViewmodel::class.java]
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -73,27 +75,27 @@ class PastEventsFragment : Fragment() {
     }
 
     private fun setListPastEvent() {
-        binding?.rvEventsPast?.adapter = eventAdapter
+        binding.rvEventsPast.adapter = eventAdapter
 
         showShimmerEffect()
     }
 
     private fun setSwipeRefreshEvent() {
-        binding?.swipeRefreshPastEvent?.setOnRefreshListener {
+        binding.swipeRefreshPastEvent.setOnRefreshListener {
             showDataPastEvent()
             hideShimmerEffect()
         }
     }
     private fun showShimmerEffect() {
-        binding?.shimmerFrameLayout2?.startShimmer()
-        binding?.shimmerFrameLayout2?.visibility = View.VISIBLE
-        binding?.rvEventsPast?.visibility = View.GONE
+        binding.shimmerFrameLayout2.startShimmer()
+        binding.shimmerFrameLayout2.visibility = View.VISIBLE
+        binding.rvEventsPast.visibility = View.GONE
     }
 
     private fun hideShimmerEffect() {
-        binding?.shimmerFrameLayout2?.stopShimmer()
-        binding?.shimmerFrameLayout2?.visibility = View.GONE
-        binding?.rvEventsPast?.visibility = View.VISIBLE
+        binding.shimmerFrameLayout2.stopShimmer()
+        binding.shimmerFrameLayout2.visibility = View.GONE
+        binding.rvEventsPast.visibility = View.VISIBLE
     }
 
 

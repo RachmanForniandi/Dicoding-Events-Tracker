@@ -5,6 +5,7 @@ import rachman.forniandi.dicodingeventstracker.data.remote.response.EventsItem
 import rachman.forniandi.dicodingeventstracker.data.remoteUtils.RemoteResponse
 import rachman.forniandi.dicodingeventstracker.domain.entity.Events
 
+
 interface EventsRepository {
 
     fun getFutureEvents(active:Int): LiveData<RemoteResponse<List<Events>?>?>

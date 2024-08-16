@@ -20,9 +20,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        val navBottomView = binding.bottomNavView
         setContentView(binding.root)
+        supportActionBar?.elevation=0.0f
+        setSupportActionBar(binding.toolbarMain)
 
-        navController = findNavController(R.id.navHostFragment)
+        navController = findNavController(R.id.nav_host_container)
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
@@ -30,11 +33,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.pastEventsFragment
             )
         )
-
-        binding.bottomNavigationView.setupWithNavController(navController)
         setupActionBarWithNavController(navController, appBarConfiguration)
+        navBottomView.setupWithNavController(navController)
     }
-    override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp() || super.onSupportNavigateUp()
-    }
+
 }
