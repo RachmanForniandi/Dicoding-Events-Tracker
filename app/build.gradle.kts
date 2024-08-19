@@ -75,9 +75,6 @@ dependencies {
     //lifecycle
     implementation (libs.androidx.lifecycle.livedata.ktx)
 
-    //fragement ktx
-    //implementation (libs.androidx.fragment.ktx)
-
     //Navigation
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)

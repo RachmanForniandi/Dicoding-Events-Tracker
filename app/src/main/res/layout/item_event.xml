@@ -1,51 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="8dp"
-    android:layout_margin="8dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.5"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="8dp">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_margin="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp">
 
-        <ImageView
-            android:id="@+id/img_Event"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/place_holder"
-            android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/img_Event"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/place_holder"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/txt_title_name_event"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_tv_item_mini"
-            android:textSize="12sp"
-            android:maxLines="3"
-            android:gravity="center_vertical"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:ellipsize="end"
-            android:drawablePadding="8dp"
-            app:flow_horizontalBias="0.0"
-            app:layout_constraintTop_toBottomOf="@id/img_Event"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Events Name bla bla bla bla"/>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txt_title_name_event"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_tv_item_mini"
+                android:textSize="12sp"
+                android:maxLines="3"
+                android:gravity="center_vertical"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:ellipsize="end"
+                android:drawablePadding="8dp"
+                app:flow_horizontalBias="0.0"
+                app:layout_constraintTop_toBottomOf="@id/img_Event"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Events Name bla bla bla bla"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</com.google.android.material.card.MaterialCardView>

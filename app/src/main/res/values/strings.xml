@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">Dicoding Events Tracker</string>
+    <string name="app_name" translatable="false">Dicoding Events Tracker</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_events">Search events</string>
+    <string name="language_settings">Language Settings</string>
+    <string name="no_event_available_please_wait">No Event Available. Please wait.</string>
+    <string name="image_error_no_data_events_available">Image error no data events available</string>
 </resources>

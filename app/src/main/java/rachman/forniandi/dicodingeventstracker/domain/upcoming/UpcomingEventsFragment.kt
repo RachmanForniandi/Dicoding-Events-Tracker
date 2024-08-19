@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.transition.Visibility
 import dagger.hilt.android.AndroidEntryPoint
 import rachman.forniandi.dicodingeventstracker.adapters.EventsAdapter
 import rachman.forniandi.dicodingeventstracker.data.remoteUtils.RemoteResponse
@@ -64,7 +65,18 @@ class UpcomingEventsFragment : Fragment() {
                 hideShimmerEffect()
                 val events = response.data
                 Log.d("test_data_event:",""+events)
-                events?.let { eventAdapter.setData(it) }
+                if (events != null) {
+                    if (events.isEmpty()){
+                        binding.imgDataEmpty.visibility= View.VISIBLE
+                        binding.txtLblEventNotAvailable.visibility=View.VISIBLE
+                    }else{
+                        events.let { eventAdapter.setData(it) }
+                        binding.imgDataEmpty.visibility= View.GONE
+                        binding.txtLblEventNotAvailable.visibility=View.GONE
+                    }
+
+
+                }
             }
             is RemoteResponse.Error->{
                 hideShimmerEffect()

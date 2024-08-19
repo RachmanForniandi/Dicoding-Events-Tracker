@@ -5,6 +5,11 @@
     android:id="@+id/nav_events"
     app:startDestination="@id/upcomingEventsFragment">
 
+    <action
+        android:id="@+id/action_to_search_events"
+        app:destination="@id/searchEventsFragment"
+        app:launchSingleTop="false"/>
+
     <fragment
         android:id="@+id/upcomingEventsFragment"
         android:name="rachman.forniandi.dicodingeventstracker.domain.upcoming.UpcomingEventsFragment"
@@ -15,4 +20,9 @@
         android:name="rachman.forniandi.dicodingeventstracker.domain.past.PastEventsFragment"
         android:label="Past"
         tools:layout="@layout/fragment_past_events" />
+
+    <fragment
+        android:id="@+id/searchEventsFragment"
+        android:name="rachman.forniandi.dicodingeventstracker.domain.search.SearchEventFragment"
+        tools:layout="@layout/fragment_search_event" />
 </navigation>

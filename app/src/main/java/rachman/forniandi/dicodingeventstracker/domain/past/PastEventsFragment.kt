@@ -1,6 +1,7 @@
 package rachman.forniandi.dicodingeventstracker.domain.past
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -61,13 +62,26 @@ class PastEventsFragment : Fragment() {
             is RemoteResponse.Success -> {
                 hideShimmerEffect()
                 val events = response.data
-                events?.let { eventAdapter.setData(it) }
+                Log.d("test_data_event:",""+events)
+                if (events != null) {
+                    if (events.isEmpty()){
+                        binding.imgDataEmpty.visibility= View.VISIBLE
+                        binding.txtLblEventNotAvailable.visibility=View.VISIBLE
+                    }else{
+                        events.let { eventAdapter.setData(it) }
+                        binding.imgDataEmpty.visibility= View.GONE
+                        binding.txtLblEventNotAvailable.visibility=View.GONE
+                    }
+
+                }
 
             }
 
             is RemoteResponse.Error -> {
                 hideShimmerEffect()
-                Toast.makeText(requireActivity() ,response.errorMessage, Toast.LENGTH_SHORT).show()
+                binding.imgDataEmpty.visibility= View.VISIBLE
+                binding.txtLblEventNotAvailable.visibility=View.VISIBLE
+                Toast.makeText(requireActivity(),response.errorMessage, Toast.LENGTH_SHORT).show()
             }
 
             else -> {}
