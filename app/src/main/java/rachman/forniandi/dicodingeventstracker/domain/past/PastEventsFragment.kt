@@ -90,7 +90,11 @@ class PastEventsFragment : Fragment() {
 
     private fun setListPastEvent() {
         binding.rvEventsPast.adapter = eventAdapter
-
+        eventAdapter.setOnClickListener(object :EventsAdapter.OnEventClickListener{
+            override fun onClick(position: Int, event: Events) {
+                //val action = PastEventsFragmentDirections.
+            }
+        })
         showShimmerEffect()
     }
 

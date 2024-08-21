@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.mainAppBar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         val navBottomView = binding.bottomNavView
         val navHostFragment = supportFragmentManager
@@ -65,25 +66,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
     }
-
-    /*override fun onCreateOptionsMenu(item: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_main,item)
-        item.findItem(R.id.action_search).title = "Search events"
-        return super.onCreateOptionsMenu(item)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_search -> {
-                startActivity(Intent(this, SearchEventFragment::class.java))
-                this.finish()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }*/
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp()|| super.onSupportNavigateUp()

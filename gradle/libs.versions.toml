@@ -28,6 +28,7 @@ fragmentKtxVersion = "1.8.2"
 navigationFragmentKtxVersion = "2.7.7"
 navigationUiKtx = "2.7.7"
 navigationSafeArgsGradlePlugin = "2.7.7"
+jsoupVersion="1.13.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -46,6 +47,8 @@ androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-view
 
 facebook-shimmer={ module = "com.facebook.shimmer:shimmer", version.ref = "facebookShimmer" }
 multidex-version={module="androidx.multidex:multidex",version.ref="multidex"}
+
+jsoup ={ module = "org.jsoup:jsoup", version.ref = "jsoupVersion" }
 
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "hiltAndroid" }

@@ -14,7 +14,7 @@ import rachman.forniandi.dicodingeventstracker.utils.EventDiffUtil
 class EventsAdapter(private val mContext: Context): RecyclerView.Adapter<EventsAdapter.EventsHolder>() {
 
     private var events = emptyList<Events>()
-    private var onClickListener: OnStoryClickListener?= null
+    private var onClickListener: OnEventClickListener?= null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventsHolder {
         val bindingView = ItemEventBinding.inflate(LayoutInflater.from(parent.context),parent,false)
@@ -41,7 +41,12 @@ class EventsAdapter(private val mContext: Context): RecyclerView.Adapter<EventsA
         val imgPromoteEvent = view.imgEvent
     }
 
-    interface OnStoryClickListener {
+    fun setOnClickListener(onClickListener: OnEventClickListener) {
+        this.onClickListener = onClickListener
+    }
+
+
+    interface OnEventClickListener {
         fun onClick(position: Int, event: Events)
     }
 

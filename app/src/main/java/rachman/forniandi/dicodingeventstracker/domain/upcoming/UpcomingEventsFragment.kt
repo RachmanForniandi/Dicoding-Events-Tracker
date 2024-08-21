@@ -9,9 +9,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.transition.Visibility
+import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import rachman.forniandi.dicodingeventstracker.R
 import rachman.forniandi.dicodingeventstracker.adapters.EventsAdapter
 import rachman.forniandi.dicodingeventstracker.data.remoteUtils.RemoteResponse
 import rachman.forniandi.dicodingeventstracker.databinding.FragmentUpcomingEventsBinding
@@ -26,6 +28,9 @@ class UpcomingEventsFragment : Fragment() {
     private val activeValue:Int=1
     private val upcomingEventsViewmodel:UpcomingEventsViewmodel by viewModels ()
 
+    companion object{
+        val EXTRA_ID ="extra_id"
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -89,6 +94,15 @@ class UpcomingEventsFragment : Fragment() {
 
     private fun setListUpComingEvent() {
         binding.rvEventsFuture.adapter = eventAdapter
+        eventAdapter.setOnClickListener(object :EventsAdapter.OnEventClickListener{
+            override fun onClick(position: Int, event: Events) { view
+                val mBundle = Bundle()
+                event.id?.let { mBundle.putInt(EXTRA_ID, it) }
+                view?.findNavController()?.navigate(R.id.action_upcomingEventsFragment_to_detailEventsActivity,mBundle)
+                //val action = UpcomingEventsFragmentsAction
+                //Navigation.createNavigateOnClickListener(R.id.action_upcomingEventsFragment_to_detailEventsActivity)
+            }
+        })
         showShimmerEffect()
     }
 

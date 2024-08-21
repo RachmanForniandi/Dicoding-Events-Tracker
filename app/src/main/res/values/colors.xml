@@ -25,4 +25,5 @@
     <color name="backgroundColor">@color/lightGray</color>
     <color name="placeholderColor">@color/mediumGray</color>
     <color name="image_input_background">#E1E1E1</color>
+    <color name="line_dark_background">#FF424242</color>
 </resources>

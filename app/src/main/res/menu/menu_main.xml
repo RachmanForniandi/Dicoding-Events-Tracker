@@ -15,7 +15,7 @@
             android:id="@+id/menu_setting"
             android:icon="@drawable/ic_baseline_language_24"
             android:title="@string/language_settings"
-            app:showAsAction="always" />
+            app:showAsAction="never" />
 
     </group>
 

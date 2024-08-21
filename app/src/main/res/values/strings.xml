@@ -3,6 +3,14 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="search_events">Search events</string>
     <string name="language_settings">Language Settings</string>
+    <string name="hosted_by">Hosted by: %1$s</string>
     <string name="no_event_available_please_wait">No Event Available. Please wait.</string>
     <string name="image_error_no_data_events_available">Image error no data events available</string>
+    <string name="start">Start:</string>
+    <string name="end">End:</string>
+    <string name="location">Location</string>
+    <string name="number_participants">%3$s Participants</string>
+    <string name="description">Description</string>
+    <string name="register">Register</string>
+    <string name="loading_please_wait">Loading....Please wait</string>
 </resources>

@@ -84,6 +84,8 @@ dependencies {
     implementation (libs.hilt.android)
     implementation(libs.multidex.version)
 
+    implementation(libs.jsoup)
+
     ksp (libs.hilt.compiler)
     ksp (libs.dagger.compiler)
 
