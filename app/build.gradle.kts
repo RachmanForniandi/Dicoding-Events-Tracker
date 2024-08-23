@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.ksp)
     alias(libs.plugins.daggerhilt)
+    id("androidx.navigation.safeargs")
 
 }
 

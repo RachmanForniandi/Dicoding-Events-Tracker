@@ -2,6 +2,7 @@ package rachman.forniandi.dicodingeventstracker.domain.entity
 
 import java.io.Serializable
 
+
 data class Events(
     val summary: String?,
     val mediaCover: String?,

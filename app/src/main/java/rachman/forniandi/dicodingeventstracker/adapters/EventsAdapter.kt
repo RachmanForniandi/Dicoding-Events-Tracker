@@ -30,6 +30,10 @@ class EventsAdapter(private val mContext: Context): RecyclerView.Adapter<EventsA
             .error(R.drawable.error_placeholder)
             .into(holder.imgPromoteEvent)
 
+        holder.itemView.setOnClickListener {
+            onClickListener?.onClick(position,eventData)
+        }
+
     }
 
     override fun getItemCount(): Int {

@@ -40,15 +40,17 @@
         android:id="@+id/searchEventsFragment"
         android:name="rachman.forniandi.dicodingeventstracker.domain.search.SearchEventFragment"
         tools:layout="@layout/fragment_search_event" />
+
     <activity
         android:id="@+id/detailEventsActivity"
         android:name="rachman.forniandi.dicodingeventstracker.domain.detail.DetailEventsActivity"
         android:label="activity_detail_events"
         tools:layout="@layout/activity_detail_events" >
+
+
         <argument
             android:name="idEvent"
-            app:argType="integer"
-            android:defaultValue="0"/>
+            app:argType="rachman.forniandi.dicodingeventstracker.domain.entity.Events" />
     </activity>
 
 

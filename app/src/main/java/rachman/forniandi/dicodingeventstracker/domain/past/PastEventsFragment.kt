@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import rachman.forniandi.dicodingeventstracker.adapters.EventsAdapter
 import rachman.forniandi.dicodingeventstracker.data.remoteUtils.RemoteResponse
@@ -92,7 +93,8 @@ class PastEventsFragment : Fragment() {
         binding.rvEventsPast.adapter = eventAdapter
         eventAdapter.setOnClickListener(object :EventsAdapter.OnEventClickListener{
             override fun onClick(position: Int, event: Events) {
-                //val action = PastEventsFragmentDirections.
+                val toDetailEvent = PastEventsFragmentDirections.actionPastEventsFragmentToDetailEventsActivity(event)
+                findNavController().navigate(toDetailEvent)
             }
         })
         showShimmerEffect()
