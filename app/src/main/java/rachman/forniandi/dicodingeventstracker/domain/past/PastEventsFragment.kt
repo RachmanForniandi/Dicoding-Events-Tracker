@@ -43,9 +43,12 @@ class PastEventsFragment : Fragment() {
             pastEventsViewmodel.setValueActive(activeValue)
         }
 
+
+
         setListPastEvent()
-        showDataPastEvent()
         setSwipeRefreshEvent()
+        showDataPastEvent()
+        binding.swipeRefreshPastEvent.isRefreshing = true
     }
 
     private fun showDataPastEvent() {
@@ -66,10 +69,12 @@ class PastEventsFragment : Fragment() {
                 Log.d("test_data_event:",""+events)
                 if (events != null) {
                     if (events.isEmpty()){
+                        binding.swipeRefreshPastEvent.isRefreshing = false
                         binding.imgDataEmpty.visibility= View.VISIBLE
                         binding.txtLblEventNotAvailable.visibility=View.VISIBLE
                     }else{
                         events.let { eventAdapter.setData(it) }
+                        binding.swipeRefreshPastEvent.isRefreshing = false
                         binding.imgDataEmpty.visibility= View.GONE
                         binding.txtLblEventNotAvailable.visibility=View.GONE
                     }
@@ -80,9 +85,10 @@ class PastEventsFragment : Fragment() {
 
             is RemoteResponse.Error -> {
                 hideShimmerEffect()
+                Toast.makeText(requireActivity(),response.errorMessage, Toast.LENGTH_SHORT).show()
+                binding.swipeRefreshPastEvent.isRefreshing = false
                 binding.imgDataEmpty.visibility= View.VISIBLE
                 binding.txtLblEventNotAvailable.visibility=View.VISIBLE
-                Toast.makeText(requireActivity(),response.errorMessage, Toast.LENGTH_SHORT).show()
             }
 
             else -> {}

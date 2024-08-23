@@ -46,10 +46,11 @@ class UpcomingEventsFragment : Fragment() {
         if (savedInstanceState === null){
             upcomingEventsViewmodel.setValueActive(activeValue)
         }
+
         setListUpComingEvent()
         setSwipeRefreshEvent()
         showDataUpComingEvent()
-
+        binding.swipeRefreshUpcomingEvent.isRefreshing = true
     }
 
     private fun showDataUpComingEvent() {
@@ -70,10 +71,12 @@ class UpcomingEventsFragment : Fragment() {
                 Log.d("test_data_event:",""+events)
                 if (events != null) {
                     if (events.isEmpty()){
+                        binding.swipeRefreshUpcomingEvent.isRefreshing = false
                         binding.imgDataEmpty.visibility= View.VISIBLE
                         binding.txtLblEventNotAvailable.visibility=View.VISIBLE
                     }else{
                         events.let { eventAdapter.setData(it) }
+                        binding.swipeRefreshUpcomingEvent.isRefreshing = false
                         binding.imgDataEmpty.visibility= View.GONE
                         binding.txtLblEventNotAvailable.visibility=View.GONE
                     }
@@ -83,6 +86,7 @@ class UpcomingEventsFragment : Fragment() {
             }
             is RemoteResponse.Error->{
                 hideShimmerEffect()
+                binding.swipeRefreshUpcomingEvent.isRefreshing = false
                 Toast.makeText(requireActivity() ,response.errorMessage, Toast.LENGTH_SHORT).show()
             }
 
