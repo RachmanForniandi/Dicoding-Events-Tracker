@@ -90,14 +90,15 @@ class DetailEventsActivity : AppCompatActivity() {
             .into(binding.detailEventMain.imgLogoEvent)
         binding.detailEventMain.txtKindOfEvent.text = detailEvent?.category
         binding.detailEventMain.txtTitleEventDetail.text=detailEvent?.name
-        binding.detailEventMain.txtHostedBy.text=detailEvent?.ownerName
+        binding.detailEventMain.txtHostedBy.text=getString(R.string.hosted_by,detailEvent?.ownerName)
         binding.detailEventMain.tvStartTime.text = detailEvent?.beginTime
         binding.detailEventMain.tvEndTime.text = detailEvent?.endTime
 
         if (detailEvent?.cityName.equals("Online")){
-            binding.detailEventMain.tvLocation.text="LIVE at YouTube Dicoding Indonesia ${detailEvent?.cityName}"
+            binding.detailEventMain.tvLocation.text=
+                getString(R.string.live_at_youtube_dicoding_indonesia, detailEvent?.cityName)
         }else{
-            binding.detailEventMain.tvLocation.text=detailEvent?.cityName
+            binding.detailEventMain.tvLocation.text= detailEvent?.cityName
         }
 
         val quota = detailEvent?.quota
