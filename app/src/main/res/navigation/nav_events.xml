@@ -5,10 +5,6 @@
     android:id="@+id/nav_events"
     app:startDestination="@id/upcomingEventsFragment">
 
-    <!--<action
-        android:id="@+id/action_to_search_events"
-        app:destination="@id/searchEventsFragment"
-        app:launchSingleTop="false"/>-->
 
     <fragment
         android:id="@+id/upcomingEventsFragment"
@@ -18,9 +14,6 @@
         <action
             android:id="@+id/action_upcomingEventsFragment_to_detailEventsActivity"
             app:destination="@id/detailEventsActivity" />
-        <!--<argument
-            android:name="events"
-            app:argType="rachman.forniandi.dicodingeventstracker.domain.entity.Events"/>-->
     </fragment>
 
     <fragment
@@ -31,22 +24,25 @@
         <action
             android:id="@+id/action_pastEventsFragment_to_detailEventsActivity"
             app:destination="@id/detailEventsActivity" />
-        <!--argument
-            android:name="events"
-            app:argType="rachman.forniandi.dicodingeventstracker.domain.entity.Events"/>-->
+        <action
+            android:id="@+id/action_pastEventsFragment_to_searchEventsFragment"
+            app:destination="@id/searchEventsFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/searchEventsFragment"
         android:name="rachman.forniandi.dicodingeventstracker.domain.search.SearchEventFragment"
-        tools:layout="@layout/fragment_search_event" />
+        tools:layout="@layout/fragment_search_event" >
+        <action
+            android:id="@+id/action_searchEventsFragment_to_detailEventsActivity"
+            app:destination="@id/detailEventsActivity" />
+    </fragment>
 
     <activity
         android:id="@+id/detailEventsActivity"
         android:name="rachman.forniandi.dicodingeventstracker.domain.detail.DetailEventsActivity"
         android:label="activity_detail_events"
         tools:layout="@layout/activity_detail_events" >
-
 
         <argument
             android:name="idEvent"

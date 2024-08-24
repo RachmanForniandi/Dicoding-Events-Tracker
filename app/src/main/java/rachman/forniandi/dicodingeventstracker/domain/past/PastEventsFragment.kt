@@ -43,12 +43,18 @@ class PastEventsFragment : Fragment() {
             pastEventsViewmodel.setValueActive(activeValue)
         }
 
-
-
+        setupSearchEvent()
         setListPastEvent()
         setSwipeRefreshEvent()
         showDataPastEvent()
         binding.swipeRefreshPastEvent.isRefreshing = true
+    }
+
+    private fun setupSearchEvent() {
+        binding.svEvent.setOnSearchClickListener {
+            val actionSearch = PastEventsFragmentDirections.actionPastEventsFragmentToSearchEventsFragment()
+            findNavController().navigate(actionSearch)
+        }
     }
 
     private fun showDataPastEvent() {

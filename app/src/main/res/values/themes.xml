@@ -8,7 +8,11 @@
     </style>
 
     <style name="Theme.DicodingEventsTracker" parent="Base.Theme.DicodingEventsTracker" />
-
+    <style name="SearchView_Event" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorControlNormal">@color/white_transparent</item>
+        <item name="android:editTextColor">@color/white_transparent</item>
+        <item name="android:textColorHint">@color/white_transparent</item>
+    </style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
     <!-- Base application theme. -->
