@@ -3,9 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_events"
-    app:startDestination="@id/upcomingEventsFragment">
+    app:startDestination="@id/homeFragment">
 
-
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="rachman.forniandi.dicodingeventstracker.domain.home.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailEventsActivity"
+            app:destination="@id/detailEventsActivity" />
+    </fragment>
     <fragment
         android:id="@+id/upcomingEventsFragment"
         android:name="rachman.forniandi.dicodingeventstracker.domain.upcoming.UpcomingEventsFragment"
@@ -48,6 +56,7 @@
             android:name="idEvent"
             app:argType="rachman.forniandi.dicodingeventstracker.domain.entity.Events" />
     </activity>
+
 
 
 </navigation>

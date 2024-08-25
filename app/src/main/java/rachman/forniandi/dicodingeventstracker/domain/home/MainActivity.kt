@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
+                R.id.homeFragment,
                 R.id.upcomingEventsFragment,
                 R.id.pastEventsFragment
             )

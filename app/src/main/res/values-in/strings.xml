@@ -14,4 +14,9 @@
     <string name="loading_please_wait">Memuat....Mohon menunggu</string>
     <string name="date_time">Tanggal/Waktu</string>
     <string name="remaining_quota">Sisa Kuota</string>
+    <string name="no_data_upcoming_event_please_try_again_later">Belum aada data acara berikut. Silahkan mencoba lagi nanti.</string>
+    <string name="error_load_data_event_past_please_try_again_later">Gangguan menampilkan data acara selesai. Silahkan mencoba lagi nanti.</string>
+    <string name="image_carousel_upcoming_event">Gambar Carousel acara yang akan datang</string>
+    <string name="finished_events">Acara telah usai</string>
+    <string name="upcoming_events">Acara yang akan datang</string>
 </resources>
