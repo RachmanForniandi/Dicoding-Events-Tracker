@@ -61,12 +61,12 @@ class PastEventsFragment : Fragment() {
     }
 
     private fun setupSearchEvent() {
-        /*binding.svEvent.setupWithSearchBar(binding.searchBar)
+        binding.svEvent.setupWithSearchBar(binding.searchBar)
         binding.searchBar.setOnClickListener() {
             val actionSearch = PastEventsFragmentDirections.actionPastEventsFragmentToSearchEventsFragment()
             findNavController().navigate(actionSearch)
-        }*/
-        val menuHost: MenuHost = requireActivity()
+        }
+        /*val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.past_event_menu, menu)
@@ -82,7 +82,7 @@ class PastEventsFragment : Fragment() {
                     else -> false
                 }
             }
-        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)*/
 
     }
 

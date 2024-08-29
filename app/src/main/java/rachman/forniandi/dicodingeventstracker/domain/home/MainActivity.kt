@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.mainAppBar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        val navBottomView = binding.bottomNavView
+        //val navBottomView = binding.bottomNavView
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_container) as NavHostFragment
         navController = navHostFragment.navController
@@ -45,12 +46,21 @@ class MainActivity : AppCompatActivity() {
                 R.id.pastEventsFragment
             )
         )
-        navBottomView.setupWithNavController(navController)
+        binding.bottomNavView.setupWithNavController(navController)
         setupActionBarWithNavController(navController, appBarConfiguration)
-
+        navController.addOnDestinationChangedListener{ _, destination, _ ->
+            when (destination.id) {
+                R.id.homeFragment -> binding.bottomNavView.visibility = View.VISIBLE
+                R.id.upcomingEventsFragment -> binding.bottomNavView.visibility = View.VISIBLE
+                R.id.pastEventsFragment -> binding.bottomNavView.visibility = View.VISIBLE
+                else -> binding.bottomNavView.visibility = View.GONE
+            }
+        }
 
 
     }
+
+
 
 
     override fun onSupportNavigateUp(): Boolean {

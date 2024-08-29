@@ -34,7 +34,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <com.facebook.shimmer.ShimmerFrameLayout
+    <TextView
+        android:id="@+id/text_trial_positioning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello, this is search event fragment page"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <!--<com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmerFrameLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -67,7 +77,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/item_event"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>-->
 
     <ImageView
         android:id="@+id/img_data_event_not_found"
