@@ -19,4 +19,10 @@
     <string name="image_carousel_upcoming_event">Gambar Carousel acara yang akan datang</string>
     <string name="finished_events">Acara telah usai</string>
     <string name="upcoming_events">Acara yang akan datang</string>
+    <string name="icon_dicoding">Ikon Dicoding</string>
+    <string name="search_event_here">Cari acara disini</string>
+    <string name="settings">Pengaturan</string>
+    <string name="button_back_setting">Tombol kembali pengaturan</string>
+    <string name="setting_change_language">Ganti Bahasa</string>
+    <string name="setting_icon_arrow">Ikon panah pengaturan</string>
 </resources>

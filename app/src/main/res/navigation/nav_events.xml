@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_detailEventsActivity"
             app:destination="@id/detailEventsActivity" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/upcomingEventsFragment"
@@ -56,7 +59,11 @@
             android:name="idEvent"
             app:argType="rachman.forniandi.dicodingeventstracker.domain.entity.Events" />
     </activity>
-
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="rachman.forniandi.dicodingeventstracker.domain.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 
 
 </navigation>

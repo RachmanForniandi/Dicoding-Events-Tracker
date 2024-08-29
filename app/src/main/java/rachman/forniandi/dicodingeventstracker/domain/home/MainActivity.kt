@@ -45,29 +45,13 @@ class MainActivity : AppCompatActivity() {
                 R.id.pastEventsFragment
             )
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
         navBottomView.setupWithNavController(navController)
+        setupActionBarWithNavController(navController, appBarConfiguration)
 
-        with(binding){
-            mainAppBar.setOnMenuItemClickListener { menuItem ->
-                when (menuItem.itemId) {
-                    R.id.action_search -> {
-                        startActivity(Intent(this@MainActivity, SearchEventFragment::class.java))
-                        this@MainActivity.finish()
-                        true
-                    }
 
-                    R.id.menu_setting->{
-                        val intentSetting = Intent(Settings.ACTION_LOCALE_SETTINGS)
-                        startActivity(intentSetting)
-                        true
-                    }
-                    else -> false
-                }
-            }
-        }
 
     }
+
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp()|| super.onSupportNavigateUp()

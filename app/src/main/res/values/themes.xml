@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.DicodingEventsTracker" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
         <!--<item name = "android:windowActionBar">false</item>
         <item name = "android:windowNoTitle">true</item>-->
     </style>
@@ -13,6 +13,19 @@
         <item name="android:editTextColor">@color/white_transparent</item>
         <item name="android:textColorHint">@color/white_transparent</item>
     </style>
+
+    <style name="main_tv_actionBar" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/mountella_trial_bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="home_tv_tittle">
+        <item name="android:fontFamily">@font/mountella_trial_bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/dark</item>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
     <!-- Base application theme. -->

@@ -6,12 +6,43 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".domain.home.HomeFragment">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/home_appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/home_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/dicoding_logo"
+                android:contentDescription="@string/icon_dicoding"
+                app:tint="@color/white" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <TextView
         android:id="@+id/txt_no_data_event_upcoming_available"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="80dp"
         android:text="@string/no_data_upcoming_event_please_try_again_later"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/txt_lbl_Upcoming_event"
@@ -27,7 +58,7 @@
         android:textStyle="bold"
         android:layout_marginTop="24dp"
         android:layout_marginStart="12dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/home_appBarLayout"
         app:layout_constraintStart_toStartOf="parent"/>
 
     <com.facebook.shimmer.ShimmerFrameLayout
@@ -124,4 +155,4 @@
         android:textStyle="bold"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout >

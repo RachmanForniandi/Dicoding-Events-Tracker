@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import rachman.forniandi.dicodingeventstracker.R
 import rachman.forniandi.dicodingeventstracker.adapters.CarrouselEventsAdapter
 import rachman.forniandi.dicodingeventstracker.adapters.EventsAdapter
 import rachman.forniandi.dicodingeventstracker.data.remoteUtils.RemoteResponse
@@ -28,6 +29,7 @@ class HomeFragment : Fragment() {
     private val pastValue=0
     private lateinit var viewmodel: HomeViewModel
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,13 +46,31 @@ class HomeFragment : Fragment() {
             viewmodel.setValueActiveUpcoming(upcomingValue)
             viewmodel.setValueActivePast(pastValue)
         }
-
+        setupAppBarMain()
         setupListUpcomingEvent()
         showDataRemoteUpcomingEvent()
         setupListPastEvent()
         showDataRemotePastEvent()
+        Log.e("TAG", "Ini adalah halaman homeFragment")
+
 
     }
+
+    private fun setupAppBarMain() {
+        binding.apply {
+            homeToolbar.inflateMenu(R.menu.menu_main)
+            homeToolbar.setOnMenuItemClickListener {
+                when(it.itemId){
+                    R.id.menu_setting ->{
+                        val action = HomeFragmentDirections.actionHomeFragmentToSettingsFragment()
+                        findNavController().navigate(action)
+                    }
+                }
+                false
+            }
+        }
+    }
+
     private fun showDataRemoteUpcomingEvent() {
         viewmodel.setValueActiveUpcoming(upcomingValue)
         viewmodel.upcomingEvent.observe(viewLifecycleOwner,eventObserverUpComingEvent)

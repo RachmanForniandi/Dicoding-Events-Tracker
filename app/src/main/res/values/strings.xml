@@ -21,4 +21,11 @@
     <string name="image_carousel_upcoming_event">Image Carousel Upcoming Event</string>
     <string name="finished_events">Finished Events</string>
     <string name="upcoming_events">Upcoming Events</string>
+    <string name="icon_dicoding">Icon Dicoding</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="search_event_here">Search event here</string>
+    <string name="settings">Settings</string>
+    <string name="button_back_setting">button back setting</string>
+    <string name="setting_change_language">Change Language</string>
+    <string name="setting_icon_arrow">Icon Arrow Setting</string>
 </resources>

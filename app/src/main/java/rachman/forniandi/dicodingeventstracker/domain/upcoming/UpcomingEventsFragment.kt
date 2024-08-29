@@ -51,6 +51,8 @@ class UpcomingEventsFragment : Fragment() {
         setSwipeRefreshEvent()
         showDataUpComingEvent()
         binding.swipeRefreshUpcomingEvent.isRefreshing = true
+
+        Log.e("TAG", "Ini adalah halaman upcomingEventFragment")
     }
 
     private fun showDataUpComingEvent() {
