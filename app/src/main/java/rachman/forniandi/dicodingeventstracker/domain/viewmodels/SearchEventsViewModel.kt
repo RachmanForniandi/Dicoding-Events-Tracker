@@ -1,8 +1,10 @@
 package rachman.forniandi.dicodingeventstracker.domain.viewmodels
 
 import androidx.activity.result.launch
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -18,34 +20,33 @@ class SearchEventsViewModel @Inject constructor(
     private val repository: EventsRepository
 ): ViewModel(){
 
+    private val _query = MutableLiveData<String>()
+    private val _activeValue= MutableLiveData<Int>()
+    private val fetchSearchEvents = MutableLiveData<Unit>()
+
+    fun fetchSearchEvent(query: String,active:Int) {
+        fetchSearchEvents.value = Unit
+        _query.value = query
+        _activeValue.value = active
+    }
 
 
-    private val _activeValue = MutableStateFlow(0) // Initial value
-    val activeValue: StateFlow<Int> = _activeValue.asStateFlow()
-
-    private val _queryValue = MutableStateFlow("")
-    val queryValue:StateFlow<String> = _queryValue.asStateFlow()
-
-    private val fetchSearchUsers = MutableSharedFlow<Unit>()
-
-    fun setSearchParameters(activeValue:Int,query:String){
-        viewModelScope.launch {fetchSearchUsers.emit(Unit)
+    val searchEvents by lazy {
+        JointLiveDataSource(_activeValue,_query,fetchSearchEvents).switchMap { //value, query, _ ->
+            repository.searchEvents(it.first?.toInt() ?: 0, it.second.toString())
         }
-        _activeValue.value = activeValue
-        _queryValue.value = query
     }
 
     /*val searchEvents by lazy {
-        JointLiveDataSource(_queryValue, fetchSearchUsers).switchMap {
-            repository.searchEvents(it.first.toString())
-                .catch { e ->
-                    // Handle the exception here
-                    Log.e("SearchEventsViewModel", "Error during search", e) // Log the error
-                    // Optionally, emit an error state to your UI
-                    // _searchErrorState.value = e.message ?: "Unknown error"
-                }.flowOn(Dispatchers.IO) // Perform search on a background thread
-        }
-    }*/
-
+            JointLiveDataSource(_queryValue, fetchSearchUsers).switchMap {
+                repository.searchEvents(it.first.toString())
+                    .catch { e ->
+                        // Handle the exception here
+                        Log.e("SearchEventsViewModel", "Error during search", e) // Log the error
+                        // Optionally, emit an error state to your UI
+                        // _searchErrorState.value = e.message ?: "Unknown error"
+                    }.flowOn(Dispatchers.IO) // Perform search on a background thread
+            }
+        }*/
 
 }
