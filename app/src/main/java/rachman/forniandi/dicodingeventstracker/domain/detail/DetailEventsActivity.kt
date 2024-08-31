@@ -105,7 +105,10 @@ class DetailEventsActivity : AppCompatActivity() {
         val registrants = detailEvent?.registrants
 
         val remainingParticipants = registrants?.let { quota?.minus(it) }
-        binding.detailEventMain.tvRemainingQuotaParticipants.text = remainingParticipants.toString()
+        val convertStringRemainParticipantNumber = remainingParticipants.toString()
+        binding.detailEventMain.tvRemainingQuotaParticipants.text = convertStringRemainParticipantNumber+""+getString(
+            R.string.participants
+        )
         binding.detailEventMain.tvSummaryEvent.text = detailEvent?.summary
 
         binding.detailEventMain.tvDescription.text = Jsoup.parse(detailEvent?.description).text()

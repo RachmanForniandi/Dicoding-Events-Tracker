@@ -15,7 +15,7 @@
     <string name="loading_please_wait">Loading....Please wait</string>
     <string name="date_time">Date/Time</string>
     <string name="remaining_quota">Remaining quota</string>
-    <string name="live_at_youtube_dicoding_indonesia" translatable="false">LIVE \n at YouTube Dicoding Indonesia \n %1$s</string>
+    <string name="live_at_youtube_dicoding_indonesia" translatable="false">LIVE at YouTube\n Dicoding Indonesia \n%1$s</string>
     <string name="no_data_upcoming_event_please_try_again_later">No data upcoming event. Please try again later.</string>
     <string name="error_load_data_event_past_please_try_again_later">Error load data event past. Please try again later.</string>
     <string name="image_carousel_upcoming_event">Image Carousel Upcoming Event</string>
@@ -28,4 +28,5 @@
     <string name="button_back_setting">button back setting</string>
     <string name="setting_change_language">Change Language</string>
     <string name="setting_icon_arrow">Icon Arrow Setting</string>
+    <string name="participants">Participants</string>
 </resources>

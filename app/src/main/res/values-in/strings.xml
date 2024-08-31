@@ -25,4 +25,5 @@
     <string name="button_back_setting">Tombol kembali pengaturan</string>
     <string name="setting_change_language">Ganti Bahasa</string>
     <string name="setting_icon_arrow">Ikon panah pengaturan</string>
+    <string name="participants">Peserta</string>
 </resources>
