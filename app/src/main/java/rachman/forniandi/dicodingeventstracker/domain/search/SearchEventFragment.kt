@@ -6,17 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
-import rachman.forniandi.dicodingeventstracker.R
 import rachman.forniandi.dicodingeventstracker.adapters.EventsAdapter
 import rachman.forniandi.dicodingeventstracker.data.remoteUtils.RemoteResponse
-import rachman.forniandi.dicodingeventstracker.databinding.FragmentPastEventsBinding
 import rachman.forniandi.dicodingeventstracker.databinding.FragmentSearchEventBinding
 import rachman.forniandi.dicodingeventstracker.domain.entity.Events
 import rachman.forniandi.dicodingeventstracker.domain.viewmodels.SearchEventsViewModel
@@ -72,15 +68,6 @@ class SearchEventFragment : Fragment() {
                 searchBar.setText(svEvent.text)
                 svEvent.hide()
                 actionSearchEvents()
-                /*var handled = false
-
-                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    searchBar.setText(svEvent.text)
-                    svEvent.hide()
-                    actionSearchEvents()
-                    handled = true
-                }
-                handled*/
                 false
             }
         }

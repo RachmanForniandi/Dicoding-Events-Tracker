@@ -16,6 +16,7 @@ import rachman.forniandi.dicodingeventstracker.databinding.ActivityDetailEventsB
 import rachman.forniandi.dicodingeventstracker.domain.entity.Events
 import rachman.forniandi.dicodingeventstracker.domain.viewmodels.DetailEventViewModel
 import rachman.forniandi.dicodingeventstracker.utils.animateLoadingProcessData
+import rachman.forniandi.dicodingeventstracker.utils.getStringDate
 
 @AndroidEntryPoint
 class DetailEventsActivity : AppCompatActivity() {
@@ -91,8 +92,8 @@ class DetailEventsActivity : AppCompatActivity() {
         binding.detailEventMain.txtKindOfEvent.text = detailEvent?.category
         binding.detailEventMain.txtTitleEventDetail.text=detailEvent?.name
         binding.detailEventMain.txtHostedBy.text=getString(R.string.hosted_by,detailEvent?.ownerName)
-        binding.detailEventMain.tvStartTime.text = detailEvent?.beginTime
-        binding.detailEventMain.tvEndTime.text = detailEvent?.endTime
+        binding.detailEventMain.tvStartTime.text = getStringDate(detailEvent?.beginTime)
+        binding.detailEventMain.tvEndTime.text = getStringDate(detailEvent?.endTime)
 
         if (detailEvent?.cityName.equals("Online")){
             binding.detailEventMain.tvLocation.text=

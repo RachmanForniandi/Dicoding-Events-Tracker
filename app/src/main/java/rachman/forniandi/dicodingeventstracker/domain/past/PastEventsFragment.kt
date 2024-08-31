@@ -22,6 +22,7 @@ import rachman.forniandi.dicodingeventstracker.adapters.EventsAdapter
 import rachman.forniandi.dicodingeventstracker.data.remoteUtils.RemoteResponse
 import rachman.forniandi.dicodingeventstracker.databinding.FragmentPastEventsBinding
 import rachman.forniandi.dicodingeventstracker.domain.entity.Events
+import rachman.forniandi.dicodingeventstracker.domain.home.HomeFragmentDirections
 import rachman.forniandi.dicodingeventstracker.domain.viewmodels.PastEventsViewmodel
 
 
@@ -61,10 +62,22 @@ class PastEventsFragment : Fragment() {
     }
 
     private fun setupSearchEvent() {
-        binding.svEvent.setupWithSearchBar(binding.searchBar)
+        /*binding.svEvent.setupWithSearchBar(binding.searchBar)
         binding.searchBar.setOnClickListener() {
             val actionSearch = PastEventsFragmentDirections.actionPastEventsFragmentToSearchEventsFragment()
             findNavController().navigate(actionSearch)
+        }*/
+        binding.apply {
+            pastToolbar.inflateMenu(R.menu.past_event_menu)
+            pastToolbar.setOnMenuItemClickListener {
+                when(it.itemId){
+                    R.id.menu_search ->{
+                        val actionSearch = PastEventsFragmentDirections.actionPastEventsFragmentToSearchEventsFragment()
+                        findNavController().navigate(actionSearch)
+                    }
+                }
+                false
+            }
         }
 
     }

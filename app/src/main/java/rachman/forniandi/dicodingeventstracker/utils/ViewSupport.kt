@@ -11,15 +11,11 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-private const val FILE_DATE_FORMAT = "dd-MMM-yyyy"
-val timeStampImg: String = SimpleDateFormat(
-    FILE_DATE_FORMAT,
-    Locale.US
-).format(System.currentTimeMillis())
+private const val FILE_DATE_FORMAT = "dd-MMMM-yyyy HH:mm"
 
 @SuppressLint("SimpleDateFormat")
 fun getStringDate(date: String?): String? {
-    val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+    val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
     val outputDate = SimpleDateFormat(FILE_DATE_FORMAT)
     var d: Date? = null
     try {

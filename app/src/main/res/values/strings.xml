@@ -29,4 +29,9 @@
     <string name="setting_change_language">Change Language</string>
     <string name="setting_icon_arrow">Icon Arrow Setting</string>
     <string name="participants">Participants</string>
+    <string name="event_archived">Event Archived</string>
+    <string name="next_events">Next Events</string>
+    <string name="scheduled">Scheduled</string>
+    <string name="history">History</string>
+    <string name="main">Main</string>
 </resources>

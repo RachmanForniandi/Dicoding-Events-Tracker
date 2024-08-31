@@ -1,7 +1,6 @@
 package rachman.forniandi.dicodingeventstracker.domain
 
 import androidx.lifecycle.LiveData
-import rachman.forniandi.dicodingeventstracker.data.remote.response.EventsItem
 import rachman.forniandi.dicodingeventstracker.data.remoteUtils.RemoteResponse
 import rachman.forniandi.dicodingeventstracker.domain.entity.Events
 

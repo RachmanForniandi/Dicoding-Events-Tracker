@@ -26,4 +26,9 @@
     <string name="setting_change_language">Ganti Bahasa</string>
     <string name="setting_icon_arrow">Ikon panah pengaturan</string>
     <string name="participants">Peserta</string>
+    <string name="event_archived">Acara diarsipkan</string>
+    <string name="next_events">Acara berikutnya</string>
+    <string name="scheduled">Terjadwal</string>
+    <string name="history">Riwayat</string>
+    <string name="main">Utama</string>
 </resources>
