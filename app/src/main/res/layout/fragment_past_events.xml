@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
-        android:hint="Search Event Here ....."
+        android:hint="@string/search_event_here"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -29,7 +29,6 @@
         app:layout_anchor="@id/searchBar"
         app:queryHint="Search Event Here ....."
         app:queryBackground="@color/transparent"
-        app:layout_scrollFlags="scroll|enterAlways"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -74,7 +73,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
             tools:listitem="@layout/item_event"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@id/searchBar"
             app:layout_constraintEnd_toEndOf="parent"

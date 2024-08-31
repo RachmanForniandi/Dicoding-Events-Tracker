@@ -66,23 +66,6 @@ class PastEventsFragment : Fragment() {
             val actionSearch = PastEventsFragmentDirections.actionPastEventsFragmentToSearchEventsFragment()
             findNavController().navigate(actionSearch)
         }
-        /*val menuHost: MenuHost = requireActivity()
-        menuHost.addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.past_event_menu, menu)
-            }
-
-            override fun onMenuItemSelected(item: MenuItem): Boolean {
-                return when (item.itemId) {
-                    R.id.menu_search->{
-                        val actionSearch = PastEventsFragmentDirections.actionPastEventsFragmentToSearchEventsFragment()
-                        findNavController().navigate(actionSearch)
-                        true
-                    }
-                    else -> false
-                }
-            }
-        }, viewLifecycleOwner, Lifecycle.State.RESUMED)*/
 
     }
 
