@@ -85,6 +85,8 @@ class UpcomingEventsFragment : Fragment() {
             is RemoteResponse.Error->{
                 hideShimmerEffect()
                 binding.swipeRefreshUpcomingEvent.isRefreshing = false
+                binding.imgDataEmpty.visibility= View.VISIBLE
+                binding.txtLblEventNotAvailable.visibility=View.VISIBLE
                 Toast.makeText(requireActivity() ,response.errorMessage, Toast.LENGTH_SHORT).show()
             }
 

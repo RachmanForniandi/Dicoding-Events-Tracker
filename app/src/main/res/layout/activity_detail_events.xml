@@ -48,7 +48,6 @@
         layout="@layout/content_detail_event" />
 
 
-
     <RelativeLayout
         android:id="@+id/masked_view_pg_detail"
         android:layout_width="0dp"

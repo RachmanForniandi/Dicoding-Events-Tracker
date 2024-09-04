@@ -31,4 +31,5 @@
     <string name="scheduled">Terjadwal</string>
     <string name="history">Riwayat</string>
     <string name="main">Utama</string>
+    <string name="event_data_is_experiencing_problems_please_try_again_later">Data acara mengalami gangguan. Silahkan coba lagi nanti.</string>
 </resources>

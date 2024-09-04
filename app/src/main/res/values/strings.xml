@@ -34,4 +34,5 @@
     <string name="scheduled">Scheduled</string>
     <string name="history">History</string>
     <string name="main">Main</string>
+    <string name="event_data_is_experiencing_problems_please_try_again_later">Event data is experiencing problems. Please try again later.</string>
 </resources>

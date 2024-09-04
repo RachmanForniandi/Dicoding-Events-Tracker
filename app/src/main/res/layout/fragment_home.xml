@@ -43,18 +43,6 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <TextView
-            android:id="@+id/txt_no_data_event_upcoming_available"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:layout_marginTop="80dp"
-            android:text="@string/no_data_upcoming_event_please_try_again_later"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/txt_lbl_Upcoming_event"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <TextView
             android:id="@+id/txt_lbl_Upcoming_event"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -65,6 +53,34 @@
             android:layout_marginStart="12dp"
             app:layout_constraintTop_toBottomOf="@id/home_appBarLayout"
             app:layout_constraintStart_toStartOf="parent"/>
+
+        <ImageView
+            android:id="@+id/img_data_empty_1"
+            android:layout_width="160dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:contentDescription="@string/image_error_no_data_events_available"
+            android:src="@drawable/ic_calendar_event_error"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_lbl_Upcoming_event"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/txt_no_data_event_upcoming_available"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            android:text="@string/no_data_upcoming_event_please_try_again_later"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/img_data_empty_1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:visibility="visible" />
 
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/shimmerFrameLayoutCarrouselEvent"
@@ -92,14 +108,14 @@
             android:id="@+id/rv_events_future"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
+            android:visibility="invisible"
             app:layout_constraintTop_toBottomOf="@id/txt_lbl_Upcoming_event"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager"
             android:orientation="horizontal"
             tools:listitem="@layout/item_event_carrousel"
-            tools:visibility="visible"/>
+            tools:visibility="invisible"/>
 
         <TextView
             android:id="@+id/txt_lbl_Finished_event"
@@ -108,10 +124,26 @@
             android:text="@string/finished_events"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:layout_marginStart="12dp"
             app:layout_constraintTop_toBottomOf="@id/rv_events_future"
             app:layout_constraintStart_toStartOf="parent"/>
+
+        <ImageView
+            android:id="@+id/img_data_empty_2"
+            android:layout_width="160dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:contentDescription="@string/image_error_no_data_events_available"
+            android:src="@drawable/ic_calendar_event_error"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_lbl_Finished_event"
+            tools:visibility="visible" />
+
 
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/shimmerFrameLayoutEventFinished"
@@ -134,26 +166,26 @@
                 <include layout="@layout/shimmer_item_event" />
             </LinearLayout>
         </com.facebook.shimmer.ShimmerFrameLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_events_finished"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
+            android:visibility="invisible"
             app:layout_constraintTop_toBottomOf="@id/txt_lbl_Finished_event"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="vertical"
             tools:listitem="@layout/item_event"
-            tools:itemCount="5"
-            tools:visibility="visible"/>
+            tools:visibility="invisible"/>
         <TextView
             android:id="@+id/txt_no_data_event_past_available"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:layout_marginTop="60dp"
-            app:layout_constraintTop_toBottomOf="@id/txt_lbl_Finished_event"
+            android:visibility="visible"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/img_data_empty_2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:text="@string/error_load_data_event_past_please_try_again_later"

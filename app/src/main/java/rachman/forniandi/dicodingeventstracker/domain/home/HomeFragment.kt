@@ -95,15 +95,18 @@ class HomeFragment : Fragment() {
                 Log.d("test_data_event_1:",""+events)
                 if (events != null) {
                     if (events.isEmpty()){
+                        binding.imgDataEmpty1.visibility=View.VISIBLE
                         binding.txtNoDataEventUpcomingAvailable.visibility=View.VISIBLE
                     }else{
                         events.let {carrouselEventAdapter.setData(it)}
-                        binding.txtNoDataEventUpcomingAvailable.visibility=View.GONE
+                        binding.txtNoDataEventUpcomingAvailable.visibility=View.INVISIBLE
                     }
                 }
             }
             is RemoteResponse.Error->{
                 hideShimmerEffect()
+                binding.imgDataEmpty1.visibility=View.VISIBLE
+                binding.txtNoDataEventUpcomingAvailable.visibility=View.VISIBLE
                 Toast.makeText(requireActivity() ,response.errorMessage, Toast.LENGTH_SHORT).show()
             }
 
@@ -123,15 +126,18 @@ class HomeFragment : Fragment() {
                 Log.d("test_data_event_2:",""+events)
                 if (events != null) {
                     if (events.isEmpty()){
+                        binding.imgDataEmpty2.visibility=View.VISIBLE
                         binding.txtNoDataEventPastAvailable.visibility=View.VISIBLE
                     }else{
                         events.let { eventAdapter.setData(it) }
-                        binding.txtNoDataEventPastAvailable.visibility=View.GONE
+                        binding.txtNoDataEventPastAvailable.visibility=View.INVISIBLE
                     }
                 }
             }
             is RemoteResponse.Error->{
                 hideShimmerEffect2()
+                binding.imgDataEmpty2.visibility=View.VISIBLE
+                binding.txtNoDataEventPastAvailable.visibility=View.VISIBLE
                 Toast.makeText(requireActivity() ,response.errorMessage, Toast.LENGTH_SHORT).show()
             }
 
@@ -169,7 +175,7 @@ class HomeFragment : Fragment() {
 
     private fun hideShimmerEffect() {
         binding.shimmerFrameLayoutCarrouselEvent.stopShimmer()
-        binding.shimmerFrameLayoutCarrouselEvent.visibility = View.GONE
+        binding.shimmerFrameLayoutCarrouselEvent.visibility = View.INVISIBLE
         binding.rvEventsFuture.visibility = View.VISIBLE
 
     }
@@ -182,7 +188,7 @@ class HomeFragment : Fragment() {
 
     private fun hideShimmerEffect2() {
         binding.shimmerFrameLayoutEventFinished.stopShimmer()
-        binding.shimmerFrameLayoutEventFinished.visibility = View.GONE
+        binding.shimmerFrameLayoutEventFinished.visibility = View.INVISIBLE
         binding.rvEventsFinished.visibility = View.VISIBLE
 
     }
