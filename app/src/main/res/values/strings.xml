@@ -36,4 +36,9 @@
     <string name="main">Main</string>
     <string name="event_data_is_experiencing_problems_please_try_again_later">Event data is experiencing problems. Please try again later.</string>
     <string name="the_event_you_are_looking_for_was_not_found_n_try_searching_with_other_keywords">The event you are looking for was not found. \n Try searching with other keywords.</string>
+    <string name="image_backdrop_event_path">image backdrop event path</string>
+    <string name="image_no_internet_connection">Image no internet connection</string>
+    <string name="no_internet_connection">No Internet connection</string>
+    <string name="please_check_your_wifi_connection_or_data_package_quota">Please check your Wifi connection or data package quota.</string>
+    <string name="reload_page">Reload page</string>
 </resources>

@@ -114,7 +114,14 @@
         android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/img_data_empty"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible"/>
+
+    <include
+        android:id="@+id/layout_no_internet_connection"
+        layout="@layout/masked_view_no_internet_state"
+        android:visibility="gone"
+        tools:visibility="visible"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -122,7 +122,13 @@ class PastEventsFragment : Fragment() {
                 binding.txtLblEventNotAvailable.visibility=View.VISIBLE
             }
 
-            else -> {}
+            else -> {
+                binding.layoutNoInternetConnection.imgNoInternetConnection.visibility= View.VISIBLE
+                binding.layoutNoInternetConnection.txtLblNoInternetConnection.visibility= View.VISIBLE
+                binding.layoutNoInternetConnection.txtLblSuggestCheckConnection.visibility= View.VISIBLE
+                binding.layoutNoInternetConnection.btnReloadPage.visibility= View.VISIBLE
+                binding.layoutNoInternetConnection.btnReloadPage.isClickable = true
+            }
         }
     }
 

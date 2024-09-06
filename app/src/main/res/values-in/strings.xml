@@ -33,4 +33,9 @@
     <string name="main">Utama</string>
     <string name="event_data_is_experiencing_problems_please_try_again_later">Data acara mengalami gangguan. Silahkan coba lagi nanti.</string>
     <string name="the_event_you_are_looking_for_was_not_found_n_try_searching_with_other_keywords">acara yang anda cari tidak ditemukan. coba cari dengan kata kunci lain.</string>
+    <string name="image_backdrop_event_path">jalur acara latar belakang gambar</string>
+    <string name="image_no_internet_connection">Gambaran tidak ada koneksi jaringan internet</string>
+    <string name="no_internet_connection">No Internet connection</string>
+    <string name="please_check_your_wifi_connection_or_data_package_quota">Mohon pastikan koneksi wifi atau kuota paket data mencukupi.</string>
+    <string name="reload_page">Muat ulang halaman</string>
 </resources>

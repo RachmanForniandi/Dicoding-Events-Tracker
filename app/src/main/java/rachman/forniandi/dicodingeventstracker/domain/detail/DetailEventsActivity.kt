@@ -66,6 +66,7 @@ class DetailEventsActivity : AppCompatActivity() {
             }
             is RemoteResponse.Error -> {
                 applyLoadProgressStateDetail(false)
+                binding.detailEventMain.btnRegisterEvent.isEnabled = false
                 Toast.makeText(this,response.errorMessage, Toast.LENGTH_SHORT).show()
             }
             else -> {}
