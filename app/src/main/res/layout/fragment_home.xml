@@ -6,193 +6,233 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".domain.home.HomeFragment">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/home_appBarLayout"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/first_line"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            android:layout_height="match_parent">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/home_toolbar"
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/home_appBarLayout"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@color/colorPrimary"
-                app:layout_scrollFlags="scroll|enterAlways"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+                android:layout_height="wrap_content"
+                android:elevation="4dp"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/dicoding_logo"
-                    android:contentDescription="@string/icon_dicoding"
-                    app:tint="@color/white" />
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/home_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/colorPrimary"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                    app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-            </androidx.appcompat.widget.Toolbar>
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/dicoding_logo"
+                        android:contentDescription="@string/icon_dicoding"
+                        app:tint="@color/white" />
 
-        </com.google.android.material.appbar.AppBarLayout>
+                </androidx.appcompat.widget.Toolbar>
 
-        <TextView
-            android:id="@+id/txt_lbl_Upcoming_event"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/upcoming_events"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:layout_marginTop="24dp"
-            android:layout_marginStart="12dp"
-            app:layout_constraintTop_toBottomOf="@id/home_appBarLayout"
-            app:layout_constraintStart_toStartOf="parent"/>
+            </com.google.android.material.appbar.AppBarLayout>
 
-        <ImageView
-            android:id="@+id/img_data_empty_1"
-            android:layout_width="160dp"
-            android:layout_height="120dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:contentDescription="@string/image_error_no_data_events_available"
-            android:src="@drawable/ic_calendar_event_error"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_lbl_Upcoming_event"
-            tools:visibility="visible" />
+            <TextView
+                android:id="@+id/txt_lbl_Upcoming_event"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/upcoming_events"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="12dp"
+                app:layout_constraintTop_toBottomOf="@id/home_appBarLayout"
+                app:layout_constraintStart_toStartOf="parent"/>
 
-        <TextView
-            android:id="@+id/txt_no_data_event_upcoming_available"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="invisible"
-            android:layout_marginTop="10dp"
-            android:text="@string/no_data_upcoming_event_please_try_again_later"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/img_data_empty_1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:visibility="visible" />
+            <ImageView
+                android:id="@+id/img_data_empty_1"
+                android:layout_width="160dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:contentDescription="@string/image_error_no_data_events_available"
+                android:src="@drawable/ic_calendar_event_error"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_lbl_Upcoming_event"
+                tools:visibility="visible" />
 
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/shimmerFrameLayoutCarrouselEvent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@id/txt_lbl_Upcoming_event"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            <TextView
+                android:id="@+id/txt_no_data_event_upcoming_available"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:layout_marginTop="10dp"
+                android:text="@string/no_data_upcoming_event_please_try_again_later"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/img_data_empty_1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:visibility="visible" />
 
-            <LinearLayout
+            <Button
+                android:id="@+id/btn_reload_page_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/reload_page"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/txt_no_data_event_upcoming_available"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:clickable="false"/>
+
+
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerFrameLayoutCarrouselEvent"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:visibility="visible"
+                app:layout_constraintTop_toBottomOf="@id/txt_lbl_Upcoming_event"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
-                <include layout="@layout/shimmer_item_carrousel" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                <include layout="@layout/shimmer_item_carrousel" />
+                    <include layout="@layout/shimmer_item_carrousel" />
 
-                <include layout="@layout/shimmer_item_carrousel" />
-            </LinearLayout>
-        </com.facebook.shimmer.ShimmerFrameLayout>
+                    <include layout="@layout/shimmer_item_carrousel" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_events_future"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:visibility="invisible"
-            app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_lbl_Upcoming_event"
-            tools:listitem="@layout/item_event_carrousel"
-            tools:visibility="visible" />
+                    <include layout="@layout/shimmer_item_carrousel" />
+                </LinearLayout>
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
-        <TextView
-            android:id="@+id/txt_lbl_Finished_event"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginStart="12dp"
-            android:text="@string/finished_events"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/rv_events_finished"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rv_events_future" />
-
-        <ImageView
-            android:id="@+id/img_data_empty_2"
-            android:layout_width="160dp"
-            android:layout_height="120dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            android:contentDescription="@string/image_error_no_data_events_available"
-            android:src="@drawable/ic_calendar_event_error"
-            android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txt_lbl_Finished_event"
-            tools:visibility="visible" />
-
-
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/shimmerFrameLayoutEventFinished"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@id/txt_lbl_Finished_event"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_events_future"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="invisible"
+                app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_lbl_Upcoming_event"
+                tools:listitem="@layout/item_event_carrousel"
+                tools:visibility="invisible" />
+        </androidx.constraintlayout.widget.ConstraintLayout >
 
-                <include layout="@layout/shimmer_item_event" />
-
-                <include layout="@layout/shimmer_item_event" />
-
-                <include layout="@layout/shimmer_item_event" />
-            </LinearLayout>
-        </com.facebook.shimmer.ShimmerFrameLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_events_finished"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/second_line"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="invisible"
-            app:layout_constraintTop_toBottomOf="@id/txt_lbl_Finished_event"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="vertical"
-            tools:listitem="@layout/item_event"
-            tools:visibility="visible"/>
-        <TextView
-            android:id="@+id/txt_no_data_event_past_available"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="invisible"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@id/img_data_empty_2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="@string/error_load_data_event_past_please_try_again_later"
-            android:textStyle="bold"
-            tools:visibility="visible"/>
+            android:layout_below="@id/first_line"
+            >
+            <TextView
+                android:id="@+id/txt_lbl_Finished_event"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginStart="12dp"
+                android:text="@string/finished_events"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/rv_events_finished"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerFrameLayoutEventFinished"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:visibility="visible"
+                app:layout_constraintTop_toBottomOf="@id/txt_lbl_Finished_event"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/shimmer_item_event" />
+
+                    <include layout="@layout/shimmer_item_event" />
+
+                    <include layout="@layout/shimmer_item_event" />
+                </LinearLayout>
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_events_finished"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                app:layout_constraintTop_toBottomOf="@id/txt_lbl_Finished_event"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
+                tools:listitem="@layout/item_event"
+                tools:visibility="invisible"/>
+
+            <ImageView
+                android:id="@+id/img_data_empty_2"
+                android:layout_width="160dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="80dp"
+                android:layout_marginEnd="20dp"
+                android:contentDescription="@string/image_error_no_data_events_available"
+                android:src="@drawable/ic_calendar_event_error"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_lbl_Finished_event"
+                app:layout_constraintBottom_toTopOf="@id/txt_no_data_event_past_available"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/txt_no_data_event_past_available"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/img_data_empty_2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@string/error_load_data_event_past_please_try_again_later"
+                android:textStyle="bold"
+                tools:visibility="visible"/>
+
+            <Button
+                android:id="@+id/btn_reload_page_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/reload_page"
+                android:visibility="gone"
+                app:layout_constraintTop_toBottomOf="@id/txt_no_data_event_past_available"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:clickable="false"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout >
 </androidx.core.widget.NestedScrollView>

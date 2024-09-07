@@ -31,7 +31,7 @@
         </activity>
         <activity
             android:name=".domain.home.MainActivity"
-            android:exported="false"></activity>
+            android:exported="false"/>
         <activity
             android:name=".domain.detail.DetailEventsActivity"
             android:exported="false" />

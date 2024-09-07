@@ -4,15 +4,9 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.MenuHost
-import androidx.core.view.MenuProvider
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -22,15 +16,18 @@ import rachman.forniandi.dicodingeventstracker.adapters.EventsAdapter
 import rachman.forniandi.dicodingeventstracker.data.remoteUtils.RemoteResponse
 import rachman.forniandi.dicodingeventstracker.databinding.FragmentPastEventsBinding
 import rachman.forniandi.dicodingeventstracker.domain.entity.Events
-import rachman.forniandi.dicodingeventstracker.domain.home.HomeFragmentDirections
 import rachman.forniandi.dicodingeventstracker.domain.viewmodels.PastEventsViewmodel
+import rachman.forniandi.dicodingeventstracker.utils.ConnectionType
+import rachman.forniandi.dicodingeventstracker.utils.NetworkMonitorUtil
 
 
 @AndroidEntryPoint
 class PastEventsFragment : Fragment() {
     private var _binding: FragmentPastEventsBinding?= null
     private val binding get() = _binding!!
+    private val networkMonitor = context?.let { NetworkMonitorUtil(it) }
     private val eventAdapter by lazy { EventsAdapter(requireActivity()) }
+    private val TAG_NETWORK_MONITOR="TAG_NETWORK_MONITOR"
     private val activeValue:Int=0
     private lateinit var pastEventsViewmodel:PastEventsViewmodel
 
@@ -42,6 +39,39 @@ class PastEventsFragment : Fragment() {
         _binding =FragmentPastEventsBinding.inflate(inflater, container, false)
         pastEventsViewmodel = ViewModelProvider(this)[PastEventsViewmodel::class.java]
         setupSearchEvent()
+
+        networkMonitor?.result = { isAvailable, type ->
+            requireActivity().runOnUiThread{
+                when (isAvailable) {
+                    true -> {
+                        when (type) {
+                            ConnectionType.Wifi -> {
+                                showDataPastEvent()
+                                Log.d(TAG_NETWORK_MONITOR, "Wifi Connection")
+                            }
+                            ConnectionType.Cellular -> {
+
+                                showDataPastEvent()
+                                Log.d(TAG_NETWORK_MONITOR, "Cellular Connection")
+                            }
+                            else -> { }
+                        }
+                    }
+                    false -> {
+                        Log.d(TAG_NETWORK_MONITOR, "No Connection")
+                        binding.layoutNoInternetConnection.imgNoInternetConnection.visibility= View.VISIBLE
+                        binding.layoutNoInternetConnection.txtLblNoInternetConnection.visibility= View.VISIBLE
+                        binding.layoutNoInternetConnection.txtLblSuggestCheckConnection.visibility= View.VISIBLE
+                        binding.layoutNoInternetConnection.btnReloadPage.visibility= View.VISIBLE
+                        binding.layoutNoInternetConnection.btnReloadPage.isClickable = true
+                        binding.layoutNoInternetConnection.btnReloadPage.setOnClickListener {
+                            showDataPastEvent()
+                        }
+                    }
+                }
+            }
+        }
+
         return binding.root
     }
 
@@ -108,6 +138,8 @@ class PastEventsFragment : Fragment() {
                         binding.swipeRefreshPastEvent.isRefreshing = false
                         binding.imgDataEmpty.visibility= View.GONE
                         binding.txtLblEventNotAvailable.visibility=View.GONE
+                        binding.btnReloadPagePast.visibility= View.GONE
+                        binding.btnReloadPagePast.isClickable = false
                     }
 
                 }
@@ -120,15 +152,14 @@ class PastEventsFragment : Fragment() {
                 binding.swipeRefreshPastEvent.isRefreshing = false
                 binding.imgDataEmpty.visibility= View.VISIBLE
                 binding.txtLblEventNotAvailable.visibility=View.VISIBLE
+                binding.btnReloadPagePast.visibility= View.VISIBLE
+                binding.btnReloadPagePast.isClickable = true
+                binding.btnReloadPagePast.setOnClickListener {
+                    showDataPastEvent()
+                }
             }
 
-            else -> {
-                binding.layoutNoInternetConnection.imgNoInternetConnection.visibility= View.VISIBLE
-                binding.layoutNoInternetConnection.txtLblNoInternetConnection.visibility= View.VISIBLE
-                binding.layoutNoInternetConnection.txtLblSuggestCheckConnection.visibility= View.VISIBLE
-                binding.layoutNoInternetConnection.btnReloadPage.visibility= View.VISIBLE
-                binding.layoutNoInternetConnection.btnReloadPage.isClickable = true
-            }
+            else -> {}
         }
     }
 
@@ -161,8 +192,15 @@ class PastEventsFragment : Fragment() {
         binding.rvEventsPast.visibility = View.VISIBLE
     }
 
+    override fun onResume() {
+        super.onResume()
+        networkMonitor?.register()
+    }
 
-
+    override fun onStop() {
+        super.onStop()
+        networkMonitor?.unregister()
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

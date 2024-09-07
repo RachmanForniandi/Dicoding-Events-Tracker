@@ -100,6 +100,9 @@ class HomeFragment : Fragment() {
                     }else{
                         events.let {carrouselEventAdapter.setData(it)}
                         binding.txtNoDataEventUpcomingAvailable.visibility=View.INVISIBLE
+                        binding.imgDataEmpty1.visibility=View.INVISIBLE
+                        binding.btnReloadPage1.visibility = View.GONE
+                        binding.btnReloadPage1.isClickable = false
                     }
                 }
             }
@@ -107,6 +110,11 @@ class HomeFragment : Fragment() {
                 hideShimmerEffect()
                 binding.imgDataEmpty1.visibility=View.VISIBLE
                 binding.txtNoDataEventUpcomingAvailable.visibility=View.VISIBLE
+                binding.btnReloadPage1.visibility = View.VISIBLE
+                binding.btnReloadPage1.isClickable = true
+                binding.btnReloadPage1.setOnClickListener {
+                    showDataRemoteUpcomingEvent()
+                }
                 Toast.makeText(requireActivity() ,response.errorMessage, Toast.LENGTH_SHORT).show()
             }
 
@@ -130,7 +138,10 @@ class HomeFragment : Fragment() {
                         binding.txtNoDataEventPastAvailable.visibility=View.VISIBLE
                     }else{
                         events.let { eventAdapter.setData(it) }
+                        binding.imgDataEmpty2.visibility=View.INVISIBLE
                         binding.txtNoDataEventPastAvailable.visibility=View.INVISIBLE
+                        binding.btnReloadPage2.visibility= View.GONE
+                        binding.btnReloadPage2.isClickable = false
                     }
                 }
             }
@@ -138,6 +149,11 @@ class HomeFragment : Fragment() {
                 hideShimmerEffect2()
                 binding.imgDataEmpty2.visibility=View.VISIBLE
                 binding.txtNoDataEventPastAvailable.visibility=View.VISIBLE
+                binding.btnReloadPage2.visibility= View.VISIBLE
+                binding.btnReloadPage2.isClickable = true
+                binding.btnReloadPage2.setOnClickListener {
+                    showDataRemotePastEvent()
+                }
                 Toast.makeText(requireActivity() ,response.errorMessage, Toast.LENGTH_SHORT).show()
             }
 

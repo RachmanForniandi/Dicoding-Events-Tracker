@@ -54,7 +54,6 @@ class UpcomingEventsFragment : Fragment() {
     private fun showDataUpComingEvent() {
         upcomingEventsViewmodel.setValueActive(activeValue)
         upcomingEventsViewmodel.upcomingEvent.observe(viewLifecycleOwner,eventObserver)
-
         }
 
     private val eventObserver = Observer<RemoteResponse<List<Events>?>?>{ response->

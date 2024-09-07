@@ -29,6 +29,7 @@ navigationFragmentKtxVersion = "2.7.7"
 navigationUiKtx = "2.7.7"
 navigationSafeArgsGradlePlugin = "2.7.7"
 jsoupVersion="1.13.1"
+androidxLocalbroadcastmanager="1.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -47,6 +48,8 @@ androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-view
 
 facebook-shimmer={ module = "com.facebook.shimmer:shimmer", version.ref = "facebookShimmer" }
 multidex-version={module="androidx.multidex:multidex",version.ref="multidex"}
+
+androidx-localbroadcastmanager={module="androidx.localbroadcastmanager:localbroadcastmanager",version.ref="androidxLocalbroadcastmanager"}
 
 jsoup ={ module = "org.jsoup:jsoup", version.ref = "jsoupVersion" }
 
