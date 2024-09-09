@@ -3,16 +3,18 @@ package rachman.forniandi.dicodingeventstracker.adapters
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import rachman.forniandi.dicodingeventstracker.R
-import rachman.forniandi.dicodingeventstracker.data.remote.response.EventsItem
 import rachman.forniandi.dicodingeventstracker.databinding.ItemEventBinding
+import rachman.forniandi.dicodingeventstracker.domain.entity.Events
+import rachman.forniandi.dicodingeventstracker.utils.EventDiffUtil
 
 class EventsAdapter(private val mContext: Context): RecyclerView.Adapter<EventsAdapter.EventsHolder>() {
 
-    private var events = arrayListOf<EventsItem>()
-    private var onClickListener: OnStoryClickListener?= null
+    private var events = emptyList<Events>()
+    private var onClickListener: OnEventClickListener?= null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventsHolder {
         val bindingView = ItemEventBinding.inflate(LayoutInflater.from(parent.context),parent,false)
@@ -28,6 +30,10 @@ class EventsAdapter(private val mContext: Context): RecyclerView.Adapter<EventsA
             .error(R.drawable.error_placeholder)
             .into(holder.imgPromoteEvent)
 
+        holder.itemView.setOnClickListener {
+            onClickListener?.onClick(position,eventData)
+        }
+
     }
 
     override fun getItemCount(): Int {
@@ -39,8 +45,20 @@ class EventsAdapter(private val mContext: Context): RecyclerView.Adapter<EventsA
         val imgPromoteEvent = view.imgEvent
     }
 
-    interface OnStoryClickListener {
-        fun onClick(position: Int, event: EventsItem)
+    fun setOnClickListener(onClickListener: OnEventClickListener) {
+        this.onClickListener = onClickListener
+    }
+
+
+    interface OnEventClickListener {
+        fun onClick(position: Int, event: Events)
+    }
+
+    fun setData(eventData: List<Events>){
+        val dataDiffUtil = EventDiffUtil(events,eventData)
+        val diffUtilResult = DiffUtil.calculateDiff(dataDiffUtil)
+        events = eventData
+        diffUtilResult.dispatchUpdatesTo(this)
     }
 }
 

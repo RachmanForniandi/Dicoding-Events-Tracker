@@ -1,14 +1,21 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("org.jetbrains.kotlin.kapt")
-    //id("androidx.navigation.safeargs.kotlin")
-    //id("com.google.dagger.hilt.android")
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.daggerhilt)
+    id("androidx.navigation.safeargs")
+
 }
 
 android {
     namespace = "rachman.forniandi.dicodingeventstracker"
     compileSdk = 34
+
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
 
     defaultConfig {
         applicationId = "rachman.forniandi.dicodingeventstracker"
@@ -49,7 +56,6 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-
     //Retrofit
     implementation (libs.okhttp)
     implementation (libs.logging.interceptor)
@@ -68,16 +74,27 @@ dependencies {
     //lifecycle
     implementation (libs.androidx.lifecycle.livedata.ktx)
 
-    //fragement ktx
-    implementation (libs.androidx.fragment.ktx)
-
     //Navigation
-    implementation (libs.androidx.navigation.fragment.ktx)
-    implementation (libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+
+    implementation(libs.androidx.localbroadcastmanager)
 
     //dagger hilt
     implementation (libs.hilt.android)
-    kapt (libs.hilt.compiler)
+    implementation(libs.multidex.version)
+
+    implementation(libs.jsoup)
+
+    ksp (libs.hilt.compiler)
+    ksp (libs.dagger.compiler)
+
+
+    implementation(libs.androidx.swiperefreshlayout)
+
+    //facebook shimmer
+    implementation(libs.facebook.shimmer)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
