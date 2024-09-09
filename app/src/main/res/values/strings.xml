@@ -41,4 +41,5 @@
     <string name="no_internet_connection">No Internet connection</string>
     <string name="please_check_your_wifi_connection_or_data_package_quota">Please check your Wifi connection or data package quota.</string>
     <string name="reload_page">Reload page</string>
+    <string name="image_poster_of_event">image poster of event</string>
 </resources>

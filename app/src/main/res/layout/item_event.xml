@@ -21,7 +21,8 @@
             <ImageView
                 android:id="@+id/img_Event"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/image_poster_of_event"
                 android:src="@drawable/place_holder"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
