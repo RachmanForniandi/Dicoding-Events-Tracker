@@ -80,6 +80,14 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
 
     implementation(libs.androidx.localbroadcastmanager)
+    
+    //Room
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.room.compiler)
+
+    //datastore
+    implementation(libs.androidx.datastore.preferences)
+
 
     //dagger hilt
     implementation (libs.hilt.android)
