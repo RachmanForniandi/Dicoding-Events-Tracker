@@ -42,7 +42,5 @@
     <string name="please_check_your_wifi_connection_or_data_package_quota">Please check your Wifi connection or data package quota.</string>
     <string name="reload_page">Reload page</string>
     <string name="image_poster_of_event">image poster of event</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="no_data_event_favorite_available_yet">No data Event Favorite available yet</string>
 </resources>
