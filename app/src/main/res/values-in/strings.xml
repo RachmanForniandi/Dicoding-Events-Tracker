@@ -39,4 +39,5 @@
     <string name="please_check_your_wifi_connection_or_data_package_quota">Mohon pastikan koneksi wifi atau kuota paket data mencukupi.</string>
     <string name="reload_page">Muat ulang halaman</string>
     <string name="image_poster_of_event">Gambar poster acara</string>
+    <string name="no_data_event_favorite_available_yet">Belum ada data acara favorit</string>
 </resources>
