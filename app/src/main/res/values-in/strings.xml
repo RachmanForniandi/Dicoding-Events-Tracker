@@ -40,4 +40,5 @@
     <string name="reload_page">Muat ulang halaman</string>
     <string name="image_poster_of_event">Gambar poster acara</string>
     <string name="no_data_event_favorite_available_yet">Belum ada data acara favorit</string>
+    <string name="button_favorite_event">Tombol acara favorit</string>
 </resources>

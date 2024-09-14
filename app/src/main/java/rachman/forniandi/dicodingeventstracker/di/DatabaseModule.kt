@@ -15,13 +15,13 @@ import rachman.forniandi.dicodingeventstracker.data.room.EventDatabase
 object DatabaseModule {
 
     @Provides
-    private fun provideEventDao(context: Context):EventDao{
+    fun provideEventDao(context: Context):EventDao{
         val eventDatabase = EventDatabase.getInstance(context)
         return eventDatabase.getEventDao()
     }
 
     @Provides
-    private fun provideLocalDataSource(settingThemePreferences: SettingThemePreferences,eventDao: EventDao):LocalDataSource{
+    fun provideLocalDataSource(settingThemePreferences: SettingThemePreferences,eventDao: EventDao):LocalDataSource{
         return LocalDataSource(settingThemePreferences, eventDao)
     }
 

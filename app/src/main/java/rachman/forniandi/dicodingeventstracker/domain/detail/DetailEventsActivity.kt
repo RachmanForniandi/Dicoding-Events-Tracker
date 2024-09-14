@@ -108,7 +108,7 @@ class DetailEventsActivity : AppCompatActivity() {
 
         val remainingParticipants = registrants?.let { quota?.minus(it) }
         val convertStringRemainParticipantNumber = remainingParticipants.toString()
-        binding.detailEventMain.tvRemainingQuotaParticipants.text = convertStringRemainParticipantNumber+""+getString(
+        binding.detailEventMain.tvRemainingQuotaParticipants.text = "$convertStringRemainParticipantNumber " +getString(
             R.string.participants
         )
         binding.detailEventMain.tvSummaryEvent.text = detailEvent?.summary

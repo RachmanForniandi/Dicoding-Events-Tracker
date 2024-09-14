@@ -8,7 +8,6 @@ import dagger.hilt.components.SingletonComponent
 import rachman.forniandi.dicodingeventstracker.data.local.datastore.SettingThemePreferences
 import rachman.forniandi.dicodingeventstracker.data.local.datastore.SettingThemePreferencesImpl
 
-
 @Module
 @InstallIn(SingletonComponent::class)
 object DataStoreModule {

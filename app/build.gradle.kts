@@ -83,6 +83,7 @@ dependencies {
     
     //Room
     implementation(libs.androidx.room.runtime)
+    implementation(libs.room.ktx)
     ksp(libs.room.compiler)
 
     //datastore

@@ -1,21 +1,16 @@
 package rachman.forniandi.dicodingeventstracker.data.remote.retrofit
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import rachman.forniandi.dicodingeventstracker.data.remote.response.RemoteDataSource
 import rachman.forniandi.dicodingeventstracker.data.remoteUtils.DataMapper
 import rachman.forniandi.dicodingeventstracker.data.remoteUtils.RemoteResponse
-import rachman.forniandi.dicodingeventstracker.data.remoteUtils.toDomainEvents
-import rachman.forniandi.dicodingeventstracker.domain.EventsRepository
-import rachman.forniandi.dicodingeventstracker.domain.entity.Events
-import retrofit2.HttpException
+import rachman.forniandi.dicodingeventstracker.domain.repository.EventsRepository
 import javax.inject.Inject
-import javax.inject.Singleton
 
 
 class EventRepositoryImpl @Inject constructor(
     private val remoteDataSource: RemoteDataSource
-):EventsRepository {
+): EventsRepository {
 
     override fun getFutureEvents(active: Int)= liveData {
         emit(RemoteResponse.Loading())

@@ -1,4 +1,4 @@
-package rachman.forniandi.dicodingeventstracker.domain
+package rachman.forniandi.dicodingeventstracker.domain.repository
 
 import androidx.lifecycle.LiveData
 import rachman.forniandi.dicodingeventstracker.data.remoteUtils.RemoteResponse

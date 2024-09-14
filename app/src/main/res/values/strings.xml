@@ -43,4 +43,5 @@
     <string name="reload_page">Reload page</string>
     <string name="image_poster_of_event">image poster of event</string>
     <string name="no_data_event_favorite_available_yet">No data Event Favorite available yet</string>
+    <string name="button_favorite_event">button favorite event</string>
 </resources>

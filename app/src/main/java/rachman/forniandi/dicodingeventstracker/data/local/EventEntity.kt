@@ -8,7 +8,7 @@ import java.io.Serializable
 @Entity(tableName = "events_table")
 data class EventEntity(
     @PrimaryKey
-    @ColumnInfo(name = "cityName")
+    @ColumnInfo(name = "id")
     val id: Int?,
 
     @ColumnInfo(name = "name")

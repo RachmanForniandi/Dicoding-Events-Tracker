@@ -78,6 +78,7 @@ androidx-navigation-safe-args-gradle-plugin = { group = "androidx.navigation", n
 
 androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
+room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomCompiler" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

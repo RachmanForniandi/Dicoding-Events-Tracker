@@ -43,6 +43,15 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:contentDescription="@string/button_favorite_event"
+        app:layout_anchorGravity="bottom|end"
+        app:layout_anchor="@id/app_bar"
+        android:src="@drawable/ic_star_outline"/>
+
     <include
         android:id="@+id/detail_event_main"
         layout="@layout/content_detail_event" />

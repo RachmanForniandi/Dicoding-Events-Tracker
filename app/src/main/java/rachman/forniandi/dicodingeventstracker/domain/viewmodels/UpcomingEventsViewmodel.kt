@@ -6,10 +6,9 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
 import dagger.hilt.android.lifecycle.HiltViewModel
-import rachman.forniandi.dicodingeventstracker.domain.EventsRepository
+import rachman.forniandi.dicodingeventstracker.domain.repository.EventsRepository
 import javax.inject.Inject
 
 @HiltViewModel
