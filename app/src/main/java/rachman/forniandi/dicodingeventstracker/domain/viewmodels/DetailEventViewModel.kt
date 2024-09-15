@@ -3,13 +3,18 @@ package rachman.forniandi.dicodingeventstracker.domain.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import rachman.forniandi.dicodingeventstracker.domain.entity.Events
 import rachman.forniandi.dicodingeventstracker.domain.repository.EventsRepository
+import rachman.forniandi.dicodingeventstracker.domain.repository.FavoriteEventRepository
 import javax.inject.Inject
 
 @HiltViewModel
 class DetailEventViewModel @Inject constructor(
-    private val repository: EventsRepository
+    private val repository: EventsRepository,
+    private val favoriteEventRepository: FavoriteEventRepository
 ): ViewModel() {
 
 
@@ -24,4 +29,17 @@ class DetailEventViewModel @Inject constructor(
             repository.getDetailEvents(idEvent)
         }
     }
+
+    fun actionInsertFavEvent(events: Events) = viewModelScope.launch {
+        favoriteEventRepository.insertFavEvent(events)
+    }
+
+    fun actionDeleteFavEvent(events: Events) = viewModelScope.launch {
+        favoriteEventRepository.deleteFavEvent(events)
+    }
+
+    fun actionReadFavEvent() = viewModelScope.launch {
+        favoriteEventRepository.showFavEvent()
+    }
+
 }
