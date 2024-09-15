@@ -1,4 +1,4 @@
-package rachman.forniandi.dicodingeventstracker.data.local
+package rachman.forniandi.dicodingeventstracker.data.local.room
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

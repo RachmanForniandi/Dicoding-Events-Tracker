@@ -1,8 +1,8 @@
 package rachman.forniandi.dicodingeventstracker.data.local
 
 import rachman.forniandi.dicodingeventstracker.data.local.datastore.SettingThemePreferences
-import rachman.forniandi.dicodingeventstracker.data.remote.retrofit.NetworkService
-import rachman.forniandi.dicodingeventstracker.data.room.EventDao
+import rachman.forniandi.dicodingeventstracker.data.local.room.EventDao
+import rachman.forniandi.dicodingeventstracker.data.local.room.EventEntity
 import javax.inject.Inject
 
 class LocalDataSource @Inject constructor(
@@ -19,5 +19,5 @@ class LocalDataSource @Inject constructor(
 
     suspend fun deleteFavoriteEvent(eventEntity: EventEntity)= eventDao.deleteFavoriteEvent(eventEntity)
 
-    suspend fun deleteAllFavoriteEvent()= eventDao.deleteAllFavoriteEvents()
+    //suspend fun deleteAllFavoriteEvent()= eventDao.deleteAllFavoriteEvents()
 }

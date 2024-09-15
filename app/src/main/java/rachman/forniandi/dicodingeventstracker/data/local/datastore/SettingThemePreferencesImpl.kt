@@ -12,6 +12,7 @@ private val Context.dataStoreCore by preferencesDataStore(name = ConstantsMain.S
 class SettingThemePreferencesImpl (context: Context) : SettingThemePreferences{
 
     private val dataStore = context.dataStoreCore
+
     override fun getTheme(): Flow<Boolean> {
        return dataStore.data.map {
             it[ConstantsMain.THEME_DARK_MODE]?: false

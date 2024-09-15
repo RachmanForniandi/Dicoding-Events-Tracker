@@ -1,12 +1,11 @@
-package rachman.forniandi.dicodingeventstracker.data.room
+package rachman.forniandi.dicodingeventstracker.data.local.room
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import kotlinx.coroutines.flow.Flow
-import rachman.forniandi.dicodingeventstracker.data.local.EventEntity
 
 @Dao
 interface EventDao {
@@ -15,11 +14,11 @@ interface EventDao {
     suspend fun insertFavoriteEvent(eventEntity: EventEntity)
 
     @Query("SELECT * FROM events_table")
-    fun readFavoriteEvents():Flow<List<EventEntity>>
+    fun readFavoriteEvents():LiveData<List<EventEntity>>
 
     @Delete
     suspend fun deleteFavoriteEvent(eventEntity: EventEntity)
 
-    @Query("DELETE FROM events_table")
-    suspend fun deleteAllFavoriteEvents()
+    /*@Query("DELETE FROM events_table")
+    suspend fun deleteAllFavoriteEvents()*/
 }
