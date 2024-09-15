@@ -43,7 +43,8 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.homeFragment,
                 R.id.upcomingEventsFragment,
-                R.id.pastEventsFragment
+                R.id.pastEventsFragment,
+                R.id.favoriteEventsFragment
             )
         )
         binding.bottomNavView.setupWithNavController(navController)
@@ -53,6 +54,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.homeFragment -> binding.bottomNavView.visibility = View.VISIBLE
                 R.id.upcomingEventsFragment -> binding.bottomNavView.visibility = View.VISIBLE
                 R.id.pastEventsFragment -> binding.bottomNavView.visibility = View.VISIBLE
+                R.id.favoriteEventsFragment -> binding.bottomNavView.visibility = View.VISIBLE
                 else -> binding.bottomNavView.visibility = View.GONE
             }
         }

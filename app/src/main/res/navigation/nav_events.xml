@@ -64,6 +64,15 @@
         android:name="rachman.forniandi.dicodingeventstracker.domain.settings.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/favoriteEventsFragment"
+        android:name="rachman.forniandi.dicodingeventstracker.domain.favorite.FavoriteEventsFragment"
+        android:label="fragment_favorite_events"
+        tools:layout="@layout/fragment_favorite_events" >
+        <action
+            android:id="@+id/action_favoriteEventsFragment_to_detailEventsActivity"
+            app:destination="@id/detailEventsActivity" />
+    </fragment>
 
 
 </navigation>

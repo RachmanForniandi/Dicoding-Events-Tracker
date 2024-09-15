@@ -5,9 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import rachman.forniandi.dicodingeventstracker.R
 import rachman.forniandi.dicodingeventstracker.databinding.FragmentFavoriteEventsBinding
-import rachman.forniandi.dicodingeventstracker.databinding.FragmentHomeBinding
 
 
 class FavoriteEventsFragment : Fragment() {
@@ -18,9 +16,10 @@ class FavoriteEventsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favorite_events, container, false)
+        _binding = FragmentFavoriteEventsBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
 
