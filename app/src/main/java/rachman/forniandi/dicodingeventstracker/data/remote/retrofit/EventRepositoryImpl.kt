@@ -64,4 +64,5 @@ class EventRepositoryImpl @Inject constructor(
             emit(e.message?.let { RemoteResponse.Error(it) })
         }
     }
+
 }

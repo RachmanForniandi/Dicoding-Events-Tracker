@@ -54,9 +54,8 @@
         android:name="rachman.forniandi.dicodingeventstracker.domain.detail.DetailEventsActivity"
         android:label="activity_detail_events"
         tools:layout="@layout/activity_detail_events" >
-
         <argument
-            android:name="idEvent"
+            android:name="eventDetails"
             app:argType="rachman.forniandi.dicodingeventstracker.domain.entity.Events" />
     </activity>
     <fragment

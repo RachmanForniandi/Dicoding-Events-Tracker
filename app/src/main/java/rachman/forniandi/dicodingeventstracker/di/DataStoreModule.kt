@@ -7,6 +7,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import rachman.forniandi.dicodingeventstracker.data.local.datastore.SettingThemePreferences
 import rachman.forniandi.dicodingeventstracker.data.local.datastore.SettingThemePreferencesImpl
+import javax.inject.Inject
 
 @Module
 @InstallIn(SingletonComponent::class)

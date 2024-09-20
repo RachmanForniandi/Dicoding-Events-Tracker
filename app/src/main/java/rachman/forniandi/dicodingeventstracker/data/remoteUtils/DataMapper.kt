@@ -26,26 +26,29 @@ object DataMapper {
         )
     }
 
-    fun mapEventEntityToDomain(eventEntity: EventEntity):Events{
-        return Events(
-            id = eventEntity.id,
-            name = eventEntity.name,
-            summary = eventEntity.summary,
-            description = eventEntity.description,
-            imageLogo = eventEntity.imageLogo,
-            mediaCover = eventEntity.mediaCover,
-            category = eventEntity.category,
-            ownerName = eventEntity.ownerName,
-            cityName = eventEntity.cityName,
-            quota = eventEntity.quota,
-            registrants = eventEntity.registrants,
-            beginTime = eventEntity.beginTime,
-            endTime = eventEntity.endTime,
-            link = eventEntity.link
-        )
-    }
+    /*fun mapEventEntityToDomain(eventEntity: List<EventEntity>): Events {
+        val eventsList = eventEntity.map { (events) ->  // Destructure to access 'events' directly
+            Events(
+                id = events.id,
+                name = events.name,
+                summary = events.summary,
+                description = events.description,
+                imageLogo = events.imageLogo,
+                mediaCover = events.mediaCover,
+                category = events.category,
+                ownerName = events.ownerName,
+                cityName = events.cityName,
+                quota = events.quota,
+                registrants = events.registrants,
+                beginTime = events.beginTime,
+                endTime = events.endTime,
+                link = events.link
+            )
+        }
+        return Events(eventEntity = eventsList)
+    }*/
 
-    fun mapEventDomainToEntity(events: Events): EventEntity {
+    /*fun mapEventDomainToEntity(events: Events): EventEntity {
         return EventEntity(
             id = events.id,
             name = events.name,
@@ -62,7 +65,7 @@ object DataMapper {
             endTime = events.endTime,
             link = events.link
         )
-    }
+    }*/
 
     fun mapDetailEventsResponseToDomain(event: Event):Events{
         return Events(

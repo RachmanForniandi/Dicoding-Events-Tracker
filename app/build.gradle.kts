@@ -89,6 +89,9 @@ dependencies {
     //datastore
     implementation(libs.androidx.datastore.preferences)
 
+    //gson
+    implementation(libs.gson)
+
 
     //dagger hilt
     implementation (libs.hilt.android)

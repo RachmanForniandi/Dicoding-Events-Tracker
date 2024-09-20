@@ -25,6 +25,7 @@ swiperefreshlayout = "1.1.0"
 multidex= "2.0.1"
 roomCompiler = "2.5.2"
 roomRuntime = "2.5.2"
+gsonVersion="2.10.1"
 
 fragmentKtxVersion = "1.8.2"
 navigationFragmentKtxVersion = "2.7.7"
@@ -55,6 +56,7 @@ multidex-version={module="androidx.multidex:multidex",version.ref="multidex"}
 androidx-localbroadcastmanager={module="androidx.localbroadcastmanager:localbroadcastmanager",version.ref="androidxLocalbroadcastmanager"}
 
 jsoup ={ module = "org.jsoup:jsoup", version.ref = "jsoupVersion" }
+gson ={ module = "com.google.code.gson:gson", version.ref = "gsonVersion" }
 
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "hiltAndroid" }

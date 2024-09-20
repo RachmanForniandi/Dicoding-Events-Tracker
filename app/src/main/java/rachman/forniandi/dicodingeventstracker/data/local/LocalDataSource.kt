@@ -3,6 +3,7 @@ package rachman.forniandi.dicodingeventstracker.data.local
 import rachman.forniandi.dicodingeventstracker.data.local.datastore.SettingThemePreferences
 import rachman.forniandi.dicodingeventstracker.data.local.room.EventDao
 import rachman.forniandi.dicodingeventstracker.data.local.room.EventEntity
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class LocalDataSource @Inject constructor(
@@ -15,7 +16,7 @@ class LocalDataSource @Inject constructor(
 
     suspend fun insertFavoriteEvent(eventEntity: EventEntity) = eventDao.insertFavoriteEvent(eventEntity)
 
-    fun showFavoriteEvent()= eventDao.readFavoriteEvents()
+    fun showFavoriteEvent(): Flow<List<EventEntity>> = eventDao.readFavoriteEvents()
 
     suspend fun deleteFavoriteEvent(eventEntity: EventEntity)= eventDao.deleteFavoriteEvent(eventEntity)
 

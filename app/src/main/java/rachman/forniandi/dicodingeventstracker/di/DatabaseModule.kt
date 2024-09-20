@@ -4,6 +4,7 @@ import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import rachman.forniandi.dicodingeventstracker.data.local.LocalDataSource
 import rachman.forniandi.dicodingeventstracker.data.local.datastore.SettingThemePreferences
@@ -15,14 +16,16 @@ import rachman.forniandi.dicodingeventstracker.data.local.room.EventDatabase
 object DatabaseModule {
 
     @Provides
-    fun provideEventDao(context: Context): EventDao {
+    fun provideEventDao(@ApplicationContext context: Context): EventDao {
         val eventDatabase = EventDatabase.getInstance(context)
         return eventDatabase.getEventDao()
     }
 
     @Provides
-    fun provideLocalDataSource(settingThemePreferences: SettingThemePreferences,eventDao: EventDao):LocalDataSource{
-        return LocalDataSource(settingThemePreferences, eventDao)
+    fun provideLocalDataSource(@ApplicationContext context: Context):LocalDataSource{
+        val eventDao = provideEventDao(context)
+        val settingThemPref = DataStoreModule.provideSettingThemePreferences(context)
+        return LocalDataSource(settingThemPref, eventDao)
     }
 
 }

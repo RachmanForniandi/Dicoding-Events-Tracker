@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.navArgs
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import org.jsoup.Jsoup
 import rachman.forniandi.dicodingeventstracker.R
+import rachman.forniandi.dicodingeventstracker.data.local.room.EventEntity
 import rachman.forniandi.dicodingeventstracker.data.remoteUtils.RemoteResponse
 import rachman.forniandi.dicodingeventstracker.databinding.ActivityDetailEventsBinding
 import rachman.forniandi.dicodingeventstracker.domain.entity.Events
@@ -24,20 +26,23 @@ class DetailEventsActivity : AppCompatActivity() {
     private val navArgs:DetailEventsActivityArgs by navArgs()
     private val viewmodel: DetailEventViewModel by viewModels ()
     private var idEvent:Int=0
+    private var detailEvent: Events?=null
     private var linkEvent=""
-
+    private var isStatusFavorited= false
+    private var savedRecipeId = 0
+    //private val args:DetailEventsActivityArgs by navArgs()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailEventsBinding.inflate(layoutInflater)
-        idEvent = navArgs.idEvent.id!!
+        idEvent = navArgs.eventDetails.id!!
         
         setContentView(binding.root)
         if (savedInstanceState === null) {
             viewmodel.setValueId(idEvent)
         }
-        
+
         setViewDetailOfEvents()
-        
+
     }
 
     private fun setViewDetailOfEvents() {
@@ -51,7 +56,7 @@ class DetailEventsActivity : AppCompatActivity() {
             }
             is RemoteResponse.Success -> {
                 applyLoadProgressStateDetail(false)
-                val detailEvent = response.data
+                detailEvent = response.data
                 Picasso
                     .get()
                     .load(detailEvent?.imageLogo)
@@ -114,6 +119,23 @@ class DetailEventsActivity : AppCompatActivity() {
         binding.detailEventMain.tvSummaryEvent.text = detailEvent?.summary
 
         binding.detailEventMain.tvDescription.text = Jsoup.parse(detailEvent?.description).text()
+
+        binding.fabFavoriteEvent.setOnClickListener {
+            setFavoriteEventStatus(!isStatusFavorited)
+            /*val eventEntity = EventEntity(navArgs.eventDetails)
+            viewmodel.actionInsertFavEvent(eventEntity)*/
+        }
+    }
+
+    private fun setFavoriteEventStatus(statusFavourite: Boolean) {
+        val eventEntity = EventEntity(navArgs.eventDetails)
+        if (statusFavourite){
+            binding.fabFavoriteEvent.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_star))
+            viewmodel.actionInsertFavEvent(eventEntity)
+        }else{
+            binding.fabFavoriteEvent.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_star_outline))
+            viewmodel.actionDeleteFavEvent(eventEntity)
+        }
     }
 
 

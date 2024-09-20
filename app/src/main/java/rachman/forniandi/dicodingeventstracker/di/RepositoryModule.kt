@@ -1,10 +1,11 @@
 package rachman.forniandi.dicodingeventstracker.di
 
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import rachman.forniandi.dicodingeventstracker.data.local.LocalDataSource
 import rachman.forniandi.dicodingeventstracker.data.remote.response.RemoteDataSource
 import rachman.forniandi.dicodingeventstracker.data.remote.retrofit.EventRepositoryImpl
 import rachman.forniandi.dicodingeventstracker.data.repository.FavoriteEventRepositoryImpl
@@ -23,13 +24,15 @@ object RepositoryModule {
     }
 
     @Provides
-    fun provideFavoriteEventRepository(localDataSource: LocalDataSource): FavoriteEventRepository {
+    fun provideFavoriteEventRepository(@ApplicationContext context: Context): FavoriteEventRepository {
+        val localDataSource = DatabaseModule.provideLocalDataSource(context)
         return FavoriteEventRepositoryImpl(localDataSource)
     }
 
 
     @Provides
-    fun provideSettingThemeEventRepository(localDataSource: LocalDataSource): SettingThemeRepository {
+    fun provideSettingThemeEventRepository(@ApplicationContext context: Context): SettingThemeRepository {
+        val localDataSource = DatabaseModule.provideLocalDataSource(context)
         return SettingThemeRepositoryImpl(localDataSource)
     }
 }
