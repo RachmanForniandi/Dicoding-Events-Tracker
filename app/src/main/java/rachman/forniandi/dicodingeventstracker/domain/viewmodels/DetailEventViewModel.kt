@@ -1,7 +1,9 @@
 package rachman.forniandi.dicodingeventstracker.domain.viewmodels
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -30,6 +32,8 @@ class DetailEventViewModel @Inject constructor(
             repository.getDetailEvents(idEvent)
         }
     }
+
+    val readToCheckEvents: LiveData<List<EventEntity>> = favoriteEventRepository.showFavEvent().asLiveData()
 
     fun actionInsertFavEvent(events: EventEntity) = viewModelScope.launch {
         favoriteEventRepository.insertFavEvent(events)

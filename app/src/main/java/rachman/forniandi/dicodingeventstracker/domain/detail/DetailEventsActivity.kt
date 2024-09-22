@@ -2,12 +2,14 @@ package rachman.forniandi.dicodingeventstracker.domain.detail
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.navArgs
+import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import org.jsoup.Jsoup
@@ -29,8 +31,8 @@ class DetailEventsActivity : AppCompatActivity() {
     private var detailEvent: Events?=null
     private var linkEvent=""
     private var isStatusFavorited= false
-    private var savedRecipeId = 0
-    //private val args:DetailEventsActivityArgs by navArgs()
+    private var savedEventId = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailEventsBinding.inflate(layoutInflater)
@@ -42,7 +44,23 @@ class DetailEventsActivity : AppCompatActivity() {
         }
 
         setViewDetailOfEvents()
+        checkSavedEvents()
+    }
 
+    private fun checkSavedEvents() {
+        viewmodel.readToCheckEvents.observe(this){ favoriteEventsEntity ->
+            try {
+                for (savedEvent in favoriteEventsEntity){
+                    if (savedEvent.events.id == navArgs.eventDetails.id){
+                        binding.fabFavoriteEvent.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_star))
+                        savedEventId = savedEvent.idNo
+                        isStatusFavorited = true
+                    }
+                }
+            }catch (e: Exception) {
+                Log.d("DetailEventsActivity", e.message.toString())
+            }
+        }
     }
 
     private fun setViewDetailOfEvents() {
@@ -122,20 +140,30 @@ class DetailEventsActivity : AppCompatActivity() {
 
         binding.fabFavoriteEvent.setOnClickListener {
             setFavoriteEventStatus(!isStatusFavorited)
-            /*val eventEntity = EventEntity(navArgs.eventDetails)
-            viewmodel.actionInsertFavEvent(eventEntity)*/
         }
     }
 
     private fun setFavoriteEventStatus(statusFavourite: Boolean) {
-        val eventEntity = EventEntity(navArgs.eventDetails)
+
         if (statusFavourite){
+            val eventEntity = EventEntity(0,navArgs.eventDetails)
             binding.fabFavoriteEvent.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_star))
             viewmodel.actionInsertFavEvent(eventEntity)
+            showSnackBar(getString(R.string.event_saved))
+            isStatusFavorited = true
         }else{
+            val eventEntity = EventEntity(savedEventId,navArgs.eventDetails)
             binding.fabFavoriteEvent.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_star_outline))
             viewmodel.actionDeleteFavEvent(eventEntity)
+            showSnackBar(getString(R.string.removed_from_favorites))
+            isStatusFavorited = false
         }
+    }
+
+    private fun showSnackBar(message: String) {
+        Snackbar.make(binding.mainDetail,message, Snackbar.LENGTH_SHORT)
+            .setAction("Ok"){}
+            .show()
     }
 
 

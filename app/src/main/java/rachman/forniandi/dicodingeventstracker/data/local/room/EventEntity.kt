@@ -8,8 +8,9 @@ import java.io.Serializable
 
 @Entity(tableName = "events_table")
 class EventEntity(
+    @PrimaryKey(autoGenerate = true)
+    var idNo: Int,
     var events: Events
 ){
-    @PrimaryKey(autoGenerate = true)
-    var idNo: Int=0
+
 }
