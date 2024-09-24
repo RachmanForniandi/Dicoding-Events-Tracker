@@ -51,7 +51,9 @@
         android:contentDescription="@string/button_favorite_event"
         app:layout_anchorGravity="bottom|end"
         app:layout_anchor="@id/app_bar"
-        android:src="@drawable/ic_star_outline"/>
+        android:enabled="false"
+        android:tint="@color/white"
+        android:src="@drawable/ic_star_unselected"/>
 
     <include
         android:id="@+id/detail_event_main"

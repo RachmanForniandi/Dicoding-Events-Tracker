@@ -31,4 +31,8 @@
     <color name="colorPrimary">#6200EA</color>
     <color name="colorPrimaryDark">#5502C8</color>
     <color name="colorAccent">#9D46FF</color>
+
+    <color name="lightBlue500">#03a9f4</color>//color primary
+    <color name="lightBlue700">#0288D1</color>//color primary light
+
 </resources>

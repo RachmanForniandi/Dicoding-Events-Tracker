@@ -52,7 +52,7 @@ class DetailEventsActivity : AppCompatActivity() {
             try {
                 for (savedEvent in favoriteEventsEntity){
                     if (savedEvent.events.id == navArgs.eventDetails.id){
-                        binding.fabFavoriteEvent.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_star))
+                        binding.fabFavoriteEvent.imageTintList = getColorStateList(R.color.yellow)
                         savedEventId = savedEvent.idNo
                         isStatusFavorited = true
                     }
@@ -138,6 +138,7 @@ class DetailEventsActivity : AppCompatActivity() {
 
         binding.detailEventMain.tvDescription.text = Jsoup.parse(detailEvent?.description).text()
 
+        binding.fabFavoriteEvent.isEnabled=true
         binding.fabFavoriteEvent.setOnClickListener {
             setFavoriteEventStatus(!isStatusFavorited)
         }
@@ -147,13 +148,13 @@ class DetailEventsActivity : AppCompatActivity() {
 
         if (statusFavourite){
             val eventEntity = EventEntity(0,navArgs.eventDetails)
-            binding.fabFavoriteEvent.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_star))
+            binding.fabFavoriteEvent.imageTintList = getColorStateList(R.color.yellow)
             viewmodel.actionInsertFavEvent(eventEntity)
             showSnackBar(getString(R.string.event_saved))
             isStatusFavorited = true
         }else{
             val eventEntity = EventEntity(savedEventId,navArgs.eventDetails)
-            binding.fabFavoriteEvent.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_star_outline))
+            binding.fabFavoriteEvent.imageTintList = getColorStateList(R.color.white)
             viewmodel.actionDeleteFavEvent(eventEntity)
             showSnackBar(getString(R.string.removed_from_favorites))
             isStatusFavorited = false
