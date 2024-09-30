@@ -81,6 +81,35 @@
             android:background="@color/line_dark_background"
             app:layout_constraintTop_toBottomOf="@id/setting_btn_changeLanguage"
             />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/setting_switch_change_theme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line_border">
+
+            <TextView
+                style="@style/home_tv_tittle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Change Theme"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch_change_theme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

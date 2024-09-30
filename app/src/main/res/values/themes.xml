@@ -19,6 +19,7 @@
     </style>
 
     <style name="Theme.DicodingEventsTracker" parent="Base.Theme.DicodingEventsTracker" />
+
     <style name="SearchView_Event" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorControlNormal">@color/white_transparent</item>
         <item name="android:editTextColor">@color/white_transparent</item>
