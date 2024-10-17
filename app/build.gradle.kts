@@ -95,12 +95,14 @@ dependencies {
 
     //dagger hilt
     implementation (libs.hilt.android)
+    ksp (libs.hilt.compiler)
+    ksp (libs.dagger.compiler)
+
     implementation(libs.multidex.version)
 
     implementation(libs.jsoup)
 
-    ksp (libs.hilt.compiler)
-    ksp (libs.dagger.compiler)
+
 
 
     implementation(libs.androidx.swiperefreshlayout)

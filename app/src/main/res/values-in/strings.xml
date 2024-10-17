@@ -45,4 +45,5 @@
     <string name="image_no_data_event_favorite">Gambar tidak ada data acara favorit</string>
     <string name="event_saved">Acara tersimpan</string>
     <string name="removed_from_favorites">Terhapus di favorit</string>
+    <string name="bookmarked">Ditandai</string>
 </resources>

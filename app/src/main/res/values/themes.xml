@@ -26,6 +26,10 @@
         <item name="android:textColorHint">@color/white_transparent</item>
     </style>
 
+    <style name="CustomActionBarStyle" parent="Widget.MaterialComponents.ActionBar.Primary">
+        <item name="android:background">@color/actionBarBackgroundColor</item>
+    </style>
+
     <style name="main_tv_actionBar" parent="Widget.AppCompat.TextView">
         <item name="android:fontFamily">@font/mountella_trial_bold</item>
         <item name="android:textSize">18sp</item>

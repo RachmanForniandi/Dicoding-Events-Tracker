@@ -48,4 +48,5 @@
     <string name="image_no_data_event_favorite">Image no data event favorite</string>
     <string name="event_saved">Event saved</string>
     <string name="removed_from_favorites">Removed from favorites</string>
+    <string name="bookmarked">Bookmarked</string>
 </resources>
