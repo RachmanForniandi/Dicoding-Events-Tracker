@@ -24,7 +24,7 @@
     <color name="yellow">#FFC114</color>
     <color name="green">#00C980</color>
 
-    <color name="toolbar">#03a9f4</color>
+    <color name="actionBar_color">#03a9f4</color>
     <color name="toolbar_content">#FFFFFF</color>
 
     <color name="backgroundColor">@color/lightGray</color>
@@ -48,7 +48,7 @@
     <color name="contextualStatusBarColor">@color/darker</color>
     <color name="contextualActionBarColor">@color/dark</color>
 
-    <color name="actionBarBackgroundColor">@color/toolbar</color>
+    <color name="actionBarBackgroundColor">@color/actionBar_color</color>
 
     <color name="lightBlue500">#03a9f4</color>//color primary
     <color name="lightBlue700">#0288D1</color>//color primary light

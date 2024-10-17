@@ -20,10 +20,9 @@
             android:id="@+id/past_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            style="@style/CustomActionBarStyle">
 
             <TextView
                 android:id="@+id/lbl_past_events"

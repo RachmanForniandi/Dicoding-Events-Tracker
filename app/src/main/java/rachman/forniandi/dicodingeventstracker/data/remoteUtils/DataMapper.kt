@@ -1,6 +1,5 @@
 package rachman.forniandi.dicodingeventstracker.data.remoteUtils
 
-import rachman.forniandi.dicodingeventstracker.data.local.room.EventEntity
 import rachman.forniandi.dicodingeventstracker.data.remote.response.Event
 import rachman.forniandi.dicodingeventstracker.data.remote.response.EventsItem
 import rachman.forniandi.dicodingeventstracker.domain.entity.Events

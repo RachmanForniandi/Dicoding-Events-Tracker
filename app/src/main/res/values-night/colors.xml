@@ -2,6 +2,6 @@
 <resources>
     <color name="colorPrimary">#6200EA</color>
     <color name="colorPrimaryDark">#5502C8</color>
-    <color name="toolbar">#03a9f4</color>
+    <color name="actionBar_color">#1A237E</color>
     <color name="toolbar_content">#FFFFFF</color>
 </resources>
