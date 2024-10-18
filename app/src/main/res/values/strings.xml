@@ -3,7 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="search_events">Search events</string>
     <string name="language_settings">Language Settings</string>
-    <string name="hosted_by">Hosted by:\n %1$s</string>
+    <string name="hosted_by">Hosted by:\n%1$s</string>
     <string name="no_event_available_please_wait">No Event Available. Please wait.</string>
     <string name="image_error_no_data_events_available">Image error no data events available</string>
     <string name="start">Start:</string>
@@ -49,4 +49,5 @@
     <string name="event_saved">Event saved</string>
     <string name="removed_from_favorites">Removed from favorites</string>
     <string name="bookmarked">Bookmarked</string>
+    <string name="change_theme">Change Theme</string>
 </resources>

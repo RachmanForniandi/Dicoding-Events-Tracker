@@ -29,14 +29,18 @@
     <style name="CustomActionBarStyle" parent="Widget.MaterialComponents.ActionBar.Primary">
         <item name="android:background">@color/actionBarBackgroundColor</item>
     </style>
+    <style name="CustomButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:background">@color/actionBarBackgroundColor</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
 
-    <style name="main_tv_actionBar" parent="Widget.AppCompat.TextView">
+    <style name="setting_tv_actionBar" parent="Widget.AppCompat.TextView">
         <item name="android:fontFamily">@font/mountella_trial_bold</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
-    <style name="home_tv_tittle">
+    <style name="setting_tv_menu">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/dark</item>
     </style>

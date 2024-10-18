@@ -46,4 +46,5 @@
     <string name="event_saved">Acara tersimpan</string>
     <string name="removed_from_favorites">Terhapus di favorit</string>
     <string name="bookmarked">Ditandai</string>
+    <string name="change_theme">Ubah Tema</string>
 </resources>

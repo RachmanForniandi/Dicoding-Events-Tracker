@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.HtmlCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.navArgs
 import com.google.android.material.snackbar.Snackbar
@@ -135,7 +136,9 @@ class DetailEventsActivity : AppCompatActivity() {
         )
         binding.detailEventMain.tvSummaryEvent.text = detailEvent?.summary
 
-        binding.detailEventMain.tvDescription.text = Jsoup.parse(detailEvent?.description).text()
+        binding.detailEventMain.tvDescription.text =
+            detailEvent?.description?.let { HtmlCompat.fromHtml(it, HtmlCompat.FROM_HTML_MODE_COMPACT) }
+                .toString()
 
         binding.fabFavoriteEvent.isEnabled=true
         binding.fabFavoriteEvent.setOnClickListener {
