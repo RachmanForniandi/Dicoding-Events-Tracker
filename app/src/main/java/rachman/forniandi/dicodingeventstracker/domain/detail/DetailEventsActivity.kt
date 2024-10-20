@@ -115,7 +115,7 @@ class DetailEventsActivity : AppCompatActivity() {
             .into(binding.detailEventMain.imgLogoEvent)
         binding.detailEventMain.txtKindOfEvent.text = detailEvent?.category
         binding.detailEventMain.txtTitleEventDetail.text=detailEvent?.name
-        binding.detailEventMain.txtHostedBy.text=getString(R.string.hosted_by,detailEvent?.ownerName)
+        binding.detailEventMain.txtHostedBy.text=detailEvent?.ownerName
         binding.detailEventMain.tvStartTime.text = getStringDate(detailEvent?.beginTime)
         binding.detailEventMain.tvEndTime.text = getStringDate(detailEvent?.endTime)
 

@@ -2,7 +2,7 @@
 <resources>
     <string name="search_events">Mencari Acara</string>
     <string name="language_settings">Pengaturan Bahasa</string>
-    <string name="hosted_by">Diselenggarakan oleh: \n %1$s</string>
+    <string name="hosted_by">Diselenggarakan oleh:</string>
     <string name="no_event_available_please_wait">Belum ada acara yang tersedia. Mohon menunggu.</string>
     <string name="image_error_no_data_events_available">gambar error tidak ada data acara tersedia</string>
     <string name="start">Mulai:</string>

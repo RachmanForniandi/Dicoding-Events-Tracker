@@ -26,11 +26,30 @@
         <item name="android:textColorHint">@color/white_transparent</item>
     </style>
 
-    <style name="CustomActionBarStyle" parent="Widget.MaterialComponents.ActionBar.Primary">
+    <style name="CustomActionBarStyle">
         <item name="android:background">@color/actionBarBackgroundColor</item>
     </style>
-    <style name="CustomButtonStyle" parent="Widget.AppCompat.Button">
+
+    <style name="CustomColorTextStyle">
+        <item name="android:textColor">@color/colorText</item>
+    </style>
+
+    <style name="CustomMaterialTextView">
+        <item name="android:background">@drawable/bg_tv_item_dark_mini</item>
+        <item name="android:textColor">@color/colorTextMaterial</item>
+    </style>
+
+    <style name="CustomContentScrim">
         <item name="android:background">@color/actionBarBackgroundColor</item>
+    </style>
+
+    <style name="customColorTintIcon">
+        <item name="android:tint">@color/tintColorIcon</item>
+    </style>
+
+
+    <style name="CustomButtonStyle">
+        <item name="android:backgroundTint">@color/actionBarBackgroundColor</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
