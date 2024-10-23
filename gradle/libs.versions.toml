@@ -34,6 +34,7 @@ navigationSafeArgsGradlePlugin = "2.7.7"
 jsoupVersion="1.13.1"
 androidxLocalbroadcastmanager="1.0.0"
 dataStoreVersion="1.1.1"
+chuckerVersion="4.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -57,6 +58,9 @@ androidx-localbroadcastmanager={module="androidx.localbroadcastmanager:localbroa
 
 jsoup ={ module = "org.jsoup:jsoup", version.ref = "jsoupVersion" }
 gson ={ module = "com.google.code.gson:gson", version.ref = "gsonVersion" }
+
+chucker-library ={module = "com.github.chuckerteam.chucker:library",version.ref="chuckerVersion"}
+chucker-no-op ={module = "com.github.chuckerteam.chucker:library-no-op",version.ref="chuckerVersion"}
 
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "hiltAndroid" }

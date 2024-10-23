@@ -102,8 +102,9 @@ dependencies {
 
     implementation(libs.jsoup)
 
-
-
+    //chucker
+    debugImplementation(libs.chucker.library)
+    releaseImplementation(libs.chucker.no.op)
 
     implementation(libs.androidx.swiperefreshlayout)
 

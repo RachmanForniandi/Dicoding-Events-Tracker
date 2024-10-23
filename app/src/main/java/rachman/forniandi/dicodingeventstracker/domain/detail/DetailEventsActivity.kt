@@ -12,7 +12,6 @@ import androidx.navigation.navArgs
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
-import org.jsoup.Jsoup
 import rachman.forniandi.dicodingeventstracker.R
 import rachman.forniandi.dicodingeventstracker.data.local.room.EventEntity
 import rachman.forniandi.dicodingeventstracker.data.remoteUtils.RemoteResponse
