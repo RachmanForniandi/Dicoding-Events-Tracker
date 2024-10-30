@@ -26,19 +26,20 @@ class DetailEventsActivity : AppCompatActivity() {
     private lateinit var binding:ActivityDetailEventsBinding
     private val navArgs:DetailEventsActivityArgs by navArgs()
     private val viewmodel: DetailEventViewModel by viewModels ()
-    private var idEvent:Int=0
+    //private var idEvent:Int=0
     private var detailEvent: Events?=null
     private var linkEvent=""
-    private var isStatusFavorited= false
+    private var isStatusFavorite= false
     private var savedEventId = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailEventsBinding.inflate(layoutInflater)
-        idEvent = navArgs.eventDetails.id!!
+        //idEvent = navArgs.eventDetails.id!!
         
         setContentView(binding.root)
         if (savedInstanceState === null) {
+            val idEvent = navArgs.eventDetails.id ?: 0
             viewmodel.setValueId(idEvent)
         }
 
@@ -53,7 +54,7 @@ class DetailEventsActivity : AppCompatActivity() {
                     if (savedEvent.events.id == navArgs.eventDetails.id){
                         binding.fabFavoriteEvent.imageTintList = getColorStateList(R.color.yellow)
                         savedEventId = savedEvent.idNo
-                        isStatusFavorited = true
+                        isStatusFavorite = true
                     }
                 }
             }catch (e: Exception) {
@@ -141,7 +142,7 @@ class DetailEventsActivity : AppCompatActivity() {
 
         binding.fabFavoriteEvent.isEnabled=true
         binding.fabFavoriteEvent.setOnClickListener {
-            setFavoriteEventStatus(!isStatusFavorited)
+            setFavoriteEventStatus(!isStatusFavorite)
         }
     }
 
@@ -152,13 +153,13 @@ class DetailEventsActivity : AppCompatActivity() {
             binding.fabFavoriteEvent.imageTintList = getColorStateList(R.color.yellow)
             viewmodel.actionInsertFavEvent(eventEntity)
             showSnackBar(getString(R.string.event_saved))
-            isStatusFavorited = true
+            isStatusFavorite = true
         }else{
             val eventEntity = EventEntity(savedEventId,navArgs.eventDetails)
             binding.fabFavoriteEvent.imageTintList = getColorStateList(R.color.white)
             viewmodel.actionDeleteFavEvent(eventEntity)
             showSnackBar(getString(R.string.removed_from_favorites))
-            isStatusFavorited = false
+            isStatusFavorite = false
         }
     }
 

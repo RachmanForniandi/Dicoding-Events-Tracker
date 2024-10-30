@@ -53,6 +53,9 @@
 
     <color name="actionBarBackgroundColor">@color/actionBar_color</color>
 
+    <color name="colorButtonActiveState">@color/dark</color>
+
+
     <color name="lightBlue500">#03a9f4</color>//color primary
     <color name="lightBlue700">#0288D1</color>//color primary light
 

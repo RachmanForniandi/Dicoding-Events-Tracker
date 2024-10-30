@@ -20,7 +20,6 @@ class DetailEventViewModel @Inject constructor(
     private val favoriteEventRepository: FavoriteEventRepository
 ): ViewModel() {
 
-
     private val _idEventValue = MutableLiveData<Int>()
 
     fun setValueId(idEvent:Int){
@@ -43,8 +42,5 @@ class DetailEventViewModel @Inject constructor(
         favoriteEventRepository.deleteFavEvent(events)
     }
 
-    fun actionReadFavEvent() = viewModelScope.launch {
-        favoriteEventRepository.showFavEvent()
-    }
 
 }

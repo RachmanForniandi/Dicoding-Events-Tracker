@@ -50,4 +50,7 @@
     <string name="removed_from_favorites">Removed from favorites</string>
     <string name="bookmarked">Bookmarked</string>
     <string name="change_theme">Change Theme</string>
+    <string name="notification_alarm">Notification Alarm</string>
+    <string name="notifications_permission_granted">Notifications permission granted</string>
+    <string name="notifications_permission_rejected">Notifications permission rejected</string>
 </resources>

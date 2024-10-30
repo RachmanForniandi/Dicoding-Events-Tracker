@@ -17,4 +17,5 @@ object DataStoreModule {
     fun provideSettingThemePreferences(context: Context):SettingThemePreferences{
         return SettingThemePreferencesImpl.getInstance(context)
     }
+
 }

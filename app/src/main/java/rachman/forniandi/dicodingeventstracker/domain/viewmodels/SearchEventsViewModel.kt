@@ -31,16 +31,5 @@ class SearchEventsViewModel @Inject constructor(
         }
     }
 
-    /*val searchEvents by lazy {
-            JointLiveDataSource(_queryValue, fetchSearchUsers).switchMap {
-                repository.searchEvents(it.first.toString())
-                    .catch { e ->
-                        // Handle the exception here
-                        Log.e("SearchEventsViewModel", "Error during search", e) // Log the error
-                        // Optionally, emit an error state to your UI
-                        // _searchErrorState.value = e.message ?: "Unknown error"
-                    }.flowOn(Dispatchers.IO) // Perform search on a background thread
-            }
-        }*/
 
 }

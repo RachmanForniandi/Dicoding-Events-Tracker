@@ -21,7 +21,6 @@ class PastEventsViewmodel @Inject constructor(
 ): AndroidViewModel(application) {
 
     private val _activeValue = MutableLiveData<Int>()
-    var pastResponse:MutableLiveData<RemoteResponse<List<Events>>> = MutableLiveData()
 
     fun setValueActive(active:Int){
         _activeValue.value =active
@@ -31,17 +30,6 @@ class PastEventsViewmodel @Inject constructor(
         _activeValue.switchMap { active ->
             repository.getPastEvents(active)
         }
-        /*if (hasInternetConnection()){
-            try {
-                _activeValue.switchMap { active ->
-                    repository.getPastEvents(active)
-                }
-            }catch (e: Exception){
-                pastResponse.value = RemoteResponse.Error("Events not found.")
-            }
-        }else{
-            pastResponse.value = RemoteResponse.Error("No Internet Connection.")
-        }*/
 
     }
 

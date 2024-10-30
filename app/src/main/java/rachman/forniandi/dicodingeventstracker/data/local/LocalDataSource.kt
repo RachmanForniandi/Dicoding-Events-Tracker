@@ -14,6 +14,10 @@ class LocalDataSource @Inject constructor(
 
     suspend fun setTheme(isDarkModeThemeActive:Boolean)= settingThemePreferences.setTheme(isDarkModeThemeActive)
 
+    fun getNotificationAlarm():Flow<Boolean> = settingThemePreferences.getNotificationAlarm()
+
+    suspend fun setNotificationAlarm(isNotificationActive:Boolean)= settingThemePreferences.setNotificationAlarm(isNotificationActive)
+
     suspend fun insertFavoriteEvent(eventEntity: EventEntity) = eventDao.insertFavoriteEvent(eventEntity)
 
     fun showFavoriteEvent(): Flow<List<EventEntity>> = eventDao.readFavoriteEvents()

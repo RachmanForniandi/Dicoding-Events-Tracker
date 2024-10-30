@@ -18,4 +18,10 @@ class SettingThemeViewModel @Inject constructor(
     fun setTheme(isDarkModeThemeActivated:Boolean) = viewModelScope.launch {
         settingThemeRepository.setTheme(isDarkModeThemeActivated)
     }
+
+    fun getNotificationAlarmEvent() = settingThemeRepository.getNotificationAlarm().asLiveData()
+
+    fun setNotificationAlarmEvent(isNotificationActive:Boolean) = viewModelScope.launch {
+        settingThemeRepository.setNotificationAlarm(isNotificationActive)
+    }
 }

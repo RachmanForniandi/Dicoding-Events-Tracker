@@ -25,6 +25,19 @@ class SettingThemePreferencesImpl (context: Context) : SettingThemePreferences{
         }
     }
 
+
+    override fun getNotificationAlarm(): Flow<Boolean> {
+        return dataStore.data.map {
+            it[ConstantsMain.NOTIFICATION_KEY] ?: false
+        }
+    }
+
+    override suspend fun setNotificationAlarm(isNotificationActive: Boolean) {
+        dataStore.edit {
+            it[ConstantsMain.NOTIFICATION_KEY] = isNotificationActive
+        }
+    }
+
     companion object{
         @Volatile
         private var instance: SettingThemePreferencesImpl? = null
