@@ -37,14 +37,14 @@ class DetailEventsActivity : AppCompatActivity() {
         binding = ActivityDetailEventsBinding.inflate(layoutInflater)
 
         idEvent = if (intent.hasExtra(EXTRA_EVENT_ID)){
-            intent.getStringExtra(EXTRA_EVENT_ID)?.toInt() ?: 0
+            intent.getIntExtra(EXTRA_EVENT_ID,0)
         }else{
             navArgs.eventDetails.id?: 0
         }
+        Log.d("testIdFromWorker","testIdFromWorker: "+idEvent)
         
         setContentView(binding.root)
         if (savedInstanceState === null) {
-            //val idEvent = navArgs.eventDetails.id ?: 0
             viewmodel.setValueId(idEvent)
         }
 

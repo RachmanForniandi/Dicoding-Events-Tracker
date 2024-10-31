@@ -56,16 +56,18 @@ class EventAlarmWorker (
 
                 eventResponse?.let { response ->
                     response.listEvents.firstOrNull()?.let { event ->
+                        val toDetailAlarm = Intent(applicationContext,DetailEventsActivity::class.java).apply {
+                            putExtra(DetailEventsActivity.EXTRA_EVENT_ID, event?.id)
+                            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        }
+                        pendingIntent = PendingIntent.getActivity(
+                            applicationContext,0,
+                            toDetailAlarm,
+                            PendingIntent.FLAG_IMMUTABLE)
                         showNotification(
                             title = "Upcoming Event!",
                             description = "Don't miss Event ${event.name} on ${event.beginTime}"
                         )
-                        val toDetailAlarm = Intent(applicationContext,DetailEventsActivity::class.java).apply {
-                            putExtra(DetailEventsActivity.EXTRA_EVENT_ID,event.id)
-                            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        }
-                        pendingIntent = PendingIntent.getActivity(applicationContext,0,toDetailAlarm,PendingIntent.FLAG_IMMUTABLE)
-
                         Result.success()
                     } ?: Result.failure()
                 } ?: Result.failure()
