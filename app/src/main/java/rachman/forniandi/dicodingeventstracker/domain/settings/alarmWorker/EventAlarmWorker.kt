@@ -2,7 +2,9 @@ package rachman.forniandi.dicodingeventstracker.domain.settings.alarmWorker
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.work.CoroutineWorker
@@ -15,12 +17,15 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import rachman.forniandi.dicodingeventstracker.R
 import rachman.forniandi.dicodingeventstracker.data.remote.response.ResponseEvents
+import rachman.forniandi.dicodingeventstracker.domain.detail.DetailEventsActivity
 import java.io.IOException
 
 class EventAlarmWorker (
     context: Context,
     params: WorkerParameters,
 ) : CoroutineWorker(context, params){
+
+    private var pendingIntent:PendingIntent?=null
 
     companion object {
         private const val NOTIFICATION_ID = 1
@@ -30,6 +35,7 @@ class EventAlarmWorker (
     }
 
     override suspend fun doWork(): Result = withContext(Dispatchers.IO) {
+
         try {
             val client = OkHttpClient()
             val request = Request.Builder()
@@ -54,6 +60,12 @@ class EventAlarmWorker (
                             title = "Upcoming Event!",
                             description = "Don't miss Event ${event.name} on ${event.beginTime}"
                         )
+                        val toDetailAlarm = Intent(applicationContext,DetailEventsActivity::class.java).apply {
+                            putExtra(DetailEventsActivity.EXTRA_EVENT_ID,event.id)
+                            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        }
+                        pendingIntent = PendingIntent.getActivity(applicationContext,0,toDetailAlarm,PendingIntent.FLAG_IMMUTABLE)
+
                         Result.success()
                     } ?: Result.failure()
                 } ?: Result.failure()
@@ -83,6 +95,7 @@ class EventAlarmWorker (
             .setSmallIcon(R.mipmap.ic_launcher_dicoding_submission_foreground)
             .setContentTitle(title)
             .setContentText(description)
+            .setContentIntent(pendingIntent)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setDefaults(NotificationCompat.DEFAULT_ALL)
             .setAutoCancel(true)

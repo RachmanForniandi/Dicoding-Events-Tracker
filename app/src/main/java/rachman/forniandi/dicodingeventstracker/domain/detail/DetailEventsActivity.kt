@@ -26,7 +26,7 @@ class DetailEventsActivity : AppCompatActivity() {
     private lateinit var binding:ActivityDetailEventsBinding
     private val navArgs:DetailEventsActivityArgs by navArgs()
     private val viewmodel: DetailEventViewModel by viewModels ()
-    //private var idEvent:Int=0
+    private var idEvent:Int=0
     private var detailEvent: Events?=null
     private var linkEvent=""
     private var isStatusFavorite= false
@@ -35,11 +35,16 @@ class DetailEventsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailEventsBinding.inflate(layoutInflater)
-        //idEvent = navArgs.eventDetails.id!!
+
+        idEvent = if (intent.hasExtra(EXTRA_EVENT_ID)){
+            intent.getStringExtra(EXTRA_EVENT_ID)?.toInt() ?: 0
+        }else{
+            navArgs.eventDetails.id?: 0
+        }
         
         setContentView(binding.root)
         if (savedInstanceState === null) {
-            val idEvent = navArgs.eventDetails.id ?: 0
+            //val idEvent = navArgs.eventDetails.id ?: 0
             viewmodel.setValueId(idEvent)
         }
 
@@ -192,6 +197,7 @@ class DetailEventsActivity : AppCompatActivity() {
     }
 
     companion object{
+        const val EXTRA_EVENT_ID = "extra_event_id"
         const val REGISTER_EVENT="register_event"
     }
 }
