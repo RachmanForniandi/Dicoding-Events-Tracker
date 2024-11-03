@@ -20,6 +20,6 @@ interface EventDao {
     @Delete
     suspend fun deleteFavoriteEvent(eventEntity: EventEntity)
 
-    /*@Query("DELETE FROM events_table")
-    suspend fun deleteAllFavoriteEvents()*/
+    @Query("DELETE FROM events_table")
+    fun deleteAllFavoriteEvents()
 }

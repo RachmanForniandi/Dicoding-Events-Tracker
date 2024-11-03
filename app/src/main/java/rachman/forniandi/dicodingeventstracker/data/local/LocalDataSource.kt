@@ -24,5 +24,5 @@ class LocalDataSource @Inject constructor(
 
     suspend fun deleteFavoriteEvent(eventEntity: EventEntity)= eventDao.deleteFavoriteEvent(eventEntity)
 
-    //suspend fun deleteAllFavoriteEvent()= eventDao.deleteAllFavoriteEvents()
+    fun deleteAllFavoriteEvent() = eventDao.deleteAllFavoriteEvents()
 }

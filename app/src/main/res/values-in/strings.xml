@@ -50,4 +50,10 @@
     <string name="notification_alarm">Notifikasi Alarm</string>
     <string name="notifications_permission_granted">Izin notifikasi diberikan</string>
     <string name="notifications_permission_rejected">Izin notifikasi ditolak</string>
+    <string name="bookmarked_event">Acara ditandai</string>
+    <string name="delete_all_bookmarks">Hapus semua penanda</string>
+    <string name="no">Tidak</string>
+    <string name="yes">Iya</string>
+    <string name="are_you_sure_do_you_want_to_delete_all_bookmark_events">apakah anda yakin untuk menghapus semua penanda acara?</string>
+    <string name="all_events_removed">Semua acara terhapus</string>
 </resources>

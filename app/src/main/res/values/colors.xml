@@ -35,6 +35,8 @@
     <color name="image_input_background">#E1E1E1</color>
     <color name="line_dark_background">#FF424242</color>
 
+    <color name="backgroundStateButtonColor">@color/lightGray</color>
+
 
     <color name="colorPrimary">#6200EA</color>
     <color name="colorPrimaryDark">#5502C8</color>

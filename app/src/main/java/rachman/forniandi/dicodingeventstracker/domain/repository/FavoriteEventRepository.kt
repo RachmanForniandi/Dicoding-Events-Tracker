@@ -1,9 +1,7 @@
 package rachman.forniandi.dicodingeventstracker.domain.repository
 
-import androidx.lifecycle.LiveData
 import kotlinx.coroutines.flow.Flow
 import rachman.forniandi.dicodingeventstracker.data.local.room.EventEntity
-import rachman.forniandi.dicodingeventstracker.domain.entity.Events
 
 interface FavoriteEventRepository {
 
@@ -13,5 +11,5 @@ interface FavoriteEventRepository {
 
     fun showFavEvent(): Flow<List<EventEntity>>
 
-    //suspend fun deleteAllFavEvent()
+    fun deleteAllFavEvent()
 }

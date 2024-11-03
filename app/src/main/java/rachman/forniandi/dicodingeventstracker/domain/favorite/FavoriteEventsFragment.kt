@@ -1,5 +1,7 @@
 package rachman.forniandi.dicodingeventstracker.domain.favorite
 
+import android.app.AlertDialog.Builder
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,12 +10,15 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.observeOn
+import rachman.forniandi.dicodingeventstracker.R
 import rachman.forniandi.dicodingeventstracker.adapters.EventsAdapter
 import rachman.forniandi.dicodingeventstracker.adapters.FavoriteEventsAdapter
 import rachman.forniandi.dicodingeventstracker.databinding.FragmentFavoriteEventsBinding
 import rachman.forniandi.dicodingeventstracker.domain.entity.Events
+import rachman.forniandi.dicodingeventstracker.domain.home.HomeFragmentDirections
 import rachman.forniandi.dicodingeventstracker.domain.past.PastEventsFragmentDirections
 import rachman.forniandi.dicodingeventstracker.domain.viewmodels.FavoriteEventsViewModel
 import rachman.forniandi.dicodingeventstracker.domain.viewmodels.PastEventsViewmodel
@@ -39,10 +44,46 @@ class FavoriteEventsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupBookmarkBarMain()
         setupListRvFavEvent()
         showListFavEvent()
     }
 
+    private fun setupBookmarkBarMain() {
+        binding.apply {
+            bookmarkToolbar.inflateMenu(R.menu.menu_favorite)
+            bookmarkToolbar.setOnMenuItemClickListener {
+                when(it.itemId){
+                    R.id.deleteAll_bookmark_event ->{
+                        checkBeforeClearAllBookmarked()
+                    }
+                }
+                true
+            }
+        }
+    }
+
+    private fun checkBeforeClearAllBookmarked() {
+        Builder(requireActivity())
+            .setTitle(getString(R.string.delete_all_bookmarks))
+            .setMessage(getString(R.string.are_you_sure_do_you_want_to_delete_all_bookmark_events))
+            .setNegativeButton(getString(R.string.no), null)
+            .setPositiveButton(getString(R.string.yes), object : DialogInterface.OnClickListener {
+                override fun onClick(arg0: DialogInterface?, arg1: Int) {
+                    viewModel.clearAllFavoriteEvents()
+                    showSnackBarBookmarkRemoved()
+                }
+            }).create().show()
+    }
+
+    private fun showSnackBarBookmarkRemoved(){
+        Snackbar.make(
+            binding.root,
+            getString(R.string.all_events_removed),
+            Snackbar.LENGTH_SHORT
+        ).setAction("Okay"){}
+            .show()
+    }
 
 
     private fun setupListRvFavEvent() {
@@ -66,6 +107,8 @@ class FavoriteEventsFragment : Fragment() {
         binding.apply {
             viewNoEvent.root.isVisible = isEmpty
             rvEventsFavourite.isVisible = !isEmpty
+            //viewNoEvent.imgNoDataFavorite.isVisible = isEmpty
+            //viewNoEvent.txtNoEventFavorite.isVisible = isEmpty
         }
     }
 }

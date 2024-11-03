@@ -53,4 +53,10 @@
     <string name="notification_alarm">Notification Alarm</string>
     <string name="notifications_permission_granted">Notifications permission granted</string>
     <string name="notifications_permission_rejected">Notifications permission rejected</string>
+    <string name="bookmarked_event">Bookmarked Event</string>
+    <string name="delete_all_bookmarks">delete all bookmarks</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="are_you_sure_do_you_want_to_delete_all_bookmark_events">Are you sure do you want to delete all bookmark events?</string>
+    <string name="all_events_removed">All events removed</string>
 </resources>

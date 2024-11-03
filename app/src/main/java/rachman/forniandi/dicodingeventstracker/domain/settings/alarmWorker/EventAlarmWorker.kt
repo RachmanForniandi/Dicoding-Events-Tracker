@@ -5,6 +5,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.work.CoroutineWorker
@@ -94,7 +95,13 @@ class EventAlarmWorker (
         }
         notificationManager.createNotificationChannel(channel)
         val notification = NotificationCompat.Builder(applicationContext, CHANNEL_ID)
-            .setSmallIcon(R.mipmap.ic_launcher_dicoding_submission_foreground)
+            .setSmallIcon(R.drawable.ic_icon_notif)
+            .setLargeIcon(
+             BitmapFactory.decodeResource(
+                applicationContext.resources,
+                R.drawable.ic_icon_notif_work
+                )
+            )
             .setContentTitle(title)
             .setContentText(description)
             .setContentIntent(pendingIntent)

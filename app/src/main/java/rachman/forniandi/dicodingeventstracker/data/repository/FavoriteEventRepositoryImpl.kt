@@ -12,24 +12,7 @@ import rachman.forniandi.dicodingeventstracker.domain.entity.Events
 
 class FavoriteEventRepositoryImpl(private val localDataSource: LocalDataSource
 ): FavoriteEventRepository {
-    /*override suspend fun insertFavEvent(events: Events) {
-        val entity = DataMapper.mapEventDomainToEntity(events)
-        localDataSource.insertFavoriteEvent(entity)
-    }
 
-    override suspend fun deleteFavEvent(events: Events) {
-        val entity = DataMapper.mapEventDomainToEntity(events)
-        localDataSource.deleteFavoriteEvent(entity)
-    }
-
-    override fun showFavEvent()= liveData {
-        val localEvent = localDataSource.showFavoriteEvent().map { localEvent ->
-            localEvent.map { eventEntity ->
-                DataMapper.mapEventEntityToDomain(eventEntity)
-            }
-        }
-        emitSource(localEvent)
-    }*/
     override suspend fun insertFavEvent(eventEntity: EventEntity) {
         localDataSource.insertFavoriteEvent(eventEntity)
     }
@@ -39,6 +22,9 @@ class FavoriteEventRepositoryImpl(private val localDataSource: LocalDataSource
     }
 
     override fun showFavEvent()= localDataSource.showFavoriteEvent()
+
+    override fun deleteAllFavEvent() = localDataSource.deleteAllFavoriteEvent()
+
 
     companion object {
         @Volatile
