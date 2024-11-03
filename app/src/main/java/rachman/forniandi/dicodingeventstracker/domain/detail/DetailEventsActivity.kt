@@ -1,6 +1,7 @@
 package rachman.forniandi.dicodingeventstracker.domain.detail
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -89,6 +90,7 @@ class DetailEventsActivity : AppCompatActivity() {
                 linkEvent = detailEvent?.link.toString()
                 setUpContentDetail(detailEvent)
                 binding.detailEventMain.btnRegisterEvent.isEnabled = true
+                binding.detailEventMain.btnRegisterEvent.backgroundTintList = getColorStateList(R.color.lightBlue500)
                 setupFunctionalLinkDetailEvent(linkEvent)
 
             }

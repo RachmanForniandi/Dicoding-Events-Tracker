@@ -86,6 +86,11 @@ class UpcomingEventsFragment : Fragment() {
                 binding.swipeRefreshUpcomingEvent.isRefreshing = false
                 binding.imgDataEmpty.visibility= View.VISIBLE
                 binding.txtLblEventNotAvailable.visibility=View.VISIBLE
+                binding.btnReloadPageUpcoming.visibility= View.VISIBLE
+                binding.btnReloadPageUpcoming.isClickable = true
+                binding.btnReloadPageUpcoming.setOnClickListener {
+                    showDataUpComingEvent()
+                }
                 Toast.makeText(requireActivity() ,response.errorMessage, Toast.LENGTH_SHORT).show()
             }
 

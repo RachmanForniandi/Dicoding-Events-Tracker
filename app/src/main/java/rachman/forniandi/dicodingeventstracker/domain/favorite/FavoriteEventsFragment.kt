@@ -12,16 +12,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.observeOn
 import rachman.forniandi.dicodingeventstracker.R
-import rachman.forniandi.dicodingeventstracker.adapters.EventsAdapter
 import rachman.forniandi.dicodingeventstracker.adapters.FavoriteEventsAdapter
 import rachman.forniandi.dicodingeventstracker.databinding.FragmentFavoriteEventsBinding
 import rachman.forniandi.dicodingeventstracker.domain.entity.Events
-import rachman.forniandi.dicodingeventstracker.domain.home.HomeFragmentDirections
-import rachman.forniandi.dicodingeventstracker.domain.past.PastEventsFragmentDirections
 import rachman.forniandi.dicodingeventstracker.domain.viewmodels.FavoriteEventsViewModel
-import rachman.forniandi.dicodingeventstracker.domain.viewmodels.PastEventsViewmodel
 
 @AndroidEntryPoint
 class FavoriteEventsFragment : Fragment() {
@@ -35,7 +30,6 @@ class FavoriteEventsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         _binding = FragmentFavoriteEventsBinding.inflate(inflater,container,false)
         viewModel= ViewModelProvider(this)[FavoriteEventsViewModel::class.java]
         return binding.root

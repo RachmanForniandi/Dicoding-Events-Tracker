@@ -113,4 +113,17 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:visibility="visible"/>
 
+    <Button
+        android:id="@+id/btn_reload_page_upcoming"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/reload_page"
+        app:layout_constraintTop_toBottomOf="@id/txt_lbl_event_not_available"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        android:clickable="false"
+        tools:visibility="visible"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
