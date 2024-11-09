@@ -82,6 +82,7 @@ class FavoriteEventsFragment : Fragment() {
 
     private fun setupListRvFavEvent() {
         binding.rvEventsFavourite.adapter = adapter
+        binding.rvEventsFavourite.setHasFixedSize(true)
         adapter.setOnClickListener(object :FavoriteEventsAdapter.OnEventFavoriteClickListener{
             override fun onClick(position: Int, event: Events) {
                 val toDetailEvent = FavoriteEventsFragmentDirections.actionFavoriteEventsFragmentToDetailEventsActivity(event)

@@ -9,9 +9,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.switchMap
 import dagger.hilt.android.lifecycle.HiltViewModel
-import rachman.forniandi.dicodingeventstracker.data.remoteUtils.RemoteResponse
 import rachman.forniandi.dicodingeventstracker.domain.repository.EventsRepository
-import rachman.forniandi.dicodingeventstracker.domain.entity.Events
 import javax.inject.Inject
 
 @HiltViewModel

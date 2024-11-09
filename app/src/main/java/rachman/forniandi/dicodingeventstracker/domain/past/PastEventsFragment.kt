@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import rachman.forniandi.dicodingeventstracker.R
 import rachman.forniandi.dicodingeventstracker.adapters.EventsAdapter
@@ -93,11 +92,6 @@ class PastEventsFragment : Fragment() {
     }
 
     private fun setupSearchEvent() {
-        /*binding.svEvent.setupWithSearchBar(binding.searchBar)
-        binding.searchBar.setOnClickListener() {
-            val actionSearch = PastEventsFragmentDirections.actionPastEventsFragmentToSearchEventsFragment()
-            findNavController().navigate(actionSearch)
-        }*/
         binding.apply {
             pastToolbar.inflateMenu(R.menu.past_event_menu)
             pastToolbar.setOnMenuItemClickListener {
@@ -110,7 +104,6 @@ class PastEventsFragment : Fragment() {
                 false
             }
         }
-
     }
 
     private fun showDataPastEvent() {

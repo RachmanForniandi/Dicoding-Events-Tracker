@@ -83,7 +83,7 @@ class DetailEventsActivity : AppCompatActivity() {
                 detailEvent = response.data
                 Picasso
                     .get()
-                    .load(detailEvent?.imageLogo)
+                    .load(detailEvent?.mediaCover)
                     .placeholder(R.drawable.place_holder)
                     .error(R.drawable.error_placeholder)
                     .into(binding.imgBackDrop)

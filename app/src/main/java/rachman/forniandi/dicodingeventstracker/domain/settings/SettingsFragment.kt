@@ -51,6 +51,11 @@ class SettingsFragment : Fragment() {
                     switchChangeTheme.isChecked = false
                 }
             }
+            switchChangeTheme.setOnCheckedChangeListener { _, isChecked ->
+                settingThemeViewModel.setTheme(isChecked)
+            }
+
+
             settingThemeViewModel.getNotificationAlarmEvent().observe(viewLifecycleOwner){ isNotificationActive->
                 if (isNotificationActive){
                     switchNotificationAlarm.isChecked = true
@@ -61,9 +66,6 @@ class SettingsFragment : Fragment() {
                 }
             }
 
-            switchChangeTheme.setOnCheckedChangeListener { _, isChecked ->
-                settingThemeViewModel.setTheme(isChecked)
-            }
             switchNotificationAlarm.setOnCheckedChangeListener { _, isChecked ->
                 settingThemeViewModel.setNotificationAlarmEvent(isChecked)
             }

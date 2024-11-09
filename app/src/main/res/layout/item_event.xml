@@ -5,7 +5,6 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
         android:layout_margin="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,6 +42,7 @@
                 android:drawablePadding="8dp"
                 app:flow_horizontalBias="0.0"
                 app:layout_constraintTop_toBottomOf="@id/img_Event"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:text="Events Name bla bla bla bla"/>
         </androidx.constraintlayout.widget.ConstraintLayout>

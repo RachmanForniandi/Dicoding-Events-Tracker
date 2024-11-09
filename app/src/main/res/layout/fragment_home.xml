@@ -95,7 +95,8 @@
                 app:layout_constraintTop_toBottomOf="@id/txt_no_data_event_upcoming_available"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:clickable="false"/>
+                android:clickable="false"
+                tools:visibility="visible"/>
 
 
 
@@ -231,9 +232,9 @@
                 app:layout_constraintTop_toBottomOf="@id/txt_no_data_event_past_available"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:clickable="false"/>
+                android:clickable="false"
+                tools:visibility="visible"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </RelativeLayout>
-
 
 </androidx.core.widget.NestedScrollView>
