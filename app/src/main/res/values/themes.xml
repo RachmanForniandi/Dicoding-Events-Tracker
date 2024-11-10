@@ -29,6 +29,9 @@
     <style name="CustomActionBarStyle">
         <item name="android:background">@color/actionBarBackgroundColor</item>
     </style>
+    <style name="CustomImageSplash">
+        <item name="android:src">@drawable/dicoding_logo</item>
+    </style>
 
     <style name="CustomColorTextStyle">
         <item name="android:textColor">@color/colorText</item>

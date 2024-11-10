@@ -24,6 +24,8 @@
     <color name="yellow">#FFC114</color>
     <color name="green">#00C980</color>
 
+    <color name="backgroundMaterialColorText">#263238</color>
+
 
     <color name="actionBar_color">#03a9f4</color>
     <color name="toolbar_content">#FFFFFF</color>

@@ -33,6 +33,7 @@
         </activity>
         <activity
             android:name=".domain.home.MainActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false"/>
         <activity
             android:name=".domain.detail.DetailEventsActivity"

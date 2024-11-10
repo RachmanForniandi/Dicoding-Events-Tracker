@@ -8,4 +8,5 @@
     <color name="tintColorIcon">#FFFFFF</color>
     <color name="colorText">#FFFFFF</color>
     <color name="colorTextMaterial">#212121</color>
+    <color name="backgroundMaterialColorText">#FFFFFF</color>
 </resources>
