@@ -37,6 +37,7 @@
                 android:textStyle="bold"
                 android:ellipsize="end"
                 android:drawablePadding="8dp"
+                android:fontFamily="@font/belgrano_regular"
                 style="@style/CustomMaterialTextView"
                 app:flow_horizontalBias="0.0"
                 app:layout_constraintTop_toTopOf="parent"
@@ -50,6 +51,7 @@
                 android:textStyle="bold"
                 android:textSize="16sp"
                 android:maxLines="3"
+                android:fontFamily="@font/roboto_regular"
                 tools:text="Android Career Kickstart: Actionable Advice for New Graduates to Land Developer Roles Rapidly"
                 app:layout_constraintTop_toBottomOf="@id/txt_kind_of_event"
                 app:layout_constraintStart_toStartOf="parent"
@@ -79,6 +81,7 @@
                 app:layout_constraintStart_toEndOf="@id/img_logo_event"
                 tools:text="hosted"
                 android:maxLines="2"
+                android:fontFamily="@font/oswald_regular"
                 style="@style/CustomColorTextStyle" />
 
             <TextView
@@ -111,6 +114,7 @@
                 app:layout_constraintStart_toEndOf="@id/img_logo_event"
                 tools:text="27 Jul 2024 13:00"
                 style="@style/CustomColorTextStyle"
+                android:fontFamily="@font/oswald_regular"
                 />
             <TextView
                 android:id="@+id/txt_lbl_end_time"
@@ -132,6 +136,7 @@
                 app:layout_constraintStart_toEndOf="@id/img_logo_event"
                 tools:text="29 Jul 2024 13:00"
                 style="@style/CustomColorTextStyle"
+                android:fontFamily="@font/oswald_regular"
                 />
 
             <TextView
@@ -149,6 +154,7 @@
                 android:id="@+id/img_pin_location"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:contentDescription="@string/symbol_location"
                 android:src="@drawable/ic_location"
                 android:layout_marginStart="8dp"
                 style="@style/customColorTintIcon"
@@ -161,6 +167,7 @@
                 android:layout_height="wrap_content"
                 android:maxLines="3"
                 style="@style/CustomColorTextStyle"
+                android:fontFamily="@font/oswald_regular"
                 app:layout_constraintTop_toBottomOf="@id/txt_lbl_location"
                 app:layout_constraintStart_toEndOf="@id/img_pin_location"
                 tools:text="Youtube: ioh.co.id/IDCampLIVE-9Jan Online "/>
@@ -184,6 +191,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginStart="8dp"
                 style="@style/CustomColorTextStyle"
+                android:fontFamily="@font/roboto_regular"
                 app:layout_constraintEnd_toEndOf="@+id/txt_lbl_remaining_quota"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_lbl_remaining_quota" />
@@ -209,6 +217,7 @@
                 android:layout_marginTop="8dp"
                 tools:text="@string/description"
                 style="@style/CustomColorTextStyle"
+                android:fontFamily="@font/roboto_regular"
                 app:layout_constraintTop_toBottomOf="@id/txt_lbl_description"
                 app:layout_constraintStart_toStartOf="parent"/>
 
@@ -231,6 +240,7 @@
                 android:layout_marginTop="8dp"
                 tools:text="Summary"
                 style="@style/CustomColorTextStyle"
+                android:fontFamily="@font/roboto_regular"
                 app:layout_constraintTop_toBottomOf="@id/line_border_description_summary"
                 app:layout_constraintStart_toStartOf="parent"/>
 
@@ -241,6 +251,7 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/register"
                 style="@style/CustomButtonStyle"
+                android:fontFamily="@font/oswald_regular"
                 app:layout_constraintTop_toBottomOf="@id/tv_summary_event"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>

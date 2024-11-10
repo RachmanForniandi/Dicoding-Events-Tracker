@@ -57,17 +57,7 @@ class PastEventsFragment : Fragment() {
                             else -> { }
                         }
                     }
-                    false -> {
-                        Log.d(TAG_NETWORK_MONITOR, "No Connection")
-                        binding.layoutNoInternetConnection.imgNoInternetConnection.visibility= View.VISIBLE
-                        binding.layoutNoInternetConnection.txtLblNoInternetConnection.visibility= View.VISIBLE
-                        binding.layoutNoInternetConnection.txtLblSuggestCheckConnection.visibility= View.VISIBLE
-                        binding.layoutNoInternetConnection.btnReloadPage.visibility= View.VISIBLE
-                        binding.layoutNoInternetConnection.btnReloadPage.isClickable = true
-                        binding.layoutNoInternetConnection.btnReloadPage.setOnClickListener {
-                            showDataPastEvent()
-                        }
-                    }
+                    false -> {}
                 }
             }
         }
