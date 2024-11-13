@@ -7,7 +7,6 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import rachman.forniandi.dicodingeventstracker.data.local.LocalDataSource
-import rachman.forniandi.dicodingeventstracker.data.local.datastore.SettingThemePreferences
 import rachman.forniandi.dicodingeventstracker.data.local.room.EventDao
 import rachman.forniandi.dicodingeventstracker.data.local.room.EventDatabase
 

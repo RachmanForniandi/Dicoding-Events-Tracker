@@ -14,14 +14,14 @@ class SettingThemePreferencesImpl (context: Context) : SettingThemePreferences{
     private val dataStore = context.dataStoreCore
 
     override fun getTheme(): Flow<Boolean> {
-       return dataStore.data.map {
-            it[ConstantsMain.THEME_DARK_MODE]?: false
+       return dataStore.data.map { preferences ->
+            preferences[ConstantsMain.THEME_DARK_MODE]?: false
         }
     }
 
     override suspend fun setTheme(isDarkModeThemeActive: Boolean) {
-        dataStore.edit {
-            it[ConstantsMain.THEME_DARK_MODE] = isDarkModeThemeActive
+        dataStore.edit {preferences ->
+            preferences[ConstantsMain.THEME_DARK_MODE] = isDarkModeThemeActive
         }
     }
 

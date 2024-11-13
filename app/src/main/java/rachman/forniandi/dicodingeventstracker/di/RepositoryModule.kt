@@ -6,10 +6,12 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import rachman.forniandi.dicodingeventstracker.data.local.LocalDataSource
 import rachman.forniandi.dicodingeventstracker.data.remote.response.RemoteDataSource
 import rachman.forniandi.dicodingeventstracker.data.remote.retrofit.EventRepositoryImpl
 import rachman.forniandi.dicodingeventstracker.data.repository.FavoriteEventRepositoryImpl
 import rachman.forniandi.dicodingeventstracker.data.repository.SettingThemeRepositoryImpl
+import rachman.forniandi.dicodingeventstracker.di.DatabaseModule.provideEventDao
 import rachman.forniandi.dicodingeventstracker.domain.repository.EventsRepository
 import rachman.forniandi.dicodingeventstracker.domain.repository.FavoriteEventRepository
 import rachman.forniandi.dicodingeventstracker.domain.repository.SettingThemeRepository
@@ -35,4 +37,10 @@ object RepositoryModule {
         val localDataSource = DatabaseModule.provideLocalDataSource(context)
         return SettingThemeRepositoryImpl(localDataSource)
     }
+
+    /*@Provides
+    fun provideLocalDataSource(localDataSource: LocalDataSource): SettingThemeRepository {
+        val themeRepository= DataStoreModule.provideSettingThemeRepository(localDataSource)
+        return SettingThemeRepositoryImpl(themeRepository)
+    }*/
 }
