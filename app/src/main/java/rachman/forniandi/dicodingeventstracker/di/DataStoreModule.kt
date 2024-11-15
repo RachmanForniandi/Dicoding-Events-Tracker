@@ -21,9 +21,5 @@ object DataStoreModule {
         return SettingThemePreferencesImpl.getInstance(context)
     }
 
-    /*@Provides
-    fun provideSettingThemeRepository(localDataSource: LocalDataSource):SettingThemeRepository{
-        return SettingThemeRepositoryImpl.getInstanceForSettingTheme(localDataSource)
-    }*/
 
 }

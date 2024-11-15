@@ -38,9 +38,5 @@ object RepositoryModule {
         return SettingThemeRepositoryImpl(localDataSource)
     }
 
-    /*@Provides
-    fun provideLocalDataSource(localDataSource: LocalDataSource): SettingThemeRepository {
-        val themeRepository= DataStoreModule.provideSettingThemeRepository(localDataSource)
-        return SettingThemeRepositoryImpl(themeRepository)
-    }*/
+
 }

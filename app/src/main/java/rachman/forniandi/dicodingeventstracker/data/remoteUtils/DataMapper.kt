@@ -25,46 +25,6 @@ object DataMapper {
         )
     }
 
-    /*fun mapEventEntityToDomain(eventEntity: List<EventEntity>): Events {
-        val eventsList = eventEntity.map { (events) ->  // Destructure to access 'events' directly
-            Events(
-                id = events.id,
-                name = events.name,
-                summary = events.summary,
-                description = events.description,
-                imageLogo = events.imageLogo,
-                mediaCover = events.mediaCover,
-                category = events.category,
-                ownerName = events.ownerName,
-                cityName = events.cityName,
-                quota = events.quota,
-                registrants = events.registrants,
-                beginTime = events.beginTime,
-                endTime = events.endTime,
-                link = events.link
-            )
-        }
-        return Events(eventEntity = eventsList)
-    }*/
-
-    /*fun mapEventDomainToEntity(events: Events): EventEntity {
-        return EventEntity(
-            id = events.id,
-            name = events.name,
-            summary = events.summary,
-            description = events.description,
-            imageLogo = events.imageLogo,
-            mediaCover = events.mediaCover,
-            category = events.category,
-            ownerName = events.ownerName,
-            cityName = events.cityName,
-            quota = events.quota,
-            registrants = events.registrants,
-            beginTime = events.beginTime,
-            endTime = events.endTime,
-            link = events.link
-        )
-    }*/
 
     fun mapDetailEventsResponseToDomain(event: Event):Events{
         return Events(
