@@ -61,4 +61,6 @@
     <string name="all_events_removed">All events removed</string>
     <string name="goto_settings">go to settings</string>
     <string name="symbol_location">Symbol Location</string>
+    <string name="image_logo_event">image logo event</string>
+    <string name="don_t_miss_event_on">Don\'t miss Event %1$s on %2$s</string>
 </resources>

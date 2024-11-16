@@ -64,12 +64,13 @@ dependencies {
     implementation (libs.kotlinx.coroutines.core)
     implementation (libs.kotlinx.coroutines.android)
 
-    //picasso
-    implementation(libs.picasso)
 
     //viewmodel
     implementation (libs.androidx.lifecycle.viewmodel.ktx)
     implementation (libs.androidx.activity.ktx)
+
+    //glide
+    implementation(libs.glide)
 
     //lifecycle
     implementation (libs.androidx.lifecycle.livedata.ktx)

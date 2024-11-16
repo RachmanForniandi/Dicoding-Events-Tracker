@@ -58,4 +58,6 @@
     <string name="all_events_removed">Semua acara terhapus</string>
     <string name="goto_settings">menuju pengaturan</string>
     <string name="symbol_location">Simbol lokasi</string>
+    <string name="image_logo_event">gambar logo event</string>
+    <string name="don_t_miss_event_on">Jangan lewatkan %1$s pada %2$s</string>
 </resources>

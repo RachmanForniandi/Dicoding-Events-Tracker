@@ -24,15 +24,4 @@ class SettingThemeRepositoryImpl(
         return localDataSource.setNotificationAlarm(isNotificationActive)
     }
 
-    companion object {
-        @Volatile
-        private var instance: SettingThemeRepositoryImpl? = null
-
-        fun getInstanceForSettingTheme(localDataSource: LocalDataSource) =
-            instance ?: synchronized(this) {
-                instance ?: SettingThemeRepositoryImpl(localDataSource)
-            }.also {
-                instance = it
-            }
-    }
 }

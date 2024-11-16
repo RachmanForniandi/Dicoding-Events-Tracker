@@ -1,17 +1,16 @@
 package rachman.forniandi.dicodingeventstracker.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
 import rachman.forniandi.dicodingeventstracker.R
-import rachman.forniandi.dicodingeventstracker.adapters.EventsAdapter.EventsHolder
-import rachman.forniandi.dicodingeventstracker.adapters.EventsAdapter.OnEventClickListener
 import rachman.forniandi.dicodingeventstracker.data.local.room.EventEntity
 import rachman.forniandi.dicodingeventstracker.databinding.ItemEventBinding
 import rachman.forniandi.dicodingeventstracker.domain.entity.Events
 
-class FavoriteEventsAdapter: RecyclerView.Adapter<FavoriteEventsAdapter.FavoriteEventsHolder>() {
+class FavoriteEventsAdapter(private val mContext: Context): RecyclerView.Adapter<FavoriteEventsAdapter.FavoriteEventsHolder>() {
 
     private var favList = ArrayList<EventEntity>()
     private var onFavClickListener: OnEventFavoriteClickListener?= null
@@ -33,8 +32,9 @@ class FavoriteEventsAdapter: RecyclerView.Adapter<FavoriteEventsAdapter.Favorite
     override fun onBindViewHolder(holder: FavoriteEventsHolder, position: Int) {
         val eventFavData = favList[position].events
         holder.txtTitleEvent.text = eventFavData.name
-        Picasso.get()
+        Glide.with(mContext)
             .load(eventFavData.imageLogo)
+            .centerCrop()
             .placeholder(R.drawable.place_holder)
             .error(R.drawable.error_placeholder)
             .into(holder.imgPromoteEvent)

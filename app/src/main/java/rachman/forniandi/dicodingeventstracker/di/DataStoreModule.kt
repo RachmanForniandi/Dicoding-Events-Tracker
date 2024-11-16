@@ -5,12 +5,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import rachman.forniandi.dicodingeventstracker.data.local.LocalDataSource
 import rachman.forniandi.dicodingeventstracker.data.local.datastore.SettingThemePreferences
 import rachman.forniandi.dicodingeventstracker.data.local.datastore.SettingThemePreferencesImpl
-import rachman.forniandi.dicodingeventstracker.data.repository.SettingThemeRepositoryImpl
-import rachman.forniandi.dicodingeventstracker.domain.repository.SettingThemeRepository
-import javax.inject.Inject
 
 @Module
 @InstallIn(SingletonComponent::class)

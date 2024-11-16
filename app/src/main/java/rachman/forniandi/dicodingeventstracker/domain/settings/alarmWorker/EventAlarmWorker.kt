@@ -67,7 +67,11 @@ class EventAlarmWorker (
                             PendingIntent.FLAG_IMMUTABLE)
                         showNotification(
                             title = "Upcoming Event!",
-                            description = "Don't miss Event ${event.name} on ${event.beginTime}"
+                            description = applicationContext.getString(
+                                R.string.don_t_miss_event_on,
+                                event.name,
+                                event.beginTime
+                            )
                         )
                         Result.success()
                     } ?: Result.failure()

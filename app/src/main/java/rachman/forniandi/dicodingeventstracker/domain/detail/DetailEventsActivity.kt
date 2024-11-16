@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.navArgs
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
-import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import rachman.forniandi.dicodingeventstracker.R
 import rachman.forniandi.dicodingeventstracker.data.local.room.EventEntity
@@ -80,9 +80,9 @@ class DetailEventsActivity : AppCompatActivity() {
             is RemoteResponse.Success -> {
                 applyLoadProgressStateDetail(false)
                 detailEvent = response.data
-                Picasso
-                    .get()
+                Glide.with(this)
                     .load(detailEvent?.mediaCover)
+                    .fitCenter()
                     .placeholder(R.drawable.place_holder)
                     .error(R.drawable.error_placeholder)
                     .into(binding.imgBackDrop)
@@ -113,9 +113,9 @@ class DetailEventsActivity : AppCompatActivity() {
 
 
     private fun setUpContentDetail(detailEvent: Events?) {
-        Picasso
-            .get()
+        Glide.with(this)
             .load(detailEvent?.imageLogo)
+            .centerCrop()
             .placeholder(R.drawable.place_holder)
             .error(R.drawable.error_placeholder)
             .into(binding.detailEventMain.imgLogoEvent)

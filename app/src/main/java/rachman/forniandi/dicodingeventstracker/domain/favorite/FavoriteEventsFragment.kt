@@ -23,7 +23,7 @@ class FavoriteEventsFragment : Fragment() {
 
     private var _binding: FragmentFavoriteEventsBinding?= null
     private val binding get() = _binding!!
-    private val adapter by lazy { FavoriteEventsAdapter() }
+    private val adapter by lazy { FavoriteEventsAdapter(requireActivity()) }
     private lateinit var viewModel: FavoriteEventsViewModel
 
     override fun onCreateView(
