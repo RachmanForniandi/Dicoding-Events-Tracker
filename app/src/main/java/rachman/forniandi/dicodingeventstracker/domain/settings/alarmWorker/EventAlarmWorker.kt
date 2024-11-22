@@ -5,9 +5,12 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Canvas
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.squareup.moshi.Moshi
@@ -97,24 +100,39 @@ class EventAlarmWorker (
             enableVibration(true)
             enableLights(true)
         }
+        val bitmap = applicationContext.vectorToBitmap(R.drawable.ic_icon_notif)
+        val bigPicture= NotificationCompat.BigPictureStyle()
+            .bigPicture(bitmap)
+
+
         notificationManager.createNotificationChannel(channel)
         val notification = NotificationCompat.Builder(applicationContext, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_icon_notif)
-            .setLargeIcon(
-             BitmapFactory.decodeResource(
-                applicationContext.resources,
-                R.drawable.ic_icon_notif_work
-                )
-            )
+            .setLargeIcon(bitmap)
             .setContentTitle(title)
             .setContentText(description)
             .setContentIntent(pendingIntent)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setDefaults(NotificationCompat.DEFAULT_ALL)
+            .setStyle(bigPicture)
             .setAutoCancel(true)
             .build()
 
         notificationManager.notify(NOTIFICATION_ID, notification)
+
+
+    }
+    private fun Context.vectorToBitmap(drawableId:Int): Bitmap?{
+        val drawable = ContextCompat.getDrawable(this,drawableId) ?:return null
+        val bitmap = Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)?:null
+        val canvas = bitmap?.let { Canvas(it) }
+        if (canvas != null) {
+            drawable.setBounds(0,0, canvas.width,canvas.height)
+        }
+        if (canvas != null) {
+            drawable.draw(canvas)
+        }
+        return bitmap
     }
 
 
