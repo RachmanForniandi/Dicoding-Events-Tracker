@@ -1,60 +1,217 @@
 package rachman.forniandi.dicodingeventstracker.domain.home
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import rachman.forniandi.dicodingeventstracker.R
+import rachman.forniandi.dicodingeventstracker.adapters.CarrouselEventsAdapter
+import rachman.forniandi.dicodingeventstracker.adapters.EventsAdapter
+import rachman.forniandi.dicodingeventstracker.data.remoteUtils.RemoteResponse
+import rachman.forniandi.dicodingeventstracker.databinding.FragmentHomeBinding
+import rachman.forniandi.dicodingeventstracker.domain.entity.Events
+import rachman.forniandi.dicodingeventstracker.domain.viewmodels.HomeViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-//private const val ARG_PARAM1 = "param1"
-//private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    /*private var param1: String? = null
-    private var param2: String? = null*/
+    private var _binding: FragmentHomeBinding?= null
+    private val binding get() = _binding!!
+    private val carrouselEventAdapter by lazy { CarrouselEventsAdapter(requireActivity()) }
+    private val eventAdapter by lazy { EventsAdapter(requireActivity()) }
+    private val upcomingValue=1
+    private val pastValue=0
+    private lateinit var viewmodel: HomeViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        /*arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }*/
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        _binding = FragmentHomeBinding.inflate(inflater,container,false)
+        viewmodel = ViewModelProvider(this)[HomeViewModel::class.java]
+        return binding.root
     }
 
-    /*companion object {
-        *//**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         *//*
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        if (savedInstanceState === null){
+            viewmodel.setValueActiveUpcoming(upcomingValue)
+            viewmodel.setValueActivePast(pastValue)
+        }
+        setupAppBarMain()
+        setupListUpcomingEvent()
+        showDataRemoteUpcomingEvent()
+        setupListPastEvent()
+        showDataRemotePastEvent()
+        Log.e("TAG", "Ini adalah halaman homeFragment")
+
+
+    }
+
+    private fun setupAppBarMain() {
+        binding.apply {
+            homeToolbar.inflateMenu(R.menu.menu_main)
+            homeToolbar.setOnMenuItemClickListener {
+                when(it.itemId){
+                    R.id.menu_setting ->{
+                        val action = HomeFragmentDirections.actionHomeFragmentToSettingsFragment()
+                        findNavController().navigate(action)
+                    }
+                }
+                false
+            }
+        }
+    }
+
+    private fun showDataRemoteUpcomingEvent() {
+        viewmodel.setValueActiveUpcoming(upcomingValue)
+        viewmodel.upcomingEvent.observe(viewLifecycleOwner,eventObserverUpComingEvent)
+    }
+
+    private fun showDataRemotePastEvent() {
+        viewmodel.setValueActivePast(pastValue)
+        viewmodel.pastEvent.observe(viewLifecycleOwner,eventObserverPastEvent)
+    }
+
+
+
+    private val eventObserverUpComingEvent = Observer<RemoteResponse<List<Events>?>?>{ response->
+        when (response){
+            is RemoteResponse.Loading->{
+                showShimmerEffect()
+            }
+
+            is RemoteResponse.Success->{
+                hideShimmerEffect()
+                val events = response.data
+                Log.d("test_data_event_1:",""+events)
+                if (events != null) {
+                    if (events.isEmpty()){
+                        binding.imgDataEmpty1.visibility=View.VISIBLE
+                        binding.txtNoDataEventUpcomingAvailable.visibility=View.VISIBLE
+                    }else{
+                        events.let {carrouselEventAdapter.setData(it)}
+                        binding.txtNoDataEventUpcomingAvailable.visibility=View.INVISIBLE
+                        binding.imgDataEmpty1.visibility=View.INVISIBLE
+                        binding.btnReloadPage1.visibility = View.GONE
+                        binding.btnReloadPage1.isClickable = false
+                    }
                 }
             }
-    }*/
+            is RemoteResponse.Error->{
+                hideShimmerEffect()
+                binding.imgDataEmpty1.visibility=View.VISIBLE
+                binding.txtNoDataEventUpcomingAvailable.visibility=View.VISIBLE
+                binding.btnReloadPage1.visibility = View.VISIBLE
+                binding.btnReloadPage1.isClickable = true
+                binding.btnReloadPage1.setOnClickListener {
+                    showDataRemoteUpcomingEvent()
+                }
+                Toast.makeText(requireActivity() ,response.errorMessage, Toast.LENGTH_SHORT).show()
+            }
+
+            else -> {}
+        }
+    }
+
+    private val eventObserverPastEvent = Observer<RemoteResponse<List<Events>?>?>{ response->
+        when (response){
+            is RemoteResponse.Loading->{
+                showShimmerEffect2()
+            }
+
+            is RemoteResponse.Success->{
+                hideShimmerEffect2()
+                val events = response.data
+                Log.d("test_data_event_2:",""+events)
+                if (events != null) {
+                    if (events.isEmpty()){
+                        binding.imgDataEmpty2.visibility=View.VISIBLE
+                        binding.txtNoDataEventPastAvailable.visibility=View.VISIBLE
+                    }else{
+                        events.let { eventAdapter.setData(it) }
+                        binding.imgDataEmpty2.visibility=View.INVISIBLE
+                        binding.txtNoDataEventPastAvailable.visibility=View.INVISIBLE
+                        binding.btnReloadPage2.visibility= View.GONE
+                        binding.btnReloadPage2.isClickable = false
+                    }
+                }
+            }
+            is RemoteResponse.Error->{
+                hideShimmerEffect2()
+                binding.imgDataEmpty2.visibility=View.VISIBLE
+                binding.txtNoDataEventPastAvailable.visibility=View.VISIBLE
+                binding.btnReloadPage2.visibility= View.VISIBLE
+                binding.btnReloadPage2.isClickable = true
+                binding.btnReloadPage2.setOnClickListener {
+                    showDataRemotePastEvent()
+                }
+                Toast.makeText(requireActivity() ,response.errorMessage, Toast.LENGTH_SHORT).show()
+            }
+
+            else -> {}
+        }
+    }
+
+    private fun setupListUpcomingEvent() {
+        binding.rvEventsFuture.adapter = carrouselEventAdapter
+        carrouselEventAdapter.setOnClickListener(object :CarrouselEventsAdapter.OnEventClickListener{
+            override fun onClick(position: Int, event: Events) {
+                val toDetailEvent = HomeFragmentDirections.actionHomeFragmentToDetailEventsActivity(event)
+                findNavController().navigate(toDetailEvent)
+            }
+        })
+        showShimmerEffect()
+    }
+
+    private fun setupListPastEvent() {
+        binding.rvEventsFinished.adapter = eventAdapter
+        eventAdapter.setOnClickListener(object :EventsAdapter.OnEventClickListener{
+            override fun onClick(position: Int, event: Events) {
+                val toDetailEvent = HomeFragmentDirections.actionHomeFragmentToDetailEventsActivity(event)
+                findNavController().navigate(toDetailEvent)
+            }
+        })
+        showShimmerEffect2()
+    }
+
+    private fun showShimmerEffect() {
+        binding.shimmerFrameLayoutCarrouselEvent.startShimmer()
+        binding.shimmerFrameLayoutCarrouselEvent.visibility = View.VISIBLE
+        binding.rvEventsFuture.visibility = View.GONE
+    }
+
+    private fun hideShimmerEffect() {
+        binding.shimmerFrameLayoutCarrouselEvent.stopShimmer()
+        binding.shimmerFrameLayoutCarrouselEvent.visibility = View.INVISIBLE
+        binding.rvEventsFuture.visibility = View.VISIBLE
+
+    }
+
+    private fun showShimmerEffect2() {
+        binding.shimmerFrameLayoutEventFinished.startShimmer()
+        binding.shimmerFrameLayoutEventFinished.visibility = View.VISIBLE
+        binding.rvEventsFinished.visibility = View.GONE
+    }
+
+    private fun hideShimmerEffect2() {
+        binding.shimmerFrameLayoutEventFinished.stopShimmer()
+        binding.shimmerFrameLayoutEventFinished.visibility = View.INVISIBLE
+        binding.rvEventsFinished.visibility = View.VISIBLE
+
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+
 }

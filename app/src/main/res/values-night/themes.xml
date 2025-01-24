@@ -3,5 +3,45 @@
     <style name="Base.Theme.DicodingEventsTracker" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/purple_200</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+    </style>
+
+    <style name="CustomColorTextStyle">
+        <item name="android:textColor">@color/colorText</item>
+    </style>
+
+    <style name="CustomMaterialTextView">
+        <item name="android:background">@drawable/bg_tv_item_white_mini</item>
+        <item name="android:textColor">@color/colorTextMaterial</item>
+    </style>
+
+    <style name="setting_tv_menu">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="CustomActionBarStyle">
+        <item name="android:background">@color/actionBarBackgroundColor</item>
+    </style>
+
+    <style name="customTintIcon">
+        <item name="android:tint">@color/tintColorIcon</item>
+    </style>
+
+    <style name="CustomImageSplash">
+        <item name="android:src">@drawable/dicoding_cover_dark</item>
+    </style>
+
+    <style name="CustomButtonStyle">
+        <item name="android:backgroundTint">@color/actionBarBackgroundColor</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 </resources>

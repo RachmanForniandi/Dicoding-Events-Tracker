@@ -2,8 +2,75 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.DicodingEventsTracker" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <!--<item name = "android:windowActionBar">false</item>
+        <item name = "android:windowNoTitle">true</item>-->
+        <item name="colorPrimary">@color/lightBlue500</item>
+        <item name="colorPrimaryVariant">@color/lightBlue700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+
     </style>
 
     <style name="Theme.DicodingEventsTracker" parent="Base.Theme.DicodingEventsTracker" />
+
+    <style name="SearchView_Event" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorControlNormal">@color/white_transparent</item>
+        <item name="android:editTextColor">@color/white_transparent</item>
+        <item name="android:textColorHint">@color/white_transparent</item>
+    </style>
+
+    <style name="CustomActionBarStyle">
+        <item name="android:background">@color/actionBarBackgroundColor</item>
+    </style>
+    <style name="CustomImageSplash">
+        <item name="android:src">@drawable/dicoding_logo</item>
+    </style>
+
+    <style name="CustomColorTextStyle">
+        <item name="android:textColor">@color/colorText</item>
+    </style>
+
+    <style name="CustomMaterialTextView">
+        <item name="android:background">@drawable/bg_tv_item_dark_mini</item>
+        <item name="android:textColor">@color/colorTextMaterial</item>
+    </style>
+
+    <style name="CustomContentScrim">
+        <item name="android:background">@color/actionBarBackgroundColor</item>
+    </style>
+
+    <style name="customColorTintIcon">
+        <item name="android:tint">@color/tintColorIcon</item>
+    </style>
+
+
+    <style name="CustomButtonStyle">
+        <item name="android:backgroundTint">@color/actionBarBackgroundColor</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="setting_tv_actionBar" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/mountella_trial_bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="setting_tv_menu">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/dark</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
 </resources>

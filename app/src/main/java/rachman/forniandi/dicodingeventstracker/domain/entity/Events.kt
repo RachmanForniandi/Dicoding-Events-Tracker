@@ -1,5 +1,8 @@
 package rachman.forniandi.dicodingeventstracker.domain.entity
 
+import java.io.Serializable
+
+
 data class Events(
     val summary: String?,
     val mediaCover: String?,
@@ -15,4 +18,4 @@ data class Events(
     val beginTime: String?,
     val endTime: String?,
     val category: String? 
-)
+):Serializable
