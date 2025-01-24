@@ -3,7 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="search_events">Search events</string>
     <string name="language_settings">Language Settings</string>
-    <string name="hosted_by">Hosted by:\n %1$s</string>
+    <string name="hosted_by">Hosted by:</string>
     <string name="no_event_available_please_wait">No Event Available. Please wait.</string>
     <string name="image_error_no_data_events_available">Image error no data events available</string>
     <string name="start">Start:</string>
@@ -42,4 +42,25 @@
     <string name="please_check_your_wifi_connection_or_data_package_quota">Please check your Wifi connection or data package quota.</string>
     <string name="reload_page">Reload page</string>
     <string name="image_poster_of_event">image poster of event</string>
+    <string name="no_data_event_favorite_available_yet">No data Event Favorite available yet</string>
+    <string name="button_favorite_event">button favorite event</string>
+    <string name="favorite">Favorite</string>
+    <string name="image_no_data_event_favorite">Image no data event favorite</string>
+    <string name="event_saved">Event saved</string>
+    <string name="removed_from_favorites">Removed from favorites</string>
+    <string name="bookmarked">Bookmarked</string>
+    <string name="change_theme">Change Theme</string>
+    <string name="notification_alarm">Notification Alarm</string>
+    <string name="notifications_permission_granted">Notifications permission granted</string>
+    <string name="notifications_permission_rejected">Notifications permission rejected</string>
+    <string name="bookmarked_event">Bookmarked Event</string>
+    <string name="delete_all_bookmarks">delete all bookmarks</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="are_you_sure_do_you_want_to_delete_all_bookmark_events">Are you sure do you want to delete all bookmark events?</string>
+    <string name="all_events_removed">All events removed</string>
+    <string name="goto_settings">go to settings</string>
+    <string name="symbol_location">Symbol Location</string>
+    <string name="image_logo_event">image logo event</string>
+    <string name="don_t_miss_event_on">Don\'t miss Event %1$s on %2$s</string>
 </resources>

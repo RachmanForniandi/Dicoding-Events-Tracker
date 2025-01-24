@@ -2,7 +2,7 @@
 <resources>
     <string name="search_events">Mencari Acara</string>
     <string name="language_settings">Pengaturan Bahasa</string>
-    <string name="hosted_by">Diselenggarakan oleh: \n %1$s</string>
+    <string name="hosted_by">Diselenggarakan oleh:</string>
     <string name="no_event_available_please_wait">Belum ada acara yang tersedia. Mohon menunggu.</string>
     <string name="image_error_no_data_events_available">gambar error tidak ada data acara tersedia</string>
     <string name="start">Mulai:</string>
@@ -39,4 +39,25 @@
     <string name="please_check_your_wifi_connection_or_data_package_quota">Mohon pastikan koneksi wifi atau kuota paket data mencukupi.</string>
     <string name="reload_page">Muat ulang halaman</string>
     <string name="image_poster_of_event">Gambar poster acara</string>
+    <string name="no_data_event_favorite_available_yet">Belum ada data acara favorit</string>
+    <string name="button_favorite_event">Tombol acara favorit</string>
+    <string name="favorite">Favorit</string>
+    <string name="image_no_data_event_favorite">Gambar tidak ada data acara favorit</string>
+    <string name="event_saved">Acara tersimpan</string>
+    <string name="removed_from_favorites">Terhapus di favorit</string>
+    <string name="bookmarked">Ditandai</string>
+    <string name="change_theme">Ubah Tema</string>
+    <string name="notification_alarm">Notifikasi Alarm</string>
+    <string name="notifications_permission_granted">Izin notifikasi diberikan</string>
+    <string name="notifications_permission_rejected">Izin notifikasi ditolak</string>
+    <string name="bookmarked_event">Acara ditandai</string>
+    <string name="delete_all_bookmarks">Hapus semua penanda</string>
+    <string name="no">Tidak</string>
+    <string name="yes">Iya</string>
+    <string name="are_you_sure_do_you_want_to_delete_all_bookmark_events">apakah anda yakin untuk menghapus semua penanda acara?</string>
+    <string name="all_events_removed">Semua acara terhapus</string>
+    <string name="goto_settings">menuju pengaturan</string>
+    <string name="symbol_location">Simbol lokasi</string>
+    <string name="image_logo_event">gambar logo event</string>
+    <string name="don_t_miss_event_on">Jangan lewatkan %1$s pada %2$s</string>
 </resources>

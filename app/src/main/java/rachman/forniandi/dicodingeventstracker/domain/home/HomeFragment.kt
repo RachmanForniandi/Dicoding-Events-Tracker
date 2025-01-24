@@ -186,7 +186,7 @@ class HomeFragment : Fragment() {
     private fun showShimmerEffect() {
         binding.shimmerFrameLayoutCarrouselEvent.startShimmer()
         binding.shimmerFrameLayoutCarrouselEvent.visibility = View.VISIBLE
-        binding.rvEventsFuture.visibility = View.INVISIBLE
+        binding.rvEventsFuture.visibility = View.GONE
     }
 
     private fun hideShimmerEffect() {
@@ -199,7 +199,7 @@ class HomeFragment : Fragment() {
     private fun showShimmerEffect2() {
         binding.shimmerFrameLayoutEventFinished.startShimmer()
         binding.shimmerFrameLayoutEventFinished.visibility = View.VISIBLE
-        binding.rvEventsFinished.visibility = View.INVISIBLE
+        binding.rvEventsFinished.visibility = View.GONE
     }
 
     private fun hideShimmerEffect2() {

@@ -25,6 +25,7 @@ object DataMapper {
         )
     }
 
+
     fun mapDetailEventsResponseToDomain(event: Event):Events{
         return Events(
             id = event.id,

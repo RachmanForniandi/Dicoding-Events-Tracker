@@ -57,17 +57,7 @@ class PastEventsFragment : Fragment() {
                             else -> { }
                         }
                     }
-                    false -> {
-                        Log.d(TAG_NETWORK_MONITOR, "No Connection")
-                        binding.layoutNoInternetConnection.imgNoInternetConnection.visibility= View.VISIBLE
-                        binding.layoutNoInternetConnection.txtLblNoInternetConnection.visibility= View.VISIBLE
-                        binding.layoutNoInternetConnection.txtLblSuggestCheckConnection.visibility= View.VISIBLE
-                        binding.layoutNoInternetConnection.btnReloadPage.visibility= View.VISIBLE
-                        binding.layoutNoInternetConnection.btnReloadPage.isClickable = true
-                        binding.layoutNoInternetConnection.btnReloadPage.setOnClickListener {
-                            showDataPastEvent()
-                        }
-                    }
+                    false -> {}
                 }
             }
         }
@@ -92,11 +82,6 @@ class PastEventsFragment : Fragment() {
     }
 
     private fun setupSearchEvent() {
-        /*binding.svEvent.setupWithSearchBar(binding.searchBar)
-        binding.searchBar.setOnClickListener() {
-            val actionSearch = PastEventsFragmentDirections.actionPastEventsFragmentToSearchEventsFragment()
-            findNavController().navigate(actionSearch)
-        }*/
         binding.apply {
             pastToolbar.inflateMenu(R.menu.past_event_menu)
             pastToolbar.setOnMenuItemClickListener {
@@ -109,7 +94,6 @@ class PastEventsFragment : Fragment() {
                 false
             }
         }
-
     }
 
     private fun showDataPastEvent() {

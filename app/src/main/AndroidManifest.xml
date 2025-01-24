@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
 
     <application
         android:name=".apps.MyApplication"
@@ -31,6 +33,7 @@
         </activity>
         <activity
             android:name=".domain.home.MainActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false"/>
         <activity
             android:name=".domain.detail.DetailEventsActivity"

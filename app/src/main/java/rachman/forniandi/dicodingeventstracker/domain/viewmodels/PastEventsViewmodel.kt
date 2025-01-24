@@ -7,14 +7,9 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
-import dagger.hilt.android.internal.Contexts.getApplication
 import dagger.hilt.android.lifecycle.HiltViewModel
-import rachman.forniandi.dicodingeventstracker.data.remoteUtils.RemoteResponse
-import rachman.forniandi.dicodingeventstracker.domain.EventsRepository
-import rachman.forniandi.dicodingeventstracker.domain.entity.Events
-import java.lang.Exception
+import rachman.forniandi.dicodingeventstracker.domain.repository.EventsRepository
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,7 +19,6 @@ class PastEventsViewmodel @Inject constructor(
 ): AndroidViewModel(application) {
 
     private val _activeValue = MutableLiveData<Int>()
-    var pastResponse:MutableLiveData<RemoteResponse<List<Events>>> = MutableLiveData()
 
     fun setValueActive(active:Int){
         _activeValue.value =active
@@ -34,31 +28,7 @@ class PastEventsViewmodel @Inject constructor(
         _activeValue.switchMap { active ->
             repository.getPastEvents(active)
         }
-        /*if (hasInternetConnection()){
-            try {
-                _activeValue.switchMap { active ->
-                    repository.getPastEvents(active)
-                }
-            }catch (e: Exception){
-                pastResponse.value = RemoteResponse.Error("Events not found.")
-            }
-        }else{
-            pastResponse.value = RemoteResponse.Error("No Internet Connection.")
-        }*/
 
     }
 
-    private fun hasInternetConnection():Boolean{
-        val connectivityManager = getApplication<Application>().getSystemService(
-            Context.CONNECTIVITY_SERVICE
-        )as ConnectivityManager
-        val activeNetwork = connectivityManager.activeNetwork ?: return false
-        val capabilities= connectivityManager.getNetworkCapabilities(activeNetwork) ?: return false
-        return when{
-            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)->true
-            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)->true
-            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)->true
-            else -> false
-        }
-    }
 }

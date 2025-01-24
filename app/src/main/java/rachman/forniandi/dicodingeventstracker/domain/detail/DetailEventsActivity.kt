@@ -2,15 +2,18 @@ package rachman.forniandi.dicodingeventstracker.domain.detail
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.HtmlCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.navArgs
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import org.jsoup.Jsoup
 import rachman.forniandi.dicodingeventstracker.R
+import rachman.forniandi.dicodingeventstracker.data.local.room.EventEntity
 import rachman.forniandi.dicodingeventstracker.data.remoteUtils.RemoteResponse
 import rachman.forniandi.dicodingeventstracker.databinding.ActivityDetailEventsBinding
 import rachman.forniandi.dicodingeventstracker.domain.entity.Events
@@ -24,20 +27,45 @@ class DetailEventsActivity : AppCompatActivity() {
     private val navArgs:DetailEventsActivityArgs by navArgs()
     private val viewmodel: DetailEventViewModel by viewModels ()
     private var idEvent:Int=0
+    private var detailEvent: Events?=null
     private var linkEvent=""
+    private var isStatusFavorite= false
+    private var savedEventId = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailEventsBinding.inflate(layoutInflater)
-        idEvent = navArgs.idEvent.id!!
+
+        idEvent = if (intent.hasExtra(EXTRA_EVENT_ID)){
+            intent.getIntExtra(EXTRA_EVENT_ID,0)
+        }else{
+            navArgs.eventDetails.id?: 0
+        }
+        Log.d("testIdFromWorker","testIdFromWorker: "+idEvent)
         
         setContentView(binding.root)
         if (savedInstanceState === null) {
             viewmodel.setValueId(idEvent)
         }
-        
+
         setViewDetailOfEvents()
-        
+        checkSavedEvents()
+    }
+
+    private fun checkSavedEvents() {
+        viewmodel.readToCheckEvents.observe(this){ favoriteEventsEntity ->
+            try {
+                for (savedEvent in favoriteEventsEntity){
+                    if (savedEvent.events.id == navArgs.eventDetails.id){
+                        binding.fabFavoriteEvent.imageTintList = getColorStateList(R.color.yellow)
+                        savedEventId = savedEvent.idNo
+                        isStatusFavorite = true
+                    }
+                }
+            }catch (e: Exception) {
+                Log.d("DetailEventsActivity", e.message.toString())
+            }
+        }
     }
 
     private fun setViewDetailOfEvents() {
@@ -51,16 +79,17 @@ class DetailEventsActivity : AppCompatActivity() {
             }
             is RemoteResponse.Success -> {
                 applyLoadProgressStateDetail(false)
-                val detailEvent = response.data
-                Picasso
-                    .get()
-                    .load(detailEvent?.imageLogo)
+                detailEvent = response.data
+                Glide.with(this)
+                    .load(detailEvent?.mediaCover)
+                    .fitCenter()
                     .placeholder(R.drawable.place_holder)
                     .error(R.drawable.error_placeholder)
                     .into(binding.imgBackDrop)
                 linkEvent = detailEvent?.link.toString()
                 setUpContentDetail(detailEvent)
                 binding.detailEventMain.btnRegisterEvent.isEnabled = true
+                binding.detailEventMain.btnRegisterEvent.backgroundTintList = getColorStateList(R.color.lightBlue500)
                 setupFunctionalLinkDetailEvent(linkEvent)
 
             }
@@ -84,15 +113,15 @@ class DetailEventsActivity : AppCompatActivity() {
 
 
     private fun setUpContentDetail(detailEvent: Events?) {
-        Picasso
-            .get()
+        Glide.with(this)
             .load(detailEvent?.imageLogo)
+            .centerCrop()
             .placeholder(R.drawable.place_holder)
             .error(R.drawable.error_placeholder)
             .into(binding.detailEventMain.imgLogoEvent)
         binding.detailEventMain.txtKindOfEvent.text = detailEvent?.category
         binding.detailEventMain.txtTitleEventDetail.text=detailEvent?.name
-        binding.detailEventMain.txtHostedBy.text=getString(R.string.hosted_by,detailEvent?.ownerName)
+        binding.detailEventMain.txtHostedBy.text=detailEvent?.ownerName
         binding.detailEventMain.tvStartTime.text = getStringDate(detailEvent?.beginTime)
         binding.detailEventMain.tvEndTime.text = getStringDate(detailEvent?.endTime)
 
@@ -108,12 +137,42 @@ class DetailEventsActivity : AppCompatActivity() {
 
         val remainingParticipants = registrants?.let { quota?.minus(it) }
         val convertStringRemainParticipantNumber = remainingParticipants.toString()
-        binding.detailEventMain.tvRemainingQuotaParticipants.text = convertStringRemainParticipantNumber+""+getString(
+        binding.detailEventMain.tvRemainingQuotaParticipants.text = "$convertStringRemainParticipantNumber " +getString(
             R.string.participants
         )
         binding.detailEventMain.tvSummaryEvent.text = detailEvent?.summary
 
-        binding.detailEventMain.tvDescription.text = Jsoup.parse(detailEvent?.description).text()
+        binding.detailEventMain.tvDescription.text =
+            detailEvent?.description?.let { HtmlCompat.fromHtml(it, HtmlCompat.FROM_HTML_MODE_COMPACT) }
+                .toString()
+
+        binding.fabFavoriteEvent.isEnabled=true
+        binding.fabFavoriteEvent.setOnClickListener {
+            setFavoriteEventStatus(!isStatusFavorite)
+        }
+    }
+
+    private fun setFavoriteEventStatus(statusFavourite: Boolean) {
+
+        if (statusFavourite){
+            val eventEntity = EventEntity(0,navArgs.eventDetails)
+            binding.fabFavoriteEvent.imageTintList = getColorStateList(R.color.yellow)
+            viewmodel.actionInsertFavEvent(eventEntity)
+            showSnackBar(getString(R.string.event_saved))
+            isStatusFavorite = true
+        }else{
+            val eventEntity = EventEntity(savedEventId,navArgs.eventDetails)
+            binding.fabFavoriteEvent.imageTintList = getColorStateList(R.color.white)
+            viewmodel.actionDeleteFavEvent(eventEntity)
+            showSnackBar(getString(R.string.removed_from_favorites))
+            isStatusFavorite = false
+        }
+    }
+
+    private fun showSnackBar(message: String) {
+        Snackbar.make(binding.mainDetail,message, Snackbar.LENGTH_SHORT)
+            .setAction("Ok"){}
+            .show()
     }
 
 
@@ -139,6 +198,7 @@ class DetailEventsActivity : AppCompatActivity() {
     }
 
     companion object{
+        const val EXTRA_EVENT_ID = "extra_event_id"
         const val REGISTER_EVENT="register_event"
     }
 }

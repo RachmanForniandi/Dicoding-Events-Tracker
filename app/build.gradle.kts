@@ -19,7 +19,7 @@ android {
 
     defaultConfig {
         applicationId = "rachman.forniandi.dicodingeventstracker"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -64,12 +64,13 @@ dependencies {
     implementation (libs.kotlinx.coroutines.core)
     implementation (libs.kotlinx.coroutines.android)
 
-    //picasso
-    implementation(libs.picasso)
 
     //viewmodel
     implementation (libs.androidx.lifecycle.viewmodel.ktx)
     implementation (libs.androidx.activity.ktx)
+
+    //glide
+    implementation(libs.glide)
 
     //lifecycle
     implementation (libs.androidx.lifecycle.livedata.ktx)
@@ -80,16 +81,35 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
 
     implementation(libs.androidx.localbroadcastmanager)
+    
+    //Room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.room.ktx)
+    implementation(libs.androidx.work.runtime.ktx)
+
+    implementation(libs.androidx.work.runtime)
+    implementation (libs.moshi.kotlin)
+    ksp(libs.room.compiler)
+
+    //datastore
+    implementation(libs.androidx.datastore.preferences)
+
+    //gson
+    implementation(libs.gson)
+
 
     //dagger hilt
     implementation (libs.hilt.android)
+    ksp (libs.hilt.compiler)
+    ksp (libs.dagger.compiler)
+
     implementation(libs.multidex.version)
 
     implementation(libs.jsoup)
 
-    ksp (libs.hilt.compiler)
-    ksp (libs.dagger.compiler)
-
+    //chucker
+    debugImplementation(libs.chucker.library)
+    releaseImplementation(libs.chucker.no.op)
 
     implementation(libs.androidx.swiperefreshlayout)
 

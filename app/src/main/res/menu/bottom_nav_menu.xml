@@ -13,4 +13,8 @@
         android:title="@string/history"
         android:icon="@drawable/ic_time"/>
 
+    <item android:id="@+id/favoriteEventsFragment"
+        android:title="@string/bookmarked"
+        android:icon="@drawable/ic_collections_bookmark"/>
+
 </menu>

@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
 import rachman.forniandi.dicodingeventstracker.R
 import rachman.forniandi.dicodingeventstracker.databinding.ItemEventBinding
 import rachman.forniandi.dicodingeventstracker.domain.entity.Events
@@ -13,7 +13,7 @@ import rachman.forniandi.dicodingeventstracker.utils.EventDiffUtil
 
 class EventsAdapter(private val mContext: Context): RecyclerView.Adapter<EventsAdapter.EventsHolder>() {
 
-    private var events = emptyList<Events>()
+    private var events = listOf<Events>()
     private var onClickListener: OnEventClickListener?= null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventsHolder {
@@ -24,8 +24,9 @@ class EventsAdapter(private val mContext: Context): RecyclerView.Adapter<EventsA
     override fun onBindViewHolder(holder: EventsHolder, position: Int) {
         val eventData = events[position]
         holder.txtTitleEvent.text = eventData.name
-        Picasso.get()
+        Glide.with(mContext)
             .load(eventData.imageLogo)
+            .centerCrop()
             .placeholder(R.drawable.place_holder)
             .error(R.drawable.error_placeholder)
             .into(holder.imgPromoteEvent)
@@ -60,6 +61,8 @@ class EventsAdapter(private val mContext: Context): RecyclerView.Adapter<EventsA
         events = eventData
         diffUtilResult.dispatchUpdatesTo(this)
     }
+
+
 }
 
 
