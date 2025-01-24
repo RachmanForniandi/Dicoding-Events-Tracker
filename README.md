@@ -5,3 +5,8 @@
   Android App for <a href="https://www.dicoding.com/academies/14" target="_blank">Dicoding Belajar Fundamental Aplikasi Android</a> Final Submission <br>
   !!! Please use this repository as reference only, <strong>every plagiarism get automated detected</strong>. !!!
 </p>
+
+## Screenshot
+|Splash Screen|Main|Login|Sign Up|
+|--|--|--|
+|![](assets/light/splashscreen.png?raw=true)|![](assets/light/main.png?raw=true)|![](assets/light/scheduled.png?raw=true)|![](assets/light/history.png?raw=true)|![](assets/light/bookmarked.png?raw=true)|![](assets/light/detail events.png?raw=true)|
