@@ -1,5 +1,5 @@
 <h1 align="center">
-  Story App
+  Dicoding Events Tracker
 </h1>
 <p align="center">
   Android App for <a href="https://www.dicoding.com/academies/14" target="_blank">Dicoding Belajar Fundamental Aplikasi Android</a> Final Submission <br>
