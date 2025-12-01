@@ -44,7 +44,7 @@ class CarrouselEventsAdapter (private val mContext: Context): RecyclerView.Adapt
         holder.txtTitleEvent.text = eventData.name
         Glide.with(mContext)
             .load(eventData.imageLogo)
-            .centerCrop()
+            .fitCenter()
             .placeholder(R.drawable.place_holder)
             .error(R.drawable.error_placeholder)
             .into(holder.imgPromoteEvent)

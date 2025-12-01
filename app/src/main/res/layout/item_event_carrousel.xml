@@ -17,7 +17,7 @@
             android:layout_height="240dp"
             android:contentDescription="@string/image_carousel_upcoming_event"
             android:src="@drawable/placeholder_portrait"
-            android:scaleType="centerCrop"
+            android:scaleType="fitXY"
             android:adjustViewBounds="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
