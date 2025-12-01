@@ -16,11 +16,12 @@ class HomeViewModel @Inject constructor(
     private val _activeValuePast = MutableLiveData<Int>()
 
     fun setValueActiveUpcoming(active:Int){
-        _activeValueUpcoming.value =active
+        _activeValueUpcoming.value = active
     }
     fun setValueActivePast(active:Int){
-        _activeValuePast.value =active
+        _activeValuePast.value = active
     }
+
     val upcomingEvent by lazy {
         _activeValueUpcoming.switchMap { active ->
             repository.getFutureEvents(active)

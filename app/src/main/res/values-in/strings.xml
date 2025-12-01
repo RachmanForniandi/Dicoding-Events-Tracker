@@ -14,7 +14,7 @@
     <string name="loading_please_wait">Memuat....Mohon menunggu</string>
     <string name="date_time">Tanggal/Waktu</string>
     <string name="remaining_quota">Sisa Kuota</string>
-    <string name="no_data_upcoming_event_please_try_again_later">Belum aada data acara berikut. Silahkan mencoba lagi nanti.</string>
+    <string name="no_data_upcoming_event_please_try_again_later">Belum ada data acara berikut. Silahkan mencoba lagi nanti.</string>
     <string name="error_load_data_event_past_please_try_again_later">Gangguan menampilkan data acara selesai. Silahkan mencoba lagi nanti.</string>
     <string name="image_carousel_upcoming_event">Gambar Carousel acara yang akan datang</string>
     <string name="finished_events">Acara telah usai</string>
@@ -32,7 +32,7 @@
     <string name="history">Riwayat</string>
     <string name="main">Utama</string>
     <string name="event_data_is_experiencing_problems_please_try_again_later">Data acara mengalami gangguan. Silahkan coba lagi nanti.</string>
-    <string name="the_event_you_are_looking_for_was_not_found_n_try_searching_with_other_keywords">acara yang anda cari tidak ditemukan. coba cari dengan kata kunci lain.</string>
+    <string name="the_event_you_are_looking_for_was_not_found_n_try_searching_with_other_keywords">Acara yang anda cari tidak ditemukan. Coba cari dengan kata kunci lain.</string>
     <string name="image_backdrop_event_path">jalur acara latar belakang gambar</string>
     <string name="image_no_internet_connection">Gambaran tidak ada koneksi jaringan internet</string>
     <string name="no_internet_connection">No Internet connection</string>
@@ -54,7 +54,7 @@
     <string name="delete_all_bookmarks">Hapus semua penanda</string>
     <string name="no">Tidak</string>
     <string name="yes">Iya</string>
-    <string name="are_you_sure_do_you_want_to_delete_all_bookmark_events">apakah anda yakin untuk menghapus semua penanda acara?</string>
+    <string name="are_you_sure_do_you_want_to_delete_all_bookmark_events">Apakah anda yakin untuk menghapus semua penanda acara?</string>
     <string name="all_events_removed">Semua acara terhapus</string>
     <string name="goto_settings">menuju pengaturan</string>
     <string name="symbol_location">Simbol lokasi</string>

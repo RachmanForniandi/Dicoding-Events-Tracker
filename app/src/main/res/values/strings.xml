@@ -22,7 +22,7 @@
     <string name="finished_events">Finished Events</string>
     <string name="upcoming_events">Upcoming Events</string>
     <string name="icon_dicoding">Icon Dicoding</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="search_event_here">Search event here</string>
     <string name="settings">Settings</string>
     <string name="button_back_setting">button back setting</string>
@@ -43,7 +43,7 @@
     <string name="reload_page">Reload page</string>
     <string name="image_poster_of_event">image poster of event</string>
     <string name="no_data_event_favorite_available_yet">No data Event Favorite available yet</string>
-    <string name="button_favorite_event">button favorite event</string>
+    <string name="button_favorite_event">Button favorite event</string>
     <string name="favorite">Favorite</string>
     <string name="image_no_data_event_favorite">Image no data event favorite</string>
     <string name="event_saved">Event saved</string>
@@ -61,6 +61,6 @@
     <string name="all_events_removed">All events removed</string>
     <string name="goto_settings">go to settings</string>
     <string name="symbol_location">Symbol Location</string>
-    <string name="image_logo_event">image logo event</string>
+    <string name="image_logo_event">Image logo event</string>
     <string name="don_t_miss_event_on">Don\'t miss Event %1$s on %2$s</string>
 </resources>
