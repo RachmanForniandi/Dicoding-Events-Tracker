@@ -6,92 +6,110 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Canvas
-import android.widget.Toast
+import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
+import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import okhttp3.OkHttpClient
-import okhttp3.Request
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedInject
 import rachman.forniandi.dicodingeventstracker.R
-import rachman.forniandi.dicodingeventstracker.data.remote.response.ResponseEvents
+import rachman.forniandi.dicodingeventstracker.data.remote.retrofit.NetworkService
 import rachman.forniandi.dicodingeventstracker.domain.detail.DetailEventsActivity
-import java.io.IOException
 
-class EventAlarmWorker (
-    context: Context,
-    params: WorkerParameters,
-) : CoroutineWorker(context, params){
-
-    private var pendingIntent:PendingIntent?=null
+/**
+ * [EventAlarmWorker] fetches the latest finished event from the Dicoding Events API and
+ * posts a notification to the user.
+ *
+ * Uses [HiltWorker] + [AssistedInject] so that [NetworkService] (and any other Hilt-managed
+ * dependency) can be injected directly — no manual OkHttp/Moshi construction needed.
+ *
+ * WorkManager retries this worker with exponential back-off on transient network failures.
+ */
+@HiltWorker
+class EventAlarmWorker @AssistedInject constructor(
+    @Assisted private val context: Context,
+    @Assisted params: WorkerParameters,
+    private val networkService: NetworkService,
+) : CoroutineWorker(context, params) {
 
     companion object {
+        private const val TAG = "EventAlarmWorker"
         private const val NOTIFICATION_ID = 1
         private const val CHANNEL_ID = "event_reminder_channel"
         private const val CHANNEL_NAME = "Event Alarm Reminder"
-        private const val API_URL = "https://event-api.dicoding.dev/events?active=-1&limit=1"
+
+        // active = -1 → finished events; limit = 1 → most recent single event
+        private const val ACTIVE_FINISHED = -1
     }
 
-    override suspend fun doWork(): Result = withContext(Dispatchers.IO) {
+    override suspend fun doWork(): Result {
+        return try {
+            val response = networkService.getEvents(active = ACTIVE_FINISHED)
 
-        try {
-            val client = OkHttpClient()
-            val request = Request.Builder()
-                .url(API_URL)
-                .build()
-            client.newCall(request).execute().use { response ->
-                if (!response.isSuccessful){
-                    showErrorToast("Error: Unexpected response ${response.code}")
-                    throw IOException("Unexpected response ${response.code}")
+            if (!response.isSuccessful) {
+                Log.w(TAG, "API error ${response.code()} — will retry")
+                return Result.retry()
+            }
+
+            val body = response.body()
+                ?: run {
+                    Log.w(TAG, "Empty response body — will retry")
+                    return Result.retry()
                 }
 
-                val responseBody = response.body?.string() ?: throw IOException("Empty response body")
-                val moshi = Moshi.Builder()
-                    .addLast(KotlinJsonAdapterFactory())
-                    .build()
-                val jsonAdapter = moshi.adapter(ResponseEvents::class.java)
-                val eventResponse = jsonAdapter.fromJson(responseBody)
+            val event = body.listEvents.firstOrNull()
+                ?: run {
+                    Log.i(TAG, "No events returned — nothing to notify")
+                    return Result.success()
+                }
 
-                eventResponse?.let { response ->
-                    response.listEvents.firstOrNull()?.let { event ->
-                        val toDetailAlarm = Intent(applicationContext,DetailEventsActivity::class.java).apply {
-                            putExtra(DetailEventsActivity.EXTRA_EVENT_ID, event?.id)
-                            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        }
-                        pendingIntent = PendingIntent.getActivity(
-                            applicationContext,0,
-                            toDetailAlarm,
-                            PendingIntent.FLAG_IMMUTABLE)
-                        showNotification(
-                            title = "Upcoming Event!",
-                            description = applicationContext.getString(
-                                R.string.don_t_miss_event_on,
-                                event.name,
-                                event.beginTime
-                            )
-                        )
-                        Result.success()
-                    } ?: Result.failure()
-                } ?: Result.failure()
-            }
-        }catch (e: Exception) {
-            showErrorToast("Error: ${e.message}")
-            Result.failure()
+            val pendingIntent = buildDetailPendingIntent(event.id)
+
+            showNotification(
+                title = context.getString(R.string.upcoming_event_title),
+                description = context.getString(
+                    R.string.don_t_miss_event_on,
+                    event.name,
+                    event.beginTime
+                ),
+                pendingIntent = pendingIntent
+            )
+
+            Log.i(TAG, "Notification posted for event: ${event.name}")
+            Result.success()
+
+        } catch (e: Exception) {
+            Log.e(TAG, "Unexpected error in EventAlarmWorker", e)
+            Result.retry()
         }
     }
 
-    private suspend fun showErrorToast(message: String) = withContext(Dispatchers.Main) {
-        Toast.makeText(applicationContext, message, Toast.LENGTH_LONG).show()
+    // ─── Helpers ─────────────────────────────────────────────────────────────
+
+    private fun buildDetailPendingIntent(eventId: Int?): PendingIntent {
+        val intent = Intent(context, DetailEventsActivity::class.java).apply {
+            putExtra(DetailEventsActivity.EXTRA_EVENT_ID, eventId)
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        return PendingIntent.getActivity(
+            context,
+            0,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        )
     }
 
-    private fun showNotification(title: String, description: String) {
-        val notificationManager = applicationContext.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+    private fun showNotification(
+        title: String,
+        description: String,
+        pendingIntent: PendingIntent
+    ) {
+        val notificationManager =
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
         val channel = NotificationChannel(
             CHANNEL_ID,
             CHANNEL_NAME,
@@ -100,13 +118,12 @@ class EventAlarmWorker (
             enableVibration(true)
             enableLights(true)
         }
-        val bitmap = applicationContext.vectorToBitmap(R.drawable.ic_icon_notif)
-        val bigPicture= NotificationCompat.BigPictureStyle()
-            .bigPicture(bitmap)
-
-
         notificationManager.createNotificationChannel(channel)
-        val notification = NotificationCompat.Builder(applicationContext, CHANNEL_ID)
+
+        val bitmap = context.vectorToBitmap(R.drawable.ic_icon_notif)
+        val bigPictureStyle = NotificationCompat.BigPictureStyle().bigPicture(bitmap)
+
+        val notification = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_icon_notif)
             .setLargeIcon(bitmap)
             .setContentTitle(title)
@@ -114,26 +131,23 @@ class EventAlarmWorker (
             .setContentIntent(pendingIntent)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setDefaults(NotificationCompat.DEFAULT_ALL)
-            .setStyle(bigPicture)
+            .setStyle(bigPictureStyle)
             .setAutoCancel(true)
             .build()
 
         notificationManager.notify(NOTIFICATION_ID, notification)
-
-
     }
-    private fun Context.vectorToBitmap(drawableId:Int): Bitmap?{
-        val drawable = ContextCompat.getDrawable(this,drawableId) ?:return null
-        val bitmap = Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)?:null
-        val canvas = bitmap?.let { Canvas(it) }
-        if (canvas != null) {
-            drawable.setBounds(0,0, canvas.width,canvas.height)
-        }
-        if (canvas != null) {
-            drawable.draw(canvas)
-        }
+
+    private fun Context.vectorToBitmap(drawableId: Int): Bitmap? {
+        val drawable = ContextCompat.getDrawable(this, drawableId) ?: return null
+        val bitmap = Bitmap.createBitmap(
+            drawable.intrinsicWidth,
+            drawable.intrinsicHeight,
+            Bitmap.Config.ARGB_8888
+        ) ?: return null
+        val canvas = Canvas(bitmap)
+        drawable.setBounds(0, 0, canvas.width, canvas.height)
+        drawable.draw(canvas)
         return bitmap
     }
-
-
 }

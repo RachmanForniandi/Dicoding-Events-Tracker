@@ -38,6 +38,23 @@
         <activity
             android:name=".domain.detail.DetailEventsActivity"
             android:exported="false" />
+
+        <!--
+            Disable WorkManager's default auto-initializer so that our custom
+            Configuration.Provider in MyApplication takes over initialization.
+            Without this, WorkManager would be initialized twice and crash.
+        -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <meta-data
+                android:name="androidx.work.WorkManagerInitializer"
+                android:value="@string/androidx_startup"
+                tools:node="remove" />
+        </provider>
+
     </application>
 
 </manifest>

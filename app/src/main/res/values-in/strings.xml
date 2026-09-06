@@ -14,7 +14,7 @@
     <string name="loading_please_wait">Memuat....Mohon menunggu</string>
     <string name="date_time">Tanggal/Waktu</string>
     <string name="remaining_quota">Sisa Kuota</string>
-    <string name="no_data_upcoming_event_please_try_again_later">Belum aada data acara berikut. Silahkan mencoba lagi nanti.</string>
+    <string name="no_data_upcoming_event_please_try_again_later">Belum ada data acara mendatang. Silahkan mencoba lagi nanti.</string>
     <string name="error_load_data_event_past_please_try_again_later">Gangguan menampilkan data acara selesai. Silahkan mencoba lagi nanti.</string>
     <string name="image_carousel_upcoming_event">Gambar Carousel acara yang akan datang</string>
     <string name="finished_events">Acara telah usai</string>
@@ -60,4 +60,6 @@
     <string name="symbol_location">Simbol lokasi</string>
     <string name="image_logo_event">gambar logo event</string>
     <string name="don_t_miss_event_on">Jangan lewatkan %1$s pada %2$s</string>
+    <string name="upcoming_event_title">Acara Mendatang!</string>
+    <string name="notification_permission_rationale">Aktifkan notifikasi untuk mendapatkan pengingat harian tentang acara Dicoding yang akan datang.</string>
 </resources>

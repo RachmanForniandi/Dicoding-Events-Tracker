@@ -103,6 +103,10 @@ dependencies {
     ksp (libs.hilt.compiler)
     ksp (libs.dagger.compiler)
 
+    // hilt-work: enables @HiltWorker / @AssistedInject in WorkManager workers
+    implementation(libs.androidx.hilt.work)
+    ksp(libs.androidx.hilt.compiler)
+
     implementation(libs.multidex.version)
 
     implementation(libs.jsoup)
