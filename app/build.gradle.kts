@@ -57,6 +57,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
     //Retrofit
     implementation (libs.okhttp)
     implementation (libs.logging.interceptor)
@@ -120,6 +121,8 @@ dependencies {
 
     //facebook shimmer
     implementation(libs.facebook.shimmer)
+
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

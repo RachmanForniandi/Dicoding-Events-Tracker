@@ -60,6 +60,4 @@
     <string name="symbol_location">Simbol lokasi</string>
     <string name="image_logo_event">gambar logo event</string>
     <string name="don_t_miss_event_on">Jangan lewatkan %1$s pada %2$s</string>
-    <string name="upcoming_event_title">Acara Mendatang!</string>
-    <string name="notification_permission_rationale">Aktifkan notifikasi untuk mendapatkan pengingat harian tentang acara Dicoding yang akan datang.</string>
 </resources>

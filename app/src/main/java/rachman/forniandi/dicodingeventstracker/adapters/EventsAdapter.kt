@@ -25,8 +25,8 @@ class EventsAdapter(private val mContext: Context): RecyclerView.Adapter<EventsA
         val eventData = events[position]
         holder.txtTitleEvent.text = eventData.name
         Glide.with(mContext)
-            .load(eventData.imageLogo)
-            .centerCrop()
+            .load(eventData.mediaCover)
+            .fitCenter()
             .placeholder(R.drawable.place_holder)
             .error(R.drawable.error_placeholder)
             .into(holder.imgPromoteEvent)

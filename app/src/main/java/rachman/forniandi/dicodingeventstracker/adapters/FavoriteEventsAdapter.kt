@@ -33,8 +33,8 @@ class FavoriteEventsAdapter(private val mContext: Context): RecyclerView.Adapter
         val eventFavData = favList[position].events
         holder.txtTitleEvent.text = eventFavData.name
         Glide.with(mContext)
-            .load(eventFavData.imageLogo)
-            .centerCrop()
+            .load(eventFavData.mediaCover)
+            .fitCenter()
             .placeholder(R.drawable.place_holder)
             .error(R.drawable.error_placeholder)
             .into(holder.imgPromoteEvent)
