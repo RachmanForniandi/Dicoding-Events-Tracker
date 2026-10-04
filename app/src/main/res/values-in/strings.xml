@@ -60,4 +60,5 @@
     <string name="symbol_location">Simbol lokasi</string>
     <string name="image_logo_event">gambar logo event</string>
     <string name="don_t_miss_event_on">Jangan lewatkan %1$s pada %2$s</string>
+    <string name="event_has_concluded">Acara telah berakhir</string>
 </resources>

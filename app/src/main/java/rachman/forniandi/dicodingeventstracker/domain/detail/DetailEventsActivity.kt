@@ -1,8 +1,10 @@
 package rachman.forniandi.dicodingeventstracker.domain.detail
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +22,10 @@ import rachman.forniandi.dicodingeventstracker.domain.entity.Events
 import rachman.forniandi.dicodingeventstracker.domain.viewmodels.DetailEventViewModel
 import rachman.forniandi.dicodingeventstracker.utils.animateLoadingProcessData
 import rachman.forniandi.dicodingeventstracker.utils.getStringDate
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 @AndroidEntryPoint
 class DetailEventsActivity : AppCompatActivity() {
@@ -112,6 +118,37 @@ class DetailEventsActivity : AppCompatActivity() {
     }
 
 
+    @SuppressLint("SimpleDateFormat")
+    private fun isEventConcluded(endTime: String?): Boolean {
+        if (endTime.isNullOrEmpty()) return false
+        return try {
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+            val endDate = dateFormat.parse(endTime) ?: return false
+
+            // Strip time: compare date-only by normalising both to start-of-day
+            val endCal = Calendar.getInstance().apply {
+                time = endDate
+                set(Calendar.HOUR_OF_DAY, 0)
+                set(Calendar.MINUTE, 0)
+                set(Calendar.SECOND, 0)
+                set(Calendar.MILLISECOND, 0)
+            }
+            val todayCal = Calendar.getInstance().apply {
+                set(Calendar.HOUR_OF_DAY, 0)
+                set(Calendar.MINUTE, 0)
+                set(Calendar.SECOND, 0)
+                set(Calendar.MILLISECOND, 0)
+            }
+
+            // Concluded when the end date is strictly before today
+            endCal.before(todayCal)
+        } catch (e: ParseException) {
+            e.printStackTrace()
+            false
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
     private fun setUpContentDetail(detailEvent: Events?) {
         Glide.with(this)
             .load(detailEvent?.imageLogo)
@@ -124,6 +161,17 @@ class DetailEventsActivity : AppCompatActivity() {
         binding.detailEventMain.txtHostedBy.text=detailEvent?.ownerName
         binding.detailEventMain.tvStartTime.text = getStringDate(detailEvent?.beginTime)
         binding.detailEventMain.tvEndTime.text = getStringDate(detailEvent?.endTime)
+
+        // --- Event-concluded visibility logic ---
+        if (isEventConcluded(detailEvent?.endTime)) {
+            // End date has passed → show "concluded" label, hide register button
+            binding.detailEventMain.txtEventHasConcluded.visibility = View.VISIBLE
+            binding.detailEventMain.btnRegisterEvent.visibility = View.GONE
+        } else {
+            // Event is still open → hide "concluded" label, show register button
+            binding.detailEventMain.txtEventHasConcluded.visibility = View.GONE
+            binding.detailEventMain.btnRegisterEvent.visibility = View.VISIBLE
+        }
 
         if (detailEvent?.cityName.equals("Online")){
             binding.detailEventMain.tvLocation.text=

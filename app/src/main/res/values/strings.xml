@@ -65,4 +65,5 @@
     <string name="don_t_miss_event_on">Don\'t miss Event %1$s on %2$s</string>
     <string name="upcoming_event_title">Upcoming Event!</string>
     <string name="notification_permission_rationale">Enable notifications to get daily reminders about upcoming Dicoding events.</string>
+    <string name="event_has_concluded">Event has concluded</string>
 </resources>
